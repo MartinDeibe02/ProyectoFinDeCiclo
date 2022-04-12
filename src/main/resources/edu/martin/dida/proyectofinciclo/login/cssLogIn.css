@@ -1,0 +1,22 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10 abr. 2022, 15:37:23
+    Author     : marti
+*/
+.logIn{
+
+  -fx-border-radius: 0 50 50 0;
+  -fx-background-radius: 0 50 50 0;
+-fx-border-width:5;
+-fx-border-color: #FC3D44;
+}
+
+
+.img{
+-fx-background-image:url(kobeLogin.jpg);
+-fx-background-size: stretch;
+-fx-background-repeat: no-repeat;
+}
