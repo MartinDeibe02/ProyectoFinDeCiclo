@@ -1,5 +1,6 @@
 package edu.martin.dida.proyectofinciclo;
 
+import com.sun.javafx.util.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,6 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.HashMap;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
 
 /**
  * JavaFX App
@@ -16,6 +21,9 @@ public class App extends Application {
 
     private static Scene scene;
     public static HashMap<String, Scene> pantallas = new HashMap<String, Scene>();
+    
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -25,8 +33,28 @@ public class App extends Application {
         
         Scene escena = pantallas.get("login");
         
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        escena.setFill(Color.TRANSPARENT);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+
+        escena.getStylesheets().add("login/cssLogin.css");
         primaryStage.setScene(escena);
         
+        escena.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneX();
+            }
+            
+        });
+        
+        escena.setOnMousePressed(pressEvent -> {
+            escena.setOnMouseDragged(drag -> {
+                primaryStage.setX(drag.getScreenX() - pressEvent.getSceneX());
+                primaryStage.setY(drag.getScreenY() - pressEvent.getSceneY());
+            });
+        });
         primaryStage.show();
     }
 

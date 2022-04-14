@@ -6,17 +6,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 10 abr. 2022, 15:37:23
     Author     : marti
 */
-.logIn{
+.root{
 
-  -fx-border-radius: 0 50 50 0;
-  -fx-background-radius: 0 50 50 0;
--fx-border-width:5;
--fx-border-color: #FC3D44;
+-fx-background-radius: 50px;
+-fx-border-radius: 50px;
+}
+
+.log{
+    -fx-background-color: #ffffff;
 }
 
 
 .img{
 -fx-background-image:url(kobeLogin.jpg);
--fx-background-size: stretch;
+-fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 }
