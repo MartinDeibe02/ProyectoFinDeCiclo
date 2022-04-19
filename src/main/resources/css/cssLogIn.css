@@ -21,7 +21,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 
 .img{
--fx-background-image:url(bull.jpg);
+-fx-background-image:url('../recursos/Bull.jpg');
 -fx-background-size: cover;
 -fx-background-repeat: no-repeat;
 

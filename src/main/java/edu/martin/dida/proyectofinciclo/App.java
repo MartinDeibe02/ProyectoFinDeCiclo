@@ -28,8 +28,10 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("login/LogIn.fxml"));
-        pantallas.put("login", new Scene(login,1050,600));
+        Parent register = FXMLLoader.load(getClass().getResource("login/Register.fxml"));
 
+        pantallas.put("login", new Scene(login,1050,600));
+        pantallas.put("Register", new Scene(register,400,500));
         
         Scene escena = pantallas.get("login");
         
@@ -37,7 +39,6 @@ public class App extends Application {
         escena.setFill(Color.TRANSPARENT);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
-        escena.getStylesheets().add("login/cssLogin.css");
         primaryStage.setScene(escena);
         
         escena.setOnMousePressed(new EventHandler<MouseEvent>(){
