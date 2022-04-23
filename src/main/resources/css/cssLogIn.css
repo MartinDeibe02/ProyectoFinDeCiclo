@@ -13,7 +13,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 -fx-border-color: black;
 }
 
+.rootRegister{
+
+-fx-background-radius: 0 50px 50px 0;
+-fx-border-radius: 0 50px 50px 0;
+-fx-border-color: black;
+-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-color: #ffffff;
+
+}
+
 .log{
+    -fx-background-color: #ffffff;
+-fx-background-radius: 0 50px 50px 0;
+-fx-border-radius: 0 50px 50px 0;
+}
+
+.paneReg{
+    -fx-background-image:url('../recursos/registerImage.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+
+}
+
+.register{
     -fx-background-color: #ffffff;
 -fx-background-radius: 0 50px 50px 0;
 -fx-border-radius: 0 50px 50px 0;

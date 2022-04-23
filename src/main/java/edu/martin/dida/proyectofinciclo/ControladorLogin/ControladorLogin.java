@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -45,20 +48,26 @@ public class ControladorLogin implements Initializable{
 
     @FXML
     private TextField txtUsername;
-
+    private double xOffset = 0;
+    private double yOffset = 0;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
     }
     
     public void signUp(ActionEvent event) throws IOException{
+
+        
+        
+        
         Stage stage = new Stage();
         Scene scene = App.pantallas.get("Register");
         stage.setScene(scene);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
         stage.initStyle(StageStyle.UNDECORATED);
-        
+        moverEscena(scene, stage);
 
         stage.centerOnScreen();
 
@@ -74,4 +83,21 @@ public class ControladorLogin implements Initializable{
     public void exitApp(){
         System.exit(0);
     }
+
+    private void moverEscena(Scene escena, Stage stage) {
+        escena.setOnMousePressed(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneX();
+            }
+            
+        });
+        
+        escena.setOnMousePressed(pressEvent -> {
+            escena.setOnMouseDragged(drag -> {
+                stage.setX(drag.getScreenX() - pressEvent.getSceneX());
+                stage.setY(drag.getScreenY() - pressEvent.getSceneY());
+            });
+        });    }
 }

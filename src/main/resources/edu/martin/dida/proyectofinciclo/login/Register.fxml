@@ -8,16 +8,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.301" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorRegistro">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="450.0" styleClass="rootRegister" stylesheets="@../../../../../css/cssLogIn.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorRegistro">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="151.60000457763672" minHeight="10.0" prefHeight="128.80001831054688" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="71.5999969482422" minHeight="1.199995422363287" prefHeight="67.39998168945311" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -28,7 +29,6 @@
       <Label text="Usuario" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
       <Label text="Correo electronico" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Label text="Fecha nacimiento" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Label alignment="CENTER" prefHeight="18.0" prefWidth="65.0" text="Contrseña" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
       <Label alignment="CENTER" text="Confirme la contraseña" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
@@ -70,10 +70,12 @@
             <Insets left="50.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Button" GridPane.rowIndex="6">
+      <Button mnemonicParsing="false" onAction="#register" prefHeight="26.0" prefWidth="100.0" text="Button" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin>
       </Button>
+      <Pane prefHeight="123.0" prefWidth="426.0" styleClass="paneReg" stylesheets="@../../../../../css/cssLogIn.css" GridPane.columnSpan="2" />
+      <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../../../../../css/cssLogIn.css" text="Password" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
    </children>
 </GridPane>

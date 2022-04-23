@@ -31,7 +31,7 @@ public class App extends Application {
         Parent register = FXMLLoader.load(getClass().getResource("login/Register.fxml"));
 
         pantallas.put("login", new Scene(login,1050,600));
-        pantallas.put("Register", new Scene(register,400,500));
+        pantallas.put("Register", new Scene(register,450,550));
         
         Scene escena = pantallas.get("login");
         
@@ -40,6 +40,7 @@ public class App extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
         primaryStage.setScene(escena);
+        
         
         escena.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
@@ -56,6 +57,7 @@ public class App extends Application {
                 primaryStage.setY(drag.getScreenY() - pressEvent.getSceneY());
             });
         });
+        
         primaryStage.show();
     }
 
