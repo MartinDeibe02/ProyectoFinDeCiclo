@@ -58,16 +58,13 @@ public class ControladorLogin implements Initializable{
     
     public void signUp(ActionEvent event) throws IOException{
 
-        
-        
-        
-        Stage stage = new Stage();
         Scene scene = App.pantallas.get("Register");
-        stage.setScene(scene);
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(((Node)event.getSource()).getScene().getWindow() );
-        stage.initStyle(StageStyle.UNDECORATED);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene.setFill(Color.TRANSPARENT);
         moverEscena(scene, stage);
+        
+        stage.setScene(scene);
+        stage.centerOnScreen();
 
         stage.centerOnScreen();
 

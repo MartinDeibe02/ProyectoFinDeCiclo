@@ -1,3 +1,51 @@
 New Log: 2022-04-21 18:45:49
 [INFO]=> Registrado Satisfactoriamente
 ===========================================
+New Log: 2022-04-26 20:40:17
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:40:17
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:45:26
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:50:03
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:50:03
+[INFO]=> Mensaje enviado
+===========================================
+New Log: 2022-04-26 20:50:03
+[INFO]=> Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-04-26 20:53:14
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:53:14
+[INFO]=> Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-04-26 20:54:11
+[INFO]=> Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 20:54:11
+[INFO]=> Mensaje enviado
+===========================================
+New Log: 2022-04-26 20:54:11
+[INFO]=> Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-04-26 21:00:56
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 21:01:35
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 21:01:35
+[ERROR] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-04-26 21:31:21
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-04-26 21:31:21
+[ERROR] => Correo mandado a martindeibe@gmail.com
+===========================================

@@ -30,8 +30,8 @@ public class App extends Application {
         Parent login = FXMLLoader.load(getClass().getResource("login/LogIn.fxml"));
         Parent register = FXMLLoader.load(getClass().getResource("login/Register.fxml"));
 
-        pantallas.put("login", new Scene(login,1050,600));
-        pantallas.put("Register", new Scene(register,450,550));
+        pantallas.put("login", new Scene(login,1050,850));
+        pantallas.put("Register", new Scene(register,1050,850));
         
         Scene escena = pantallas.get("login");
         
