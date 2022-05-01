@@ -4,15 +4,23 @@
  */
 package edu.martin.dida.proyectofinciclo.ControladorLogin;
 
+import POJO.Usuario;
 import Utilidades.Logger;
 import Utilidades.SendMessage;
+import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,7 +38,7 @@ import javax.swing.JOptionPane;
  *
  * @author marti
  */
-public class ControladorRegistro {
+public class ControladorRegistro implements Initializable{
         
     @FXML
     private Button cancel;
@@ -53,9 +61,21 @@ public class ControladorRegistro {
     @FXML
     private TextField txtUsername;
     
+    UsuariosDAO userDAO;
+    private int id;
+    
     private double xOffset = 0;
     private double yOffset = 0;
     
+    
+        @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            userDAO = new UsuariosDAO();
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ControladorRegistro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void exitRegister(ActionEvent event){
         Scene scene = App.pantallas.get("login");
@@ -75,10 +95,16 @@ public class ControladorRegistro {
         if(!(txtUsername.getText().equals("") || txtEmail.getText().equals("") || txtDate.getValue().equals("") || txtPassword.getText().equals("")|| txtPassword1.getText().equals(""))){
             if(checkmail(txtEmail.getText())==true){
                 if(txtPassword.getText().equals(txtPassword1.getText())){
-                    Logger.logear().logInfo("Registrado Satisfactoriamente", 1);
+                    
+                    LocalDate date = txtDate.getValue();
+                    String dateConverted = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                    
+                    Usuario user = new Usuario(id,txtUsername.getText(), txtEmail.getText(), dateConverted, txtPassword.getText());
+
                     SendMessage.send(txtEmail.getText());
-                    Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 2);
-                    txtEmail.clear();
+                    userDAO.insertLogin(user);
+                    Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 1);
+                    clearFields();
                 }else{
                               JOptionPane.showMessageDialog(new JFrame(), "Las contraseñas no coinciden", "Error",JOptionPane.ERROR_MESSAGE);
                 }
@@ -128,4 +154,14 @@ public class ControladorRegistro {
         return match;
         
     }
+
+    private void clearFields() {
+        txtEmail.clear();    
+        txtPassword.clear();
+        txtDate.setValue(null);
+        txtUsername.clear();
+        txtPassword1.clear();
+    }
+
+
 }

@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMessage;
 public class SendMessage {
     public static void send(String to) {
     try{
-        InputStream input = new FileInputStream("C:\\Users\\marti\\Documents\\NetBeansProjects\\ProyectoFinCiclo\\src\\main\\java\\Utilidades\\config.properties");
+        InputStream input = new FileInputStream("config.properties");
             Properties properties = System.getProperties();  
             properties.load(input);
             

@@ -38,7 +38,7 @@
          <children>
             <Pane layoutX="-2.0" layoutY="187.0" prefHeight="600.0" prefWidth="413.0" styleClass="log" stylesheets="@../../../../../css/cssLogIn.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="btnRegister" layoutX="51.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css" text="Register" />
+                  <Button fx:id="btnRegister" layoutX="51.0" layoutY="593.0" mnemonicParsing="false" prefHeight="25.0" onAction="#register" prefWidth="150.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css" text="Register" />
                   <TextField fx:id="txtUsername" layoutX="45.0" layoutY="276.0" prefHeight="25.0" prefWidth="350.0" promptText="Insert your username" styleClass="text-field" stylesheets="@../../../../../css/cssRegister.css" />
                   <TextField fx:id="txtEmail" layoutX="45.0" layoutY="345.0" prefHeight="25.0" prefWidth="350.0" promptText="Insert your username" styleClass="text-field" stylesheets="@../../../../../css/cssRegister.css" />
                   <DatePicker fx:id="txtDate" layoutX="45.0" layoutY="412.0" prefHeight="25.0" prefWidth="350.0" />
