@@ -4,10 +4,13 @@
  */
 package edu.martin.dida.proyectofinciclo.ControladorLogin;
 
+import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -31,12 +34,13 @@ import javafx.stage.StageStyle;
  * @author marti
  */
 public class ControladorLogin implements Initializable{
-        @FXML
-    private Button btnExit;
 
     @FXML
     private Button btnLogIn;
 
+    @FXML
+    private TextField txtUsername;
+    
     @FXML
     private Button btnMinimize;
 
@@ -46,14 +50,18 @@ public class ControladorLogin implements Initializable{
     @FXML
     private PasswordField txtPassword;
 
-    @FXML
-    private TextField txtUsername;
+    UsuariosDAO usersDAO;
+
     private double xOffset = 0;
     private double yOffset = 0;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+            try {
+                usersDAO = new UsuariosDAO();
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     
     public void signUp(ActionEvent event) throws IOException{
@@ -69,6 +77,17 @@ public class ControladorLogin implements Initializable{
         stage.centerOnScreen();
 
         stage.show();
+    }
+    
+    public void acceder() throws IOException{
+        int validate = usersDAO.validateLogin(txtUsername.getText(), txtPassword.getText());
+        if(validate==1){
+            System.out.println("USER");
+        }else if (validate==2){
+            System.out.println("ADMIN");
+        }else if(validate==3){
+            System.out.println("No existe");
+        }
     }
     
     
@@ -96,5 +115,19 @@ public class ControladorLogin implements Initializable{
                 stage.setX(drag.getScreenX() - pressEvent.getSceneX());
                 stage.setY(drag.getScreenY() - pressEvent.getSceneY());
             });
-        });    }
+        });    
+    }
+    
+    
+    public void hrefFacebook() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.facebook.com/"));
+    }
+
+    public void hrefInstagram() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.instagram.com/"));
+    }
+        
+    public void hrefTwitter() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.twitter.com/"));
+    }  
 }

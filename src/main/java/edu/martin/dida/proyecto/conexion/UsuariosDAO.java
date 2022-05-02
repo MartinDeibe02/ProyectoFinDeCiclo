@@ -9,6 +9,8 @@ import Utilidades.Logger;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -72,4 +74,31 @@ public class UsuariosDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    public int validateLogin(String nombre, String contraseña) throws IOException{
+                    try (Connection conexion = Conexion.getConnection()){
+                        PreparedStatement prep = conexion.prepareStatement("SELECT * FROM usuarios WHERE user=? and password=? and permisos=?");
+                        prep.setString(1, nombre);
+                        prep.setString(2, contraseña);
+                        prep.setString(3, "user");
+
+                        PreparedStatement prep2 = conexion.prepareStatement("SELECT * FROM usuarios WHERE user=? and password=? and permisos=?");
+                        prep2.setString(1, nombre);
+                        prep2.setString(2, contraseña);
+                        prep2.setString(3, "admin");
+
+
+                        ResultSet rs = prep.executeQuery();
+                        ResultSet rs2 = prep2.executeQuery();
+
+                        if(rs.next()){
+                            return 1;
+                        }
+                        if(rs2.next()){
+                           return 2;
+                       } 
+                    }catch(SQLException e){
+                        e.printStackTrace();
+                    }
+                return 3;
+    } 
 }

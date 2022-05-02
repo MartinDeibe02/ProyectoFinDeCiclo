@@ -38,7 +38,7 @@
          <children>
             <Pane layoutX="-2.0" layoutY="187.0" prefHeight="600.0" prefWidth="413.0" styleClass="log" stylesheets="@../../../../../css/cssLogIn.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Button fx:id="btnLogIn" layoutX="120.0" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css" text="Log In" />
+                  <Button fx:id="btnLogIn" layoutX="120.0" onAction="#acceder" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css" text="Log In" />
                   <TextField fx:id="txtUsername" layoutX="46.0" layoutY="356.0" prefHeight="25.0" prefWidth="350.0" promptText="Insert your username" styleClass="text-field" stylesheets="@../../../../../css/cssLogIn.css" />
                   <Label layoutX="45.0" layoutY="335.0" stylesheets="@../../../../../css/cssLogIn.css" text="Username">
                      <font>
@@ -90,8 +90,8 @@
                         <Font size="13.0" />
                      </font>
                   </Hyperlink>
-                  <Separator layoutX="70.0" layoutY="620.0" prefHeight="28.0" prefWidth="300.0" />
-                  <Button layoutX="140.0" layoutY="650.0" mnemonicParsing="false" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css">
+                  <Separator layoutX="70.0" layoutY="650.0" prefHeight="28.0" prefWidth="300.0" />
+                  <Button layoutX="140.0" layoutY="700.0" onAction="#hrefTwitter" mnemonicParsing="false" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -100,7 +100,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="196.0" layoutY="650.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="23.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css">
+                  
+                  <Button layoutX="196.0" layoutY="700.0" onAction="#hrefInstagram" mnemonicParsing="false" prefHeight="0.0" prefWidth="23.0" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -109,7 +110,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button layoutX="250.0" layoutY="650.0" mnemonicParsing="false" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css">
+                  
+                  <Button layoutX="250.0" layoutY="700.0" onAction="#hrefFacebook" mnemonicParsing="false" styleClass="button1" stylesheets="@../../../../../css/cssLogIn.css"> 
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>

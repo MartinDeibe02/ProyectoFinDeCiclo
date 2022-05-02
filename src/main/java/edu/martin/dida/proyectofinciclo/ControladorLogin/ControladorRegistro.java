@@ -162,6 +162,18 @@ public class ControladorRegistro implements Initializable{
         txtUsername.clear();
         txtPassword1.clear();
     }
+    
+    public void hrefFacebook() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.facebook.com/"));
+    }
+
+    public void hrefInstagram() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.instagram.com/"));
+    }
+        
+    public void hrefTwitter() throws IOException{
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create("https://www.twitter.com/"));
+    }  
 
 
 }
