@@ -79,10 +79,20 @@ public class ControladorLogin implements Initializable{
         stage.show();
     }
     
-    public void acceder() throws IOException{
+    public void acceder( ActionEvent event) throws IOException{
         int validate = usersDAO.validateLogin(txtUsername.getText(), txtPassword.getText());
         if(validate==1){
-            System.out.println("USER");
+                Scene scene = App.pantallas.get("inicio");
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene.setFill(Color.TRANSPARENT);
+            moverEscena(scene, stage);
+
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.centerOnScreen();
+
+            stage.show();
         }else if (validate==2){
             System.out.println("ADMIN");
         }else if(validate==3){

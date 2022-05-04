@@ -29,7 +29,9 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent login = FXMLLoader.load(getClass().getResource("login/LogIn.fxml"));
         Parent register = FXMLLoader.load(getClass().getResource("login/Register.fxml"));
-
+        Parent inicio = FXMLLoader.load(getClass().getResource("inicio/inicio.fxml"));
+        
+        pantallas.put("inicio", new Scene(inicio,1100,750));
         pantallas.put("login", new Scene(login,1050,850));
         pantallas.put("Register", new Scene(register,1050,850));
         

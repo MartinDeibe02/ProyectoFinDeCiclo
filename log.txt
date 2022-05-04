@@ -58,3 +58,6 @@ New Log: 2022-05-01 11:57:28
 New Log: 2022-05-01 11:57:28
 [INFO] => Correo mandado a martindeibe@gmail.com
 ===========================================
+New Log: 2022-05-04 19:11:20
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
