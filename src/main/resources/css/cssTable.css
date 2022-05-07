@@ -1,0 +1,57 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 7 may. 2022, 16:53:51
+    Author     : Markyuu
+*/
+
+.img{
+    -fx-background-image:url('../recursos/Bull.jpg');
+    -fx-background-size: cover;
+    -fx-border-radius: 50px;
+    
+}
+
+.botton{
+
+}
+
+.botton:hover{
+        -fx-border-width: 0 0 3 0;
+-fx-border-color: white;
+}
+
+.tab{
+  -fx-tab-min-width:100px;
+  -fx-tab-max-width:100px;
+  -fx-tab-min-height:200px;
+  -fx-tab-max-height:200px;
+  
+-fx-margin-bottom: 20px;
+-fx-background-color:transparent;
+
+
+}
+
+.tab .tab-label {
+-fx-rotate: 90;
+-fx-text-fill: #ffffff;
+-fx-font-size: 25px;
+
+}
+
+.tab-pane *.tab-header-area *.tab-header-background {
+  -fx-background-color:transparent;
+  -fx-background-color: rgba(0,0,0,0.5);
+
+}
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.tab:selected{
+
+        -fx-border-width: 0 0 3 0;
+-fx-border-color: white;}
