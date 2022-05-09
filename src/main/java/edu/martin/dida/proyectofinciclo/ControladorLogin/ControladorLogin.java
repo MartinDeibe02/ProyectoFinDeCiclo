@@ -51,7 +51,8 @@ public class ControladorLogin implements Initializable{
     private PasswordField txtPassword;
 
     UsuariosDAO usersDAO;
-
+    public static String nombre;
+    
     private double xOffset = 0;
     private double yOffset = 0;
     
@@ -82,6 +83,7 @@ public class ControladorLogin implements Initializable{
     public void acceder( ActionEvent event) throws IOException{
         int validate = usersDAO.validateLogin(txtUsername.getText(), txtPassword.getText());
         if(validate==1){
+            nombre = txtUsername.getText();
                 Scene scene = App.pantallas.get("inicio");
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene.setFill(Color.TRANSPARENT);

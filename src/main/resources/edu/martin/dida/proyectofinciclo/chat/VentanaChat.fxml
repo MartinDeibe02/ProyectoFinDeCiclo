@@ -2,14 +2,11 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -22,8 +19,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1100.0" styleClass="img" stylesheets="@../../../../../css/cssTable.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
-     <children>
+<Pane id="AnchorPane" prefHeight="750.0" prefWidth="1100.0" styleClass="img" stylesheets="@../../../../../css/cssChat.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
+    <children>
       <Pane id="topImage" layoutX="-4.0" layoutY="-11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1111.0" stylesheets="@../../../../../css/inicio.css">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0" />
@@ -107,43 +104,10 @@
                           <tabs>
                             <Tab text="Teams">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="609.0" prefWidth="891.0">
-                                       <children>
-                                          <TableView layoutX="375.0" layoutY="13.0" prefHeight="600.0" prefWidth="500.0">
-                                            <columns>
-                                              <TableColumn prefWidth="75.0" text="C1" />
-                                              <TableColumn prefWidth="75.0" text="C2" />
-                                            </columns>
-                                          </TableView>
-                                          <GridPane layoutX="32.0" layoutY="91.0" prefHeight="625.0" prefWidth="363.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                             <children>
-                                                <Label text="Label" textFill="WHITE" />
-                                                <Label text="Label" textFill="WHITE" GridPane.rowIndex="4" />
-                                                <Label text="Label" textFill="WHITE" GridPane.rowIndex="1" />
-                                                <Label text="Label" textFill="WHITE" GridPane.rowIndex="3" />
-                                                <Label text="Label" textFill="WHITE" GridPane.rowIndex="2" />
-                                                <TextField GridPane.columnIndex="1" />
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                             </children>
-                                          </GridPane>
-                                       </children></AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="609.0" prefWidth="891.0" />
                               </content>
                             </Tab>
-                            <Tab fx:id="players" text="Players">
+                            <Tab text="Players">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                               </content>
@@ -157,9 +121,13 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="txtChatSend" layoutX="121.0" layoutY="546.0" prefHeight="50.0" prefWidth="526.0" />
-                                          <Button fx:id="txtChatBtn" layoutX="674.0" layoutY="546.0" mnemonicParsing="false" onAction="#send" prefHeight="41.0" prefWidth="130.0" text="Button" textFill="WHITE" />
-                                          <TextArea fx:id="recibidos" layoutX="121.0" layoutY="20.0" prefHeight="502.0" prefWidth="668.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
+                                          <TextArea layoutX="98.0" prefHeight="506.0" prefWidth="646.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
+                                          <TextField layoutX="98.0" layoutY="533.0" prefHeight="52.0" prefWidth="532.0" />
+                                          <Button layoutX="655.0" layoutY="534.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="89.0" styleClass="botton" stylesheets="@../../../../../css/cssChat.css" text="Button">
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                 </content>

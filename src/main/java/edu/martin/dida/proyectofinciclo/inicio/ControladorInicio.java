@@ -4,21 +4,29 @@
  */
 package edu.martin.dida.proyectofinciclo.inicio;
 
+import edu.martin.dida.proyectofinciclo.App;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Markyuu
  */
 public class ControladorInicio implements Initializable{
+    
+    // <editor-fold defaultstate="collapsed" desc="Imagenes">
+
     
     @FXML
     private Rectangle rec1;
@@ -39,6 +47,9 @@ public class ControladorInicio implements Initializable{
         @FXML
     private Rectangle news;
         Image noticia = new Image("/recursos/warriors.png");
+        
+    // </editor-fold>
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -49,6 +60,16 @@ public class ControladorInicio implements Initializable{
         setimg(news, noticia);
     }
 
+    public void goManager(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(App.scene1);
+                    stage.centerOnScreen();
+        
+
+        stage.centerOnScreen();
+
+        stage.show();
+    }
     
     public void lebron(){
         System.out.println("hola");

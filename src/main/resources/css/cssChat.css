@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 9 may. 2022, 18:07:18
+    Author     : Markyuu
+*/
+
+.img{
+    -fx-background-image:url('../recursos/Bull.jpg');
+    -fx-background-size: cover;
+    -fx-border-radius: 50px;
+    
+}
+
+.botton{
+-fx-text-fill: #ffffff;
+}
+
+.botton:hover{
+        -fx-border-width: 0 0 3 0;
+-fx-border-color: white;
+}
+
+.chatBack .content{
+    -fx-background-color: #1d1d1d ;
+
+}
+
+.gridLeft{
+      -fx-background-color: rgba(0,0,0,0.5);
+
+}
+
+.buttonsGrid{
+        -fx-size: 35;
+    -fx-border-width: 0 3 0 0;
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+}
