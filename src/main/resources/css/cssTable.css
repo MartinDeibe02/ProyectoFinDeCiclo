@@ -94,3 +94,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: rgba(0,0,0,0.5);
 
 }
+
+.destacados{
+    -fx-background-radius: 50px 50px 50px 50px;
+    -fx-background-color: rgba(0,0,0,0.5);
+    -fx-border-radius: 0 50px 50px 0;
+}
+
+.photoTransparent{
+    -fx-fill: transparent;
+}
+
+.borderFicha{
+    -fx-background-color: rgba(0,0,0,0.5);
+        -fx-background-radius: 50px 50px 50px 50px;
+
+}

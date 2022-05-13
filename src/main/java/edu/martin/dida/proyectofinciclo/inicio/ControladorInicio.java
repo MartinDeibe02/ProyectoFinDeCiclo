@@ -51,6 +51,9 @@ public class ControladorInicio implements Initializable{
     // </editor-fold>
 
 
+
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setimg(rec1, img);
@@ -75,6 +78,7 @@ public class ControladorInicio implements Initializable{
         System.out.println("hola");
     }
 
+    
     private void setimg(Rectangle rec1, Image img1) {
         rec1.setArcWidth(30.0);   // Corner radius
         rec1.setArcHeight(30.0);

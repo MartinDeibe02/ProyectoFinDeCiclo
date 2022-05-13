@@ -17,30 +17,44 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Rectangle;
 
 /**
  *
  * @author Markyuu
  */
 public class ControladorTabPane {
+    // <editor-fold defaultstate="collapsed" desc="Chat">
+
     @FXML
     TextArea recibidos;
 
-@FXML
-private TextField txtChatSend;
+    @FXML
+    private TextField txtChatSend;
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Jugadores">
 
-String texto;
-ControladorLogin controlLogin = new ControladorLogin();
+    @FXML
+    private Rectangle prueba;
+    // </editor-fold>
+
+    String texto;
+    
+    ControladorLogin controlLogin = new ControladorLogin();
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
     static LocalDateTime now = LocalDateTime.now();  
 
-
+    // <editor-fold defaultstate="collapsed" desc="Mandar mensaje chat">
     public void append(String text){
         recibidos.appendText(text + "\n");
     }
     
-        public void send(){
-        
+    public void send(){
         texto =dtf.format(now) + " " + controlLogin.nombre + " >> " + txtChatSend.getText();
 
         try {
@@ -48,6 +62,29 @@ ControladorLogin controlLogin = new ControladorLogin();
             App.ms.send(paquete);
         } catch (IOException ex) {
         }
+    }
+    // </editor-fold>
+    
+    //Bordes de imagen + shadow
+    private void setimg(Rectangle rec1, Image img1) {
+        rec1.setArcWidth(30.0);   // Corner radius
+        rec1.setArcHeight(30.0);
+
+        ImagePattern pattern = new ImagePattern(img1);
+
+        rec1.setFill(pattern);
+        rec1.setEffect(new DropShadow(20, Color.BLACK));    
+    }
+    
+    public void photo(){
+        Image img = new Image("https://bolavip.com/__export/1646958112918/sites/bolavip/img/2022/03/10/lebron_james_nba_la_lakers.jpg_1890075089.jpg");
+        setimg(prueba, img);
+ 
+    }
+
+    
+    public void salir(){
+        System.exit(0);
     }
 
 }

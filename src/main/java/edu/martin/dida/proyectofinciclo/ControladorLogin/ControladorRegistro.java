@@ -62,6 +62,7 @@ public class ControladorRegistro implements Initializable{
     private TextField txtUsername;
     
     UsuariosDAO userDAO;
+    SendMessage sendMessage;
     private int id;
     
     private double xOffset = 0;
@@ -72,6 +73,7 @@ public class ControladorRegistro implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         try {
             userDAO = new UsuariosDAO();
+            sendMessage = new SendMessage();
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(ControladorRegistro.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -101,8 +103,9 @@ public class ControladorRegistro implements Initializable{
                     
                     Usuario user = new Usuario(id,txtUsername.getText(), txtEmail.getText(), dateConverted, txtPassword.getText());
 
-                    SendMessage.send(txtEmail.getText());
+                    sendMessage.send(txtEmail.getText());
                     userDAO.insertLogin(user);
+                    
                     Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 1);
                     clearFields();
                 }else{

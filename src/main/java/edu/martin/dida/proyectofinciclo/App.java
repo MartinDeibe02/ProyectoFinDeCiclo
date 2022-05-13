@@ -13,10 +13,13 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 /**
  * JavaFX App
@@ -28,7 +31,6 @@ public class App extends Application {
     
     private double xOffset = 0;
     private double yOffset = 0;
-
         public static MulticastSocket ms = null;
     public static InetAddress grupo = null;
     public static byte[] buf = new byte[1000];
@@ -47,10 +49,10 @@ public class App extends Application {
             scene1 = new Scene(root);
 
             ThreadRun a = new ThreadRun(controller);
-                Thread t = new Thread(a, "hola");
+            Thread t = new Thread(a, "hola");
 
-                t.start();
-
+            t.start();
+            
         
         Parent login = FXMLLoader.load(getClass().getResource("login/LogIn.fxml"));
         Parent register = FXMLLoader.load(getClass().getResource("login/Register.fxml"));
@@ -71,6 +73,8 @@ public class App extends Application {
         primaryStage.setScene(escena);
         
         
+        
+        
         escena.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
@@ -89,7 +93,7 @@ public class App extends Application {
         
         primaryStage.show();
     }
-
+    
 
 
 

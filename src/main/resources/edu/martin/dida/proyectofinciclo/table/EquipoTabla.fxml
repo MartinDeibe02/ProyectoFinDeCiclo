@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <Pane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1100.0" styleClass="img" stylesheets="@../../../../../css/cssTable.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
@@ -85,6 +86,7 @@
                           <items>
                             <MenuItem mnemonicParsing="false" text="Ajustes" />
                             <MenuItem mnemonicParsing="false" text="Opciones" />
+                            <MenuItem mnemonicParsing="false" onAction="#salir" text="Salir" />
                           </items>
                            <font>
                               <Font size="25.0" />
@@ -145,7 +147,31 @@
                             </Tab>
                             <Tab fx:id="players" text="Players">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView layoutX="17.0" layoutY="15.0" prefHeight="593.0" prefWidth="373.0">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="C1" />
+                                              <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                          <Pane layoutX="412.0" layoutY="14.0" prefHeight="590.0" prefWidth="459.0" styleClass="borderFicha" stylesheets="@../../../../../css/cssTable.css">
+                                             <children>
+                                                <Rectangle fx:id="prueba" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="33.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" styleClass="photoTransparent" width="200.0" />
+                                                <Label layoutX="254.0" layoutY="45.0" prefHeight="17.0" prefWidth="67.0" text="Name" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="259.0" layoutY="128.0" text="Team" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button layoutX="166.0" layoutY="295.0" mnemonicParsing="false" onAction="#photo" text="Button" textFill="WHITE" />
+                                             </children>
+                                          </Pane>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                               <Tab text="My team">
