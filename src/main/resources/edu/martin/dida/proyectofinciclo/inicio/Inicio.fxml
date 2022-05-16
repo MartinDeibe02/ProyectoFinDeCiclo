@@ -25,8 +25,9 @@
                <top>
                   <GridPane prefHeight="134.0" prefWidth="1070.0" style="-fx-background-color: rgba(0,0,0,0.5);" styleClass="grid" stylesheets="@../../../../../css/inicio.css" BorderPane.alignment="CENTER">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.80003662109374" minWidth="10.0" prefWidth="295.9999938964844" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.73330688476562" minWidth="10.0" prefWidth="127.933349609375" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.80003662109374" minWidth="10.0" prefWidth="249.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.80003662109374" minWidth="10.0" prefWidth="124.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.73330688476562" minWidth="10.0" prefWidth="169.0" />
                         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="320.8000854492187" minWidth="10.0" prefWidth="108.93326416015623" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.60003662109375" minWidth="10.0" prefWidth="162.26673583984382" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.60003662109375" minWidth="10.0" prefWidth="113.39997558593745" />
@@ -36,13 +37,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" />
                         <ImageView fitHeight="85.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../recursos/TheBullBallWhite1.png" />
                            </image>
                         </ImageView>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Roster" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Roster" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -50,7 +50,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Draft" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Draft" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -59,7 +59,7 @@
                            </cursor>
                         </Button>
                         <Separator prefWidth="200.0" stylesheets="@../../../../../css/inicio.css" GridPane.columnSpan="2147483647" GridPane.valignment="BOTTOM" />
-                        <Button mnemonicParsing="false" onAction="#goManager" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Manager" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#goManager" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Manager" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -67,7 +67,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="4">
+                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="5">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -75,7 +75,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <MenuButton alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="179.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="User" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+                        <MenuButton alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.halignment="CENTER">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Ajustes" />
                             <MenuItem mnemonicParsing="false" text="Opciones" />
@@ -83,14 +83,12 @@
                            <font>
                               <Font size="25.0" />
                            </font>
-                           <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../recursos/profile.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
                         </MenuButton>
+                        <Button mnemonicParsing="false" onAction="#goHome" text="Home" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Button>
                      </children>
                   </GridPane>
                </top>

@@ -86,9 +86,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #ffc900;
+    -fx-background-color: #6b2627;
+    -fx-table-cell-border-color: transparent;
+
 }
 
+.table-view .table-row-cell{
+    -fx-cell-size:30px;
+
+}
 
 .chatBack .content{
     -fx-background-color: rgba(0,0,0,0.5);
@@ -109,4 +115,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: rgba(0,0,0,0.5);
         -fx-background-radius: 50px 50px 50px 50px;
 
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 2 0;    
+    -fx-text-fill: white;
+}
+
+.playerText{
+    -fx-font-weight: bold
 }

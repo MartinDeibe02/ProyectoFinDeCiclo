@@ -77,6 +77,18 @@ public class ControladorInicio implements Initializable{
     public void lebron(){
         System.out.println("hola");
     }
+    
+    public void goHome(ActionEvent event){
+        Scene scene = App.pantallas.get("inicio");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene.setFill(Color.TRANSPARENT);        
+        stage.setScene(scene);
+        stage.centerOnScreen();
+
+        stage.centerOnScreen();
+
+        stage.show();
+    }
 
     
     private void setimg(Rectangle rec1, Image img1) {

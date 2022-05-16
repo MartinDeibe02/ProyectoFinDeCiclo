@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" styleClass="root" stylesheets="@../../../../../css/cssLogIn.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1050.0" styleClass="root" stylesheets="@../../../../../css/cssLogIn.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin">
    <left>
       <Pane prefHeight="809.0" prefWidth="610.0" styleClass="img" stylesheets="@../../../../../css/cssLogIn.css" BorderPane.alignment="CENTER">
          <children>

@@ -1,6 +1,6 @@
+
 package edu.martin.dida.proyectofinciclo;
 
-import com.sun.javafx.util.Utils;
 import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
 import edu.martin.dida.proyectofinciclo.table.ThreadRun;
 import javafx.application.Application;
@@ -13,13 +13,10 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
 
 /**
  * JavaFX App
@@ -31,6 +28,7 @@ public class App extends Application {
     
     private double xOffset = 0;
     private double yOffset = 0;
+    
         public static MulticastSocket ms = null;
     public static InetAddress grupo = null;
     public static byte[] buf = new byte[1000];

@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="AnchorPane" prefHeight="750.0" prefWidth="1100.0" styleClass="img" stylesheets="@../../../../../css/cssChat.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
+<Pane id="AnchorPane" prefHeight="750.0" prefWidth="1100.0" styleClass="img" stylesheets="@../../../../../css/cssChat.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/13" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
     <children>
       <Pane id="topImage" layoutX="-4.0" layoutY="-11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1111.0" stylesheets="@../../../../../css/inicio.css">
          <children>

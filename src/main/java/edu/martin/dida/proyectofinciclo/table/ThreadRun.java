@@ -5,6 +5,7 @@
 package edu.martin.dida.proyectofinciclo.table;
 
 import edu.martin.dida.proyectofinciclo.App;
+import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import java.io.IOException;
 import java.net.DatagramPacket;
 

@@ -61,3 +61,18 @@ New Log: 2022-05-01 11:57:28
 New Log: 2022-05-04 19:11:20
 [ERROR] => No se ha podido establecer conexion con la base de datos
 ===========================================
+New Log: 2022-05-14 17:18:09
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-16 16:03:14
+[INFO] => Team{id=0, name=aaa, abbreviation=aaa, city=null, conference=aaa, division=null}
+===========================================
+New Log: 2022-05-16 16:43:07
+[INFO] => Equipo insertado Team{id=31, name=aaa, abbreviation=aaa, city=Coruña, conference=aaa, division=null}
+===========================================
+New Log: 2022-05-16 16:53:05
+[INFO] => Equipo insertado Team{id=0, name=ma, abbreviation=a, city=a, conference=a, division=a}
+===========================================
+New Log: 2022-05-16 16:53:05
+[INFO] => Deleted => Team{id=32, name=ma, abbreviation=a, city=a, conference=a, division=a}
+===========================================
