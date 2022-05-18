@@ -14,6 +14,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -100,8 +102,14 @@ public class ControladorRegistro implements Initializable{
                     String dateConverted = date.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                     
                     Usuario user = new Usuario(id,txtUsername.getText(), txtEmail.getText(), dateConverted, txtPassword.getText());
-
-                    sendMessage.send(txtEmail.getText());
+                    
+                    ExecutorService service = Executors.newFixedThreadPool(4);
+                        service.submit(new Runnable() {
+                            public void run() {
+                                sendMessage.send(txtEmail.getText());
+                            }
+                        });
+                    
                     userDAO.insertLogin(user);
                     
                     Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 1);

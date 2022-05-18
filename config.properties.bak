@@ -8,5 +8,5 @@ mail.smtp.starttls.enable=true
 mail.smtp.auth=true
 mail.smtp.port=587
 
-emailFrom=martintds02@gmail.com
-emailPass=@iCGe0C^jg
+mail.smtp.user=martintds02@gmail.com
+mail.smtp.password=@iCGe0C^jg

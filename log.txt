@@ -76,3 +76,39 @@ New Log: 2022-05-16 16:53:05
 New Log: 2022-05-16 16:53:05
 [INFO] => Deleted => Team{id=32, name=ma, abbreviation=a, city=a, conference=a, division=a}
 ===========================================
+New Log: 2022-05-17 15:32:02
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 15:32:02
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-17 15:35:11
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 15:35:11
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-17 15:46:05
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 15:46:05
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-17 15:59:55
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 15:59:55
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-17 16:04:47
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 16:04:47
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-17 16:10:16
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-17 16:10:16
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================

@@ -143,6 +143,7 @@ public class ControladorTabPane  implements Initializable{
         try {
             teamsDAO = new TeamsDAO();
             cargarTeams();
+            prueba.setFill(Color.TRANSPARENT);
         } catch (IOException ex) {
             Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
         }
