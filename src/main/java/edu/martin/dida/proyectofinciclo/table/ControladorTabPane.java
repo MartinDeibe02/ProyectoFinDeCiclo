@@ -4,7 +4,9 @@
  */
 package edu.martin.dida.proyectofinciclo.table;
 
+import POJO.Player;
 import POJO.Team;
+import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
@@ -22,11 +24,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,7 +59,7 @@ import javax.xml.transform.TransformerException;
  */
 public class ControladorTabPane  implements Initializable{
     static ArrayList<Team> listTeams = new ArrayList<>();
-    
+    static ArrayList<Player> listPlayer = new ArrayList<>();
     // <editor-fold defaultstate="collapsed" desc="Chat">
 
     @FXML
@@ -93,7 +98,10 @@ public class ControladorTabPane  implements Initializable{
     
     
     // <editor-fold defaultstate="collapsed" desc="Player">
-
+    
+    @FXML
+    private TableView tablePlayers;
+    
     @FXML
     private Label lblAge;
 
@@ -129,12 +137,22 @@ public class ControladorTabPane  implements Initializable{
 
     @FXML
     private Label lblWeight;
+    
+    @FXML
+    private TextField txtfilter;
+    
+    ObservableList<Player> players;
     // </editor-fold>
 
+    @FXML
+    private TableView tableMyTeam;
+    ObservableList<Player> playerByTeam;
+    
     String texto;
     
     ControladorLogin controlLogin = new ControladorLogin();
     TeamsDAO teamsDAO;
+    PlayersDAO playerDAO;
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
     static LocalDateTime now = LocalDateTime.now();  
     
@@ -142,7 +160,10 @@ public class ControladorTabPane  implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
         try {
             teamsDAO = new TeamsDAO();
+            playerDAO = new PlayersDAO();
             cargarTeams();
+            cargarPlayer();
+            loadFilter();
             prueba.setFill(Color.TRANSPARENT);
         } catch (IOException ex) {
             Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
@@ -267,36 +288,104 @@ public class ControladorTabPane  implements Initializable{
         tablaTeams.setItems(teams);
     }
     
-    //Bordes de imagen + shadow
-    private void setimg(Rectangle rec1, Image img1) {
-        rec1.setArcWidth(30.0);   // Corner radius
-        rec1.setArcHeight(30.0);
-
-        ImagePattern pattern = new ImagePattern(img1);
-
-        rec1.setFill(pattern);
-        rec1.setEffect(new DropShadow(20, Color.BLACK));    
-    }
     
-    public void photo(){
-        Image img = new Image("https://bolavip.com/__export/1646958112918/sites/bolavip/img/2022/03/10/lebron_james_nba_la_lakers.jpg_1890075089.jpg");
-        setimg(prueba, img);
+    
+    
+    public void cargarPlayer() throws IOException{
+        players = FXCollections.observableArrayList();
+        List<Player> player = playerDAO.buscarPlayer();
+        players.addAll(player);
+        tablePlayers.setItems(players);        
+    }
         
-        lblName.setText("6 / Lebron James");
-        lblPosition.setText("F");
-        lblHeight.setText("6.8");
-        lblWeight.setText("250");
-        lblTeam.setText("Los Angeles Lakers");
-        lblAge.setText("37");
-        lblDraft.setText("2003 Rnd 1 Pick 1");
-        lblPoints.setText("30.3");
-        lblRebounds.setText("8.2");
-        lblAssists.setText("6.2");
-        lblCollege.setText("St. Vincent St. Mary High School (Ohio)");
-        lblCountry.setText("United States");
- 
+    public void photo(){
+        
+        Player player = (Player) tablePlayers.getSelectionModel().getSelectedItem();
+        
+        if(player ==null){
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+            Image img = new Image(player.getPlayerImage());
+            setimg(prueba, img);
+            
+        lblName.setText(player.getPlayerJersey() + " / " + player.getPlayerName());
+        lblPosition.setText(player.getPlayerPosition());
+        lblHeight.setText(player.getPlayerHeight());
+        lblWeight.setText(player.getPlayerWeight());
+        lblTeam.setText(player.getPlayerTeam());
+        lblAge.setText(String.valueOf(player.getPlayerAge()));
+        lblDraft.setText(player.getPlayerDraft());
+        lblPoints.setText(String.valueOf(player.getPlayerPoints()));
+        lblRebounds.setText(String.valueOf(player.getPlayerRebbounds()));
+        lblAssists.setText(String.valueOf(player.getPlayerAssist()));
+        lblCollege.setText(player.getPlayerCollege());
+        lblCountry.setText(player.getPlayerNationality());
+        }
+
     }
     
+    public void insertCSVPlayer(){
+         BufferedReader br = null;
+        try {
+            FileChooser f = new FileChooser();
+            f.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV FILES", "*.csv"));
+            File file = f.showOpenDialog(null);
+            
+            if(file == null){
+                
+            }else{
+
+            Path path = Paths.get(file.getAbsolutePath());
+            br = Files.newBufferedReader(path);
+            Stream<String> lineas = br.lines();
+            lineas.forEach(insert->{
+                String[] lineaSep = insert.split(",");
+                listPlayer.add(new Player(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], Integer.parseInt(lineaSep[5]),
+                lineaSep[6], lineaSep[7], lineaSep[8], lineaSep[9], Double.parseDouble(lineaSep[10]), 
+                Double.parseDouble(lineaSep[11]),Double.parseDouble(lineaSep[12]), lineaSep[13], lineaSep[14]));
+                        });
+            playerDAO.insertarCSV(listPlayer);
+            cargarPlayer();
+            br.close();
+
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadFilter(){
+        FilteredList<Player> filterPlayer = new FilteredList<>(players, e -> true);
+        txtfilter.setOnKeyReleased(e -> {
+            txtfilter.textProperty().addListener((value, oldvalue, newvalue) -> {
+                filterPlayer.setPredicate((Predicate<? super Player>) player ->{
+                    if(newvalue == null || newvalue.isEmpty()){
+                        return true;
+                    }else if(player.getPlayerName().toLowerCase().contains(newvalue.toLowerCase())){
+                        return true;
+                    }else if(player.getPlayerTeam().toLowerCase().contains(newvalue.toLowerCase())){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Player> sortedList = new SortedList<>(filterPlayer);
+            sortedList.comparatorProperty().bind(tablePlayers.comparatorProperty());
+            tablePlayers.setItems(sortedList);
+        });    
+    }
+
+    public void exportarCSVPlayers() throws IOException{
+        playerDAO.exportarCSV();
+    }
+    
+    
+    public void showMyTeam() throws IOException{
+        playerByTeam = FXCollections.observableArrayList();
+        List<Player> player = playerDAO.buscarPlayerByTeam(controlLogin.nombre);
+        playerByTeam.addAll(player);
+        tableMyTeam.setItems(players);
+    }
     
     // <editor-fold defaultstate="collapsed" desc="pantallas">
 
@@ -338,7 +427,15 @@ public class ControladorTabPane  implements Initializable{
         txtTeamDivision.clear();
     }
 
+    private void setimg(Rectangle rec1, Image img1) {
+        rec1.setArcWidth(60.0);   // Corner radius
+        rec1.setArcHeight(60.0);
 
+        ImagePattern pattern = new ImagePattern(img1);
+
+        rec1.setFill(pattern);
+        rec1.setEffect(new DropShadow(20, Color.BLACK));    
+    }
 
 
 

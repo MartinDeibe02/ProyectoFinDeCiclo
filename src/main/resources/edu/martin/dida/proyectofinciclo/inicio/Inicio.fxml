@@ -79,6 +79,8 @@
                           <items>
                             <MenuItem mnemonicParsing="false" text="Ajustes" />
                             <MenuItem mnemonicParsing="false" text="Opciones" />
+                            <MenuItem mnemonicParsing="false" text="Exit" />
+
                           </items>
                            <font>
                               <Font size="25.0" />

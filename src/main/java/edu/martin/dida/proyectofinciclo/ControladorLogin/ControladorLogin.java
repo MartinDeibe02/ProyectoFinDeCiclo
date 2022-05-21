@@ -107,7 +107,7 @@ public class ControladorLogin implements Initializable{
         System.exit(0);
     }
 
-    private void moverEscena(Scene escena, Stage stage) {
+    public void moverEscena(Scene escena, Stage stage) {
         escena.setOnMousePressed(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {

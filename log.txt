@@ -112,3 +112,128 @@ New Log: 2022-05-17 16:10:16
 New Log: 2022-05-17 16:10:16
 [INFO] => Correo mandado a martindeibe@gmail.com
 ===========================================
+New Log: 2022-05-20 18:19:23
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:22:03
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:26:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:26:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:26:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:26:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:26:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:30:18
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:31:07
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:32:21
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:32:33
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-20 18:41:06
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-20 18:41:06
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-20 18:43:06
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-05-20 18:43:06
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-05-21 00:03:27
+[ERROR] => Columna "JERSEY" no encontrada
+Column "JERSEY" not found; SQL statement:
+INSERT INTO teams (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds,assist, image, user)VALUES ('1','hola','hola','hola','hola','1','hola','hola','hola','hola','15.0','15.0','15.0','hola','hola') [42122-200]
+===========================================
+New Log: 2022-05-21 00:04:05
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 00:04:56
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds,assist, image, user)VALUES ('1','hola','hola','hola','hola','1','hola','hola','hola','hola','15.0','15.0','15.0','hola','hola') [23506-200]
+===========================================
+New Log: 2022-05-21 13:27:51
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)VALUES ('1','hola','hola','hola','hola','1','hola','hola','hola','hola','15.0','15.0','15.0','hola','hola') [23506-200]
+===========================================
+New Log: 2022-05-21 13:31:37
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D6: PUBLIC.PLAYERS FOREIGN KEY(USER) REFERENCES PUBLIC.USUARIOS(USER) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D6: PUBLIC.PLAYERS FOREIGN KEY(USER) REFERENCES PUBLIC.USUARIOS(USER) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)VALUES ('50','Aaron Gordon','F','203cm','107kg','26','Denver Nuggets','Arizona','2014 Rnd 1 Pick 4','United States','15.0','5.9','2.5','https://cdn.nba.com/headshots/nba/latest/260x190/203932.png','null') [23506-200]
+===========================================
+New Log: 2022-05-21 13:31:37
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D6: PUBLIC.PLAYERS FOREIGN KEY(USER) REFERENCES PUBLIC.USUARIOS(USER) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D6: PUBLIC.PLAYERS FOREIGN KEY(USER) REFERENCES PUBLIC.USUARIOS(USER) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)VALUES ('50','Aaron Gordon','F','203cm','107kg','26','Denver Nuggets','Arizona','2014 Rnd 1 Pick 4','United States','15.0','5.9','2.5','https://cdn.nba.com/headshots/nba/latest/260x190/203932.png','null') [23506-200]
+===========================================
+New Log: 2022-05-21 13:32:29
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 13:32:53
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)VALUES ('1','hola','hola','hola','hola','1','hola','hola','hola','hola','15.0','15.0','15.0','hola','hola') [23506-200]
+===========================================
+New Log: 2022-05-21 13:34:25
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 13:34:59
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 13:35:21
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('hola')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)VALUES ('1','hola','hola','hola','hola','1','hola','Chicago Bulls','hola','hola','15.0','15.0','15.0','hola','rico') [23506-200]
+===========================================
+New Log: 2022-05-21 13:37:23
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 14:26:28
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 14:29:32
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 14:36:01
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 15:06:31
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 15:08:57
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 15:12:39
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 15:17:56
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 15:20:35
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 16:31:46
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-21 17:03:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================

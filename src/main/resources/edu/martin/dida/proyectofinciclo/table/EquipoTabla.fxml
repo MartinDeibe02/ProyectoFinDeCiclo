@@ -240,14 +240,14 @@
                                        <children>
                                           <TableView fx:id="tablePlayers" layoutX="17.0" layoutY="68.0" prefHeight="540.0" prefWidth="373.0">
                                             <columns>
-                                                <TableColumn prefWidth="87.0" text="playerJersey">
+                                                <TableColumn prefWidth="87.0" text="Jersey">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="playerJersey" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                               <TableColumn prefWidth="138.0" text="Name">
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="PlayerName" />
+                                                        <PropertyValueFactory property="playerName" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                               <TableColumn prefWidth="124.0" text="Team">
@@ -259,8 +259,8 @@
                                           </TableView>
                                           <Pane layoutX="395.0" layoutY="14.0" prefHeight="590.0" prefWidth="492.0" styleClass="borderFicha" stylesheets="@../../../../../css/cssTable.css">
                                              <children>
-                                                <Button layoutX="61.0" layoutY="535.0" mnemonicParsing="false" onAction="#photo" prefHeight="51.0" prefWidth="99.0" text="Button" textFill="WHITE" />
-                                                <GridPane layoutX="15.0" layoutY="393.0" prefHeight="132.0" prefWidth="452.0" styleClass="destacados" stylesheets="@../../../../../css/inicio.css">
+                                                <Button layoutX="54.0" layoutY="531.0" mnemonicParsing="false" onAction="#photo" prefHeight="51.0" prefWidth="375.0" text="Show Player" textFill="WHITE" />
+                                                <GridPane layoutX="15.0" layoutY="393.0" prefHeight="132.0" prefWidth="452.0" styleClass="destacado" stylesheets="@../../../../../css/inicio.css">
                                                   <columnConstraints>
                                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="107.66668701171875" />
@@ -312,85 +312,85 @@
                                                       </Label>
                                                    </children>
                                                 </GridPane>
-                                                <Pane layoutX="15.0" layoutY="14.0" prefHeight="367.0" prefWidth="442.0" styleClass="destacados" stylesheets="@../../../../../css/cssTable.css">
+                                                <Rectangle fx:id="prueba" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="190.0" layoutX="6.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="260.0" />
+                                                <Label fx:id="lblName" layoutX="270.0" layoutY="29.0" prefHeight="36.0" prefWidth="211.0" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblTeam" layoutX="270.0" layoutY="77.0" prefHeight="36.0" prefWidth="215.0" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="270.0" layoutY="130.0" stylesheets="@../../../../../css/cssTable.css" text="Position:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblPosition" layoutX="383.0" layoutY="130.0" prefHeight="36.0" prefWidth="61.0" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Pane layoutX="20.0" layoutY="213.0" prefHeight="164.0" prefWidth="442.0" styleClass="destacado" stylesheets="@../../../../../css/cssTable.css">
                                                    <children>
-                                                      <Rectangle fx:id="prueba" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="185.0" layoutX="14.0" layoutY="20.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-                                                      <Label fx:id="lblName" layoutX="226.0" layoutY="27.0" prefHeight="36.0" prefWidth="211.0" textAlignment="CENTER" textFill="WHITE">
+                                                      <Label fx:id="lblAge" layoutX="56.0" layoutY="31.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="25.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblAge" layoutX="68.0" layoutY="211.0" prefHeight="30.0" prefWidth="47.0" textFill="WHITE">
+                                                      <Label fx:id="lblHeight" layoutX="372.0" layoutY="30.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblHeight" layoutX="373.0" layoutY="211.0" prefHeight="30.0" prefWidth="60.0" textFill="WHITE">
+                                                      <Label fx:id="lblWeight" layoutX="231.0" layoutY="30.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblWeight" layoutX="232.0" layoutY="211.0" prefHeight="30.0" prefWidth="82.0" textFill="WHITE">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label layoutX="15.0" layoutY="275.0" prefHeight="41.0" prefWidth="76.0" text="Draft Info:" textFill="WHITE">
+                                                      <Label layoutX="14.0" layoutY="93.0" text="Draft Info:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblDraft" layoutX="104.0" layoutY="281.0" prefHeight="30.0" prefWidth="324.0" textFill="WHITE">
+                                                      <Label fx:id="lblDraft" layoutX="92.0" layoutY="93.0" prefHeight="21.0" prefWidth="341.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblCountry" layoutX="103.0" layoutY="316.0" prefHeight="30.0" prefWidth="325.0" textFill="WHITE">
+                                                      <Label fx:id="lblCountry" layoutX="101.0" layoutY="124.0" prefHeight="21.0" prefWidth="333.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblTeam" layoutX="226.0" layoutY="85.0" prefHeight="36.0" prefWidth="215.0" textAlignment="CENTER" textFill="WHITE">
+                                                      <Label fx:id="lblCollege" layoutX="78.0" layoutY="60.0" prefHeight="21.0" prefWidth="349.0" textFill="WHITE">
                                                          <font>
-                                                            <Font size="20.0" />
+                                                            <Font size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="222.0" layoutY="138.0" stylesheets="@../../../../../css/cssTable.css" text="Position:" textFill="WHITE">
-                                                         <font>
-                                                            <Font name="System Bold" size="25.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="lblPosition" layoutX="338.0" layoutY="138.0" prefHeight="36.0" prefWidth="61.0" textFill="WHITE">
-                                                         <font>
-                                                            <Font size="25.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label fx:id="lblCollege" layoutX="83.0" layoutY="246.0" prefHeight="30.0" prefWidth="345.0" textFill="WHITE">
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <Label layoutX="15.0" layoutY="215.0" text="Age:" textFill="WHITE">
+                                                      <Label layoutX="14.0" layoutY="30.0" text="Age:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="316.0" layoutY="215.0" text="Height:" textFill="WHITE">
+                                                      <Label layoutX="315.0" layoutY="30.0" text="Height:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="170.0" layoutY="215.0" text="Weight:" textFill="WHITE">
+                                                      <Label layoutX="170.0" layoutY="30.0" text="Weight:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="15.0" layoutY="310.0" prefHeight="41.0" prefWidth="88.0" text="Nationality:" textFill="WHITE">
+                                                      <Label layoutX="14.0" layoutY="124.0" text="Nationality:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="15.0" layoutY="240.0" prefHeight="41.0" prefWidth="88.0" text="College:" textFill="WHITE">
+                                                      <Label layoutX="14.0" layoutY="60.0" text="College:" textFill="WHITE">
                                                          <font>
                                                             <Font name="System Bold" size="15.0" />
                                                          </font>
@@ -399,6 +399,21 @@
                                                 </Pane>
                                              </children>
                                           </Pane>
+                                          <Label layoutX="21.0" layoutY="17.0" text="FIlter" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtfilter" layoutX="85.0" layoutY="20.0" prefHeight="28.0" prefWidth="141.0" />
+                                          <MenuButton layoutX="263.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Tools" textFill="WHITE">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#insertCSVPlayer" text="Import CSV" />
+                                              <MenuItem mnemonicParsing="false" text="Export CSV" onAction="#exportarCSVPlayers" />
+                                            </items>
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </MenuButton>
                                        </children></AnchorPane>
                               </content>
                             </Tab>
@@ -428,13 +443,13 @@
                                                       <Font size="20.0" />
                                                    </font>
                                                 </MenuButton>
-                                                <TableView layoutX="446.0" layoutY="65.0" prefHeight="546.0" prefWidth="441.0">
+                                                <TableView fx:id="tableMyTeam" layoutX="446.0" layoutY="65.0" prefHeight="546.0" prefWidth="441.0">
                                                   <columns>
                                                     <TableColumn prefWidth="75.0" text="C1" />
                                                     <TableColumn prefWidth="75.0" text="C2" />
                                                   </columns>
                                                 </TableView>
-                                                <Button layoutX="22.0" layoutY="24.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="158.0" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Show myTeam" textFill="WHITE">
+                                                <Button layoutX="22.0" layoutY="24.0" mnemonicParsing="false" onAction="#showMyTeam" prefHeight="44.0" prefWidth="158.0" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Show myTeam" textFill="WHITE">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>

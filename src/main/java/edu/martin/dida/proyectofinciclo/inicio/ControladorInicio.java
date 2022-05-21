@@ -5,6 +5,7 @@
 package edu.martin.dida.proyectofinciclo.inicio;
 
 import edu.martin.dida.proyectofinciclo.App;
+import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -50,9 +51,7 @@ public class ControladorInicio implements Initializable{
         
     // </editor-fold>
 
-
-
-    
+    ControladorLogin contLog = new ControladorLogin();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,11 +63,14 @@ public class ControladorInicio implements Initializable{
     }
 
     public void goManager(ActionEvent event){
+        Scene scene = App.scene1;
+
+        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.setScene(App.scene1);
+                    stage.setScene(scene);
                     stage.centerOnScreen();
         
-
+        contLog.moverEscena(scene, stage);
         stage.centerOnScreen();
 
         stage.show();
