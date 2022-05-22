@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -51,32 +52,36 @@ try (Connection conexion = Conexion.getConnection()){
                             "abbreviation VARCHAR(255)," +
                             "city VARCHAR(255)," +
                             "conference VARCHAR(255)," +
-                            "division VARCHAR(255));";
+                            "division VARCHAR(255)," +
+                            "user VARCHAR(255),"
+                    + "FOREIGN KEY(user) REFERENCES usuarios(user))";
             statement.executeUpdate(sql);
         }catch(SQLException e){
             e.printStackTrace();
         }    
     }
     
-    public void saveEditTeam(Team team) throws IOException{
+    public void saveEditTeam(Team team, String user) throws IOException{
         if(team.getId()==0){
-            insertTeam(team);
+            insertTeam(team, user);
         }else{
             editTeam(team);
         }
     }
     
-    public void insertarCSV(List<Team> teams) throws IOException, SQLException{
+    public void insertarCSV(List<Team> teams, String user) throws IOException, SQLException{
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             for(int i = 0; i<teams.size(); i++){
-                String sql = "INSERT INTO teams (id, name, abbreviation, city, conference, division)"
+                String sql = "INSERT INTO teams (id, name, abbreviation, city, conference, division, user)"
                         +"VALUES ('"+ teams.get(i).getId()
                         +"','"+ teams.get(i).getName()
                         +"','"+ teams.get(i).getAbbreviation()
                         +"','"+ teams.get(i).getCity()
                         +"','"+ teams.get(i).getConference()
-                        +"','"+ teams.get(i).getDivision()+"')";
+                        +"','"+ teams.get(i).getDivision()
+                        +"','"+ user+"')";
+
                 statement.executeUpdate(sql);
             }
         }catch(SQLException e){
@@ -134,9 +139,10 @@ try (Connection conexion = Conexion.getConnection()){
     }
         
         
-    public void exportarXML() throws IOException, ParserConfigurationException, TransformerConfigurationException, TransformerException{
-        List<Team> lista = buscarTeam();
-
+    public void exportarXML() throws IOException{
+        try {
+            List<Team> lista = buscarTeam();
+            
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();
@@ -173,20 +179,30 @@ try (Connection conexion = Conexion.getConnection()){
             Transformer trans = fac.newTransformer();
             DOMSource dom = new DOMSource(doc);
             StreamResult stream = new StreamResult(new File(System.getProperty("user.dir") + "/teams.xml"));
-            trans.transform(dom, stream);
+            try {
+                trans.transform(dom, stream);
+            } catch (TransformerException ex) {
+                Logger.logInfo(ex.toString(), 2);
+            }
+            } catch (TransformerConfigurationException ex) {
+                Logger.logInfo(ex.toString(), 2);
+            } catch (ParserConfigurationException ex) {
+                Logger.logInfo(ex.toString(), 2);
+        }
             
     }
 
-    private void insertTeam(Team team) throws IOException {
+    private void insertTeam(Team team, String user) throws IOException {
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             
-                String sql = "INSERT INTO teams (name, abbreviation, city, conference, division)"
+                String sql = "INSERT INTO teams (name, abbreviation, city, conference, division, user)"
                         +"VALUES ('"+ team.getName()
                         +"','"+ team.getAbbreviation()
                         +"','"+ team.getCity()
                         +"','"+ team.getConference()
-                        +"','"+ team.getDivision()+"')";
+                        +"','"+ team.getDivision()
+                        +"','"+ user+"')";
                 statement.executeUpdate(sql);
             
         }catch(SQLException e){

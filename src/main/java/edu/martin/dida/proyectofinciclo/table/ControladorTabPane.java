@@ -6,6 +6,7 @@ package edu.martin.dida.proyectofinciclo.table;
 
 import POJO.Player;
 import POJO.Team;
+import edu.martin.dida.proyecto.conexion.Conexion;
 import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyectofinciclo.App;
@@ -18,6 +19,9 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -37,6 +41,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -95,8 +100,7 @@ public class ControladorTabPane  implements Initializable{
     
     private int id;
     // </editor-fold>
-    
-    
+
     // <editor-fold defaultstate="collapsed" desc="Player">
     
     @FXML
@@ -145,7 +149,11 @@ public class ControladorTabPane  implements Initializable{
     // </editor-fold>
 
     @FXML
+    public ComboBox comboTeam;
+            
+    @FXML
     private TableView tableMyTeam;
+    ObservableList<String> items = FXCollections.observableArrayList();
     ObservableList<Player> playerByTeam;
     
     String texto;
@@ -166,7 +174,11 @@ public class ControladorTabPane  implements Initializable{
             loadFilter();
             prueba.setFill(Color.TRANSPARENT);
         } catch (IOException ex) {
-            Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                Utilidades.Logger.logInfo(ex.toString(), 2);
+            } catch (IOException ex1) {
+                Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
     }
 
@@ -175,13 +187,14 @@ public class ControladorTabPane  implements Initializable{
         recibidos.appendText(text + "\n");
     }
     
-    public void send(){
+    public void send() throws IOException{
         texto =dtf.format(now) + " " + controlLogin.nombre + " >> " + txtChatSend.getText();
 
         try {
             DatagramPacket paquete = new DatagramPacket(texto.getBytes(), texto.length(), App.grupo, App.port);
             App.ms.send(paquete);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
+            Utilidades.Logger.logInfo(ex.toString(), 2);
         }
     }
     // </editor-fold>
@@ -189,7 +202,7 @@ public class ControladorTabPane  implements Initializable{
     // <editor-fold defaultstate="collapsed" desc="Funciones archivos equipos">
 
     
-    public void insertCSV() {
+    public void insertCSV() throws IOException {
         BufferedReader br = null;
         try {
             FileChooser f = new FileChooser();
@@ -207,15 +220,13 @@ public class ControladorTabPane  implements Initializable{
                 String[] lineaSep = insert.split(",");
                 listTeams.add(new Team(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], lineaSep[5]));
                         });
-            teamsDAO.insertarCSV(listTeams);
+            teamsDAO.insertarCSV(listTeams, controlLogin.nombre);
             cargarTeams();
             br.close();
 
             }
-        } catch (IOException ex) {
-            Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
+            Utilidades.Logger.logInfo(ex.toString(), 2);
         }
     }
     
@@ -244,7 +255,7 @@ public class ControladorTabPane  implements Initializable{
             team.setConference(txtTeamConference.getText());
             team.setDivision(txtTeamDivision.getText());
             
-            teamsDAO.saveEditTeam(team);
+            teamsDAO.saveEditTeam(team, controlLogin.nombre);
             cargarTeams();
             id=0;
             clearTeamFields();
@@ -324,7 +335,7 @@ public class ControladorTabPane  implements Initializable{
 
     }
     
-    public void insertCSVPlayer(){
+    public void insertCSVPlayer() throws IOException{
          BufferedReader br = null;
         try {
             FileChooser f = new FileChooser();
@@ -347,10 +358,14 @@ public class ControladorTabPane  implements Initializable{
             playerDAO.insertarCSV(listPlayer);
             cargarPlayer();
             br.close();
+            Utilidades.Logger.logInfo("CSV insertado", 1);
+
 
             }
         } catch (IOException ex) {
-            Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
+            Utilidades.Logger.logInfo(ex.getMessage(), 2);
+        }catch(Exception e){
+            Utilidades.Logger.logInfo(e.toString(), 2);
         }
     }
     
@@ -382,9 +397,27 @@ public class ControladorTabPane  implements Initializable{
     
     public void showMyTeam() throws IOException{
         playerByTeam = FXCollections.observableArrayList();
-        List<Player> player = playerDAO.buscarPlayerByTeam(controlLogin.nombre);
-        playerByTeam.addAll(player);
-        tableMyTeam.setItems(players);
+        List<Player> player1 = playerDAO.searchPlayerByTeam((String) comboTeam.getSelectionModel().getSelectedItem());
+        playerByTeam.addAll(player1);
+        tableMyTeam.setItems(playerByTeam);
+        
+    }
+    
+    public ObservableList<String> chargeTeams(String user) throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            String sql = "SELECT DISTINCT name FROM teams WHERE user LIKE '" + user + "'";
+            PreparedStatement prepstmt = conexion.prepareStatement(sql);
+            items.removeAll(items);
+            ResultSet rs = prepstmt.executeQuery();
+            while(rs.next()){
+                items.add(rs.getString("name"));
+            }
+            return items;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return null;
+
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc="pantallas">

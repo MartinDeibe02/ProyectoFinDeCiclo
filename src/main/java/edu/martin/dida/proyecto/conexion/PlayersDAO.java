@@ -53,7 +53,7 @@ public class PlayersDAO {
                     + "FOREIGN KEY(user) REFERENCES usuarios(user))" ;
             statement.executeUpdate(sql);
         }catch(SQLException ex){
-            ex.printStackTrace();
+            Logger.logInfo(ex.getMessage(), 2);
         }
 
     }
@@ -88,16 +88,16 @@ public class PlayersDAO {
             }
             
         }catch(SQLException ex){
-            
+            Logger.logInfo(ex.getMessage(), 2);
         }
         return players;
     }
     
-    public List<Player> buscarPlayerByTeam(String user) throws IOException{
-        List<Player> players = new ArrayList<>();
+    public List<Player> searchPlayerByTeam(String team) throws IOException{
+        List<Player> playersTeam = new ArrayList<>();
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
-            String sql = "SELECT * FROM players WHERE user=" + user;
+            String sql = "SELECT * FROM players WHERE team LIKE '" + team + "'";
             
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
@@ -119,13 +119,14 @@ public class PlayersDAO {
                 player.setPlayerImage(rs.getString("image"));
                 player.setPlayerUser(rs.getString("user"));
                 
-                players.add(player);
+                playersTeam.add(player);
             }
             
         }catch(SQLException ex){
-            
+            Logger.logInfo(ex.getMessage(), 2);
+            ex.printStackTrace();
         }
-        return players;
+        return playersTeam;
     }
     
     public void exportarCSV() throws IOException{
@@ -159,7 +160,7 @@ public class PlayersDAO {
             bw.close();
             
         }catch(SQLException e){
-            //TODO
+            Logger.logInfo(e.getMessage(), 2);
         }
     }    
     public void insertarCSV(List<Player> players) throws IOException{
@@ -187,7 +188,9 @@ public class PlayersDAO {
             }
         
         }catch(SQLException ex){
-            ex.printStackTrace();
+            Logger.logInfo(ex.getMessage(), 2);
+        }catch(Exception e){
+            Logger.logInfo(e.getMessage(), 2);
         }
     }
 }

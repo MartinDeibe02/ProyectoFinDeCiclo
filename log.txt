@@ -237,3 +237,80 @@ New Log: 2022-05-21 16:31:46
 New Log: 2022-05-21 17:03:44
 [ERROR] => No se ha podido establecer conexion con la base de datos
 ===========================================
+New Log: 2022-05-21 21:56:14
+[ERROR] => For input string: "https://cdn.nba.com/headshots/nba/latest/260x190/203932.png"
+===========================================
+New Log: 2022-05-21 21:57:04
+[ERROR] => java.lang.NumberFormatException: For input string: "https://cdn.nba.com/headshots/nba/latest/260x190/203932.png"
+===========================================
+New Log: 2022-05-22 17:13:31
+[ERROR] => Columna "RICO" no encontrada
+Column "RICO" not found; SQL statement:
+SELECT * FROM players WHERE user=rico [42122-200]
+===========================================
+New Log: 2022-05-22 17:16:31
+[ERROR] => Columna "RICO" no encontrada
+Column "RICO" not found; SQL statement:
+SELECT * FROM players WHERE user=rico [42122-200]
+===========================================
+New Log: 2022-05-22 19:33:19
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-22 19:34:19
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name),FOREIGN KEY(user) REFERENCES usuarios(user)) [42102-200]
+===========================================
+New Log: 2022-05-22 19:34:19
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-05-22 19:34:19
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name),FOREIGN KEY(user) REFERENCES usuarios(user)) [42102-200]
+===========================================
+New Log: 2022-05-22 19:34:19
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-05-22 19:35:25
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name),FOREIGN KEY(user) REFERENCES usuarios(user)) [42102-200]
+===========================================
+New Log: 2022-05-22 19:35:25
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-05-22 19:35:25
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name),FOREIGN KEY(user) REFERENCES usuarios(user)) [42102-200]
+===========================================
+New Log: 2022-05-22 19:35:25
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-05-22 19:37:00
+[INFO] => CSV insertado
+===========================================
+New Log: 2022-05-22 20:41:37
+[ERROR] => Columna "ADMIN" no encontrada
+Column "ADMIN" not found; SQL statement:
+SELECT * FROM players WHERE user=ADMIN [42122-200]
+===========================================
+New Log: 2022-05-22 20:54:25
+[ERROR] => Error de Sintaxis en sentencia SQL "SELECT * FROM PLAYERS WHERE TEAM=CHICAGO BULLS[*]"
+Syntax error in SQL statement "SELECT * FROM PLAYERS WHERE TEAM=CHICAGO BULLS[*]"; SQL statement:
+SELECT * FROM players WHERE team=Chicago Bulls [42000-200]
+===========================================
+New Log: 2022-05-22 20:54:25
+[ERROR] => Error de Sintaxis en sentencia SQL "SELECT * FROM PLAYERS WHERE TEAM=CHICAGO BULLS[*]"
+Syntax error in SQL statement "SELECT * FROM PLAYERS WHERE TEAM=CHICAGO BULLS[*]"; SQL statement:
+SELECT * FROM players WHERE team=Chicago Bulls [42000-200]
+===========================================

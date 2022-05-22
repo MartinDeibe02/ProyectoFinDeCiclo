@@ -34,6 +34,8 @@ public class App extends Application {
     public static byte[] buf = new byte[1000];
     public static int port = 12345;
     
+
+    public static ControladorTabPane controller;
     @Override
     public void start(Stage primaryStage) throws IOException {
         
@@ -41,9 +43,11 @@ public class App extends Application {
             grupo = InetAddress.getByName("239.192.0.1");
             ms.joinGroup(grupo);
             
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("table/EquipoTabla.fxml"));
             Parent root = loader.load();
-            ControladorTabPane controller = (ControladorTabPane) loader.getController();   
+            controller = (ControladorTabPane) loader.getController();  
+            
             scene1 = new Scene(root);
 
             ThreadRun a = new ThreadRun(controller);

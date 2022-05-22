@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
 
 /**
  *
@@ -43,20 +44,22 @@ public class Logger {
         boolean exists = Files.exists(path);
         
         if(exists==false){
-            bw = Files.newBufferedWriter(path);
-
-            bw.write("New Log: " +dtf.format(now) + "\r\n=> " +msg + "\r\n");
-            System.out.println(dtf.format(now) + " => " +msg);
-            bw.flush();
-            bw.close();
+                bw = Files.newBufferedWriter(path);
+                
+                bw.write("New Log: " +dtf.format(now) + "\r\n=> " +msg + "\r\n");
+                System.out.println(dtf.format(now) + " => " +msg);
+                bw.flush();
+                bw.close();
+           
             
         }else{
-            bw = Files.newBufferedWriter(path,StandardOpenOption.APPEND);
-
-            bw.write("New Log: " +dtf.format(now) + "\r\n=> " +msg + "\r\n");
-            System.out.println(dtf.format(now) + " => " +msg);
-            bw.flush();
-            bw.close();
+                bw = Files.newBufferedWriter(path,StandardOpenOption.APPEND);
+                
+                bw.write("New Log: " +dtf.format(now) + "\r\n=> " +msg + "\r\n");
+                System.out.println(dtf.format(now) + " => " +msg);
+                bw.flush();
+                bw.close();
+            
         
         }
             
