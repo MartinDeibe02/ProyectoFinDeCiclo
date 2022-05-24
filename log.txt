@@ -314,3 +314,33 @@ New Log: 2022-05-22 20:54:25
 Syntax error in SQL statement "SELECT * FROM PLAYERS WHERE TEAM=CHICAGO BULLS[*]"; SQL statement:
 SELECT * FROM players WHERE team=Chicago Bulls [42000-200]
 ===========================================
+New Log: 2022-05-24 19:42:39
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('0','null','null','null','null','0','null','null','null','null','0.0','0.0','0.0','null','ADMIN') [23506-200]
+===========================================
+New Log: 2022-05-24 19:42:39
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('0','null','null','null','null','0','null','null','null','null','0.0','0.0','0.0','null','ADMIN') [23506-200]
+===========================================
+New Log: 2022-05-24 21:14:46
+[INFO] => Deleted => POJO.Player@131a30a2
+===========================================
+New Log: 2022-05-24 21:15:39
+[INFO] => Deleted => Player{playerJersey=44, playerName=Nick Ward, playerPosition=F, playerHeight=Nick Wardcm, playerWeight=100kg, playerAge=25, playerTeam=Chicago Bulls, playerCollege=UCLA, playerDraft=2005, playerNationality=United States, playerPoints=20.0, playerRebbounds=6.0, playerAssist=10.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653414229/snr7tvvhywktissmtr79.png, playerUser=ADMIN}
+===========================================
+New Log: 2022-05-24 21:16:53
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('0','null','null','null','null','0','null','null','null','null','0.0','0.0','0.0','null','ADMIN') [23506-200]
+===========================================
+New Log: 2022-05-24 21:16:53
+[INFO] => Inserted => Player{playerJersey=0, playerName=null, playerPosition=null, playerHeight=null, playerWeight=null, playerAge=0, playerTeam=null, playerCollege=null, playerDraft=null, playerNationality=null, playerPoints=0.0, playerRebbounds=0.0, playerAssist=0.0, playerImage=null, playerUser=null}
+===========================================
+New Log: 2022-05-24 21:18:24
+[INFO] => Inserted => Player{playerJersey=1, playerName=SPEED, playerPosition=SPEED, playerHeight=100cm, playerWeight=100kg, playerAge=10, playerTeam=Atlanta Hawks, playerCollege=SPEED, playerDraft=SPEED, playerNationality=SPEED, playerPoints=10.0, playerRebbounds=10.0, playerAssist=10.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653419903/ti5ajsgisgcdzbsvlvmp.png, playerUser=null}
+===========================================
+New Log: 2022-05-24 21:18:24
+[INFO] => Deleted => Player{playerJersey=1, playerName=SPEED, playerPosition=SPEED, playerHeight=100cm, playerWeight=100kg, playerAge=10, playerTeam=Atlanta Hawks, playerCollege=SPEED, playerDraft=SPEED, playerNationality=SPEED, playerPoints=10.0, playerRebbounds=10.0, playerAssist=10.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653419903/ti5ajsgisgcdzbsvlvmp.png, playerUser=ADMIN}
+===========================================

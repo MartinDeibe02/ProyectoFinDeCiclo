@@ -196,6 +196,13 @@ public class Player {
         this.playerUser = playerUser;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "playerJersey=" + playerJersey + ", playerName=" + playerName + ", playerPosition=" + playerPosition + ", playerHeight=" + playerHeight + ", playerWeight=" + playerWeight + ", playerAge=" + playerAge + ", playerTeam=" + playerTeam + ", playerCollege=" + playerCollege + ", playerDraft=" + playerDraft + ", playerNationality=" + playerNationality + ", playerPoints=" + playerPoints + ", playerRebbounds=" + playerRebbounds + ", playerAssist=" + playerAssist + ", playerImage=" + playerImage + ", playerUser=" + playerUser + '}';
+    }
+    
+    
+
 
     
     

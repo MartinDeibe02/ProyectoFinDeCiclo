@@ -19,7 +19,35 @@ import java.util.logging.Level;
  * @author marti
  */
 public class Logger {
-        static Path path = Paths.get(System.getProperty("user.dir") + "/log.txt");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        static Path path = Paths.get(System.getProperty("user.dir") + "/TheBull.log");
 
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
     static LocalDateTime now = LocalDateTime.now();  

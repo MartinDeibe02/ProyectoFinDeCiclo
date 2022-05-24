@@ -35,6 +35,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 }
 
+.combo-box{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 2 0;    
+    -fx-text-fill: white;
+}
+
+.combo-box .cell:selected{
+        -fx-text-fill: white;
+
+}
+
 .tab .tab-label {
 -fx-rotate: 90;
 -fx-text-fill: #ffffff;
@@ -54,7 +66,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .tab:selected{
 
         -fx-border-width: 0 0 3 0;
--fx-border-color: white;}
+-fx-border-color: white;
+}
+
+.buttonrefresh {
+  -fx-background-color: white;
+  -fx-border-color:transparent;
+  -fx-border-radius:10px;
+}
+
+.buttonrefresh:hover {  
+  -fx-background-color: rgba(0,0,0,0.5);
+  -fx-border-radius:10px;
+}
 
 .table-view {
     -fx-base: #1d1d1d;
@@ -117,11 +141,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 
 }
 
+.borderFicha2{
+    -fx-background-color: rgba(0,0,0,0.5);
+
+}
+
 .text-field {
     -fx-background-color: transparent;
     -fx-border-color: white;
     -fx-border-width: 0 0 2 0;    
     -fx-text-fill: white;
+    -fx-font-size: 15pt ;
+
 }
 
 .playerText{

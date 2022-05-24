@@ -19,6 +19,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -132,9 +134,11 @@ try (Connection conexion = Conexion.getConnection()){
             }
             bw.flush();
             bw.close();
-            
+            JOptionPane.showMessageDialog(new JFrame(), "csv export succesfully", "Error", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(SQLException e){
-            //TODO
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
+
         }
     }
         
@@ -179,6 +183,8 @@ try (Connection conexion = Conexion.getConnection()){
             Transformer trans = fac.newTransformer();
             DOMSource dom = new DOMSource(doc);
             StreamResult stream = new StreamResult(new File(System.getProperty("user.dir") + "/teams.xml"));
+            JOptionPane.showMessageDialog(new JFrame(), "xml exported sucesgully", "Error", JOptionPane.INFORMATION_MESSAGE);
+
             try {
                 trans.transform(dom, stream);
             } catch (TransformerException ex) {

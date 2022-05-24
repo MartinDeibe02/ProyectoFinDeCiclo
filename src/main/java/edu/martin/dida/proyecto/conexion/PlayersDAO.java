@@ -18,6 +18,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,6 +96,14 @@ public class PlayersDAO {
         return players;
     }
     
+        public void saveEditTeam(Player player, String user) throws IOException{
+        if(player.getPlayerId()==0){
+            insertPlayer(player, user);
+        }else{
+            //edit(player);
+        }
+    }
+    
     public List<Player> searchPlayerByTeam(String team) throws IOException{
         List<Player> playersTeam = new ArrayList<>();
         try(Connection conexion = Conexion.getConnection()){
@@ -158,9 +169,11 @@ public class PlayersDAO {
             }
             bw.flush();
             bw.close();
-            
+            JOptionPane.showMessageDialog(new JFrame(), "csv successfully exported", "Info", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }    
     public void insertarCSV(List<Player> players) throws IOException{
@@ -186,11 +199,52 @@ public class PlayersDAO {
                         +"','"+ players.get(i).getPlayerUser()+"')";
                 statement.executeUpdate(sql);
             }
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+
         
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(Exception e){
             Logger.logInfo(e.getMessage(), 2);
+        }
+    }
+    
+    public void insertPlayer(Player player, String user) throws IOException {
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            
+                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)"
+                        +"VALUES ('"+ player.getPlayerJersey()
+                        +"','"+ player.getPlayerName()
+                        +"','"+ player.getPlayerPosition()
+                        +"','"+ player.getPlayerHeight()
+                        +"','"+ player.getPlayerWeight()
+                        +"','"+ player.getPlayerAge()
+                        +"','"+ player.getPlayerTeam()
+                        +"','"+ player.getPlayerCollege()
+                        +"','"+ player.getPlayerDraft()
+                        +"','"+ player.getPlayerNationality()
+                        +"','"+ player.getPlayerPoints()
+                        +"','"+ player.getPlayerRebbounds()
+                        +"','"+ player.getPlayerAssist()
+                        +"','"+ player.getPlayerImage()                        
+                        +"','"+ user+"')";
+                statement.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+        }
+    }
+    
+    public void deleteMyTeam(Player player) throws IOException{
+            try(Connection conexion = Conexion.getConnection()){
+        Statement stmt = conexion.createStatement();
+        String sql = "DELETE FROM players WHERE id=" + player.getPlayerId();
+        stmt.executeUpdate(sql);
+    }   catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

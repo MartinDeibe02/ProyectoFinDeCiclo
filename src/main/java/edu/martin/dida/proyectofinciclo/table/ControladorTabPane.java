@@ -6,6 +6,8 @@ package edu.martin.dida.proyectofinciclo.table;
 
 import POJO.Player;
 import POJO.Team;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import edu.martin.dida.proyecto.conexion.Conexion;
 import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
@@ -27,6 +29,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -148,11 +151,56 @@ public class ControladorTabPane  implements Initializable{
     ObservableList<Player> players;
     // </editor-fold>
 
+        // <editor-fold defaultstate="collapsed" desc="MyTeam">
+
+    @FXML
+    private TextField txtMyTeamAge;
+
+    @FXML 
+    private TextField txtMyTeamImage;
+    
+    @FXML
+    private TextField txtMyTeamAssist;
+
+    @FXML
+    private TextField txtMyTeamCollege;
+
+    @FXML
+    private TextField txtMyTeamCountry;
+
+    @FXML
+    private TextField txtMyTeamDraft;
+
+    @FXML
+    private TextField txtMyTeamHeight;
+
+    @FXML
+    private TextField txtMyTeamJersey;
+
+    @FXML
+    private TextField txtMyTeamName;
+
+    @FXML
+    private TextField txtMyTeamPoints;
+
+    @FXML
+    private TextField txtMyTeamPosition;
+
+    @FXML
+    private TextField txtMyTeamRebbounds;
+
+    @FXML
+    private TextField txtMyTeamWeight;
+    
     @FXML
     public ComboBox comboTeam;
             
     @FXML
     private TableView tableMyTeam;
+    
+    // </editor-fold>
+    
+            
     ObservableList<String> items = FXCollections.observableArrayList();
     ObservableList<Player> playerByTeam;
     
@@ -172,7 +220,9 @@ public class ControladorTabPane  implements Initializable{
             cargarTeams();
             cargarPlayer();
             loadFilter();
+            
             prueba.setFill(Color.TRANSPARENT);
+                    
         } catch (IOException ex) {
             try {
                 Utilidades.Logger.logInfo(ex.toString(), 2);
@@ -223,10 +273,14 @@ public class ControladorTabPane  implements Initializable{
             teamsDAO.insertarCSV(listTeams, controlLogin.nombre);
             cargarTeams();
             br.close();
+            JOptionPane.showMessageDialog(new JFrame(), "csv inserted successfully", "Info", JOptionPane.INFORMATION_MESSAGE);
 
             }
         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+
             Utilidades.Logger.logInfo(ex.toString(), 2);
+            
         }
     }
     
@@ -241,6 +295,9 @@ public class ControladorTabPane  implements Initializable{
         // </editor-fold>
 
 
+    // <editor-fold defaultstate="collapsed" desc="Team">
+
+    
     public void insertTeam() throws IOException{
         Team team = new Team();
         
@@ -297,6 +354,19 @@ public class ControladorTabPane  implements Initializable{
         List<Team> teams2 = teamsDAO.buscarTeam();
         teams.addAll(teams2);
         tablaTeams.setItems(teams);
+    }
+    
+            // </editor-fold>
+
+    
+    
+    
+    public void refreshTeams() throws IOException{
+        cargarTeams();
+    }
+    
+    public void refreshPlayers() throws IOException{
+        cargarPlayer();
     }
     
     
@@ -360,6 +430,8 @@ public class ControladorTabPane  implements Initializable{
             br.close();
             Utilidades.Logger.logInfo("CSV insertado", 1);
 
+            JOptionPane.showMessageDialog(new JFrame(), "csv successfully inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
+
 
             }
         } catch (IOException ex) {
@@ -403,6 +475,92 @@ public class ControladorTabPane  implements Initializable{
         
     }
     
+    public void insertMyTeam() throws IOException{
+        Player player = new Player();
+        
+        if(txtMyTeamJersey.getText().isEmpty() || txtMyTeamName.getText().isEmpty() || txtMyTeamPosition.getText().isEmpty() || txtMyTeamWeight.getText().isEmpty()
+                || txtMyTeamHeight.getText().isEmpty() || txtMyTeamAge.getText().isEmpty()|| txtMyTeamDraft.getText().isEmpty() || txtMyTeamCollege.getText().isEmpty()
+                || txtMyTeamCountry.getText().isEmpty() || txtMyTeamPoints.getText().isEmpty() || txtMyTeamRebbounds.getText().isEmpty() || txtMyTeamImage.getText().isEmpty() || txtMyTeamAssist.getText().isEmpty()){
+            JOptionPane.showMessageDialog(new JFrame(), "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }else{
+            player.setPlayerJersey(Integer.parseInt(txtMyTeamJersey.getText()));
+            player.setPlayerName(txtMyTeamName.getText());
+            player.setPlayerPosition(txtMyTeamPosition.getText());
+            player.setPlayerWeight(txtMyTeamWeight.getText() +"kg");
+            player.setPlayerHeight(txtMyTeamHeight.getText() + "cm");
+            player.setPlayerTeam((String) comboTeam.getSelectionModel().getSelectedItem());
+            player.setPlayerAge(Integer.parseInt(txtMyTeamAge.getText()));
+            player.setPlayerDraft(txtMyTeamDraft.getText());
+            player.setPlayerCollege(txtMyTeamCollege.getText());
+            player.setPlayerNationality(txtMyTeamCountry.getText());
+            player.setPlayerPoints(Double.parseDouble(txtMyTeamPoints.getText()));
+            player.setPlayerRebbounds(Double.parseDouble(txtMyTeamRebbounds.getText()));
+            player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
+            player.setPlayerImage(dinary(txtMyTeamImage.getText()));
+            
+            playerDAO.saveEditTeam(player, controlLogin.nombre);
+                    
+            cargarPlayer();
+            loadFilter();
+            showMyTeam();
+            clearMyTeamFields();
+            Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
+            JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+        }    
+
+
+    }
+    
+    public void editMyTeam(){
+         Player player = (Player) tableMyTeam.getSelectionModel().getSelectedItem();
+        
+        if(!(player == null)){
+            comboTeam.setValue(player.getPlayerTeam());
+            
+            txtMyTeamJersey.setText(String.valueOf(player.getPlayerJersey()));
+            txtMyTeamName.setText(player.getPlayerName());
+            txtMyTeamPosition.setText(player.getPlayerPosition());
+            txtMyTeamWeight.setText(player.getPlayerWeight());
+            txtMyTeamHeight.setText(player.getPlayerHeight());
+            txtMyTeamAge.setText(String.valueOf(player.getPlayerAge()));
+            txtMyTeamDraft.setText(player.getPlayerDraft());
+            txtMyTeamCollege.setText(player.getPlayerCollege());
+            txtMyTeamCountry.setText(player.getPlayerNationality());
+            txtMyTeamPoints.setText(String.valueOf(player.getPlayerPoints()));
+            txtMyTeamRebbounds.setText(String.valueOf(player.getPlayerRebbounds()));
+            txtMyTeamAssist.setText(String.valueOf(player.getPlayerAssist()));
+            txtMyTeamImage.setText(player.getPlayerImage());
+
+            
+            id= player.getPlayerId();
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);        
+        }
+    }
+    
+    public void deleteMyTeam() throws IOException{
+        Player player = (Player) tableMyTeam.getSelectionModel().getSelectedItem();
+        
+        if(player == null){
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+            playerDAO.deleteMyTeam(player);
+            cargarPlayer();
+            showMyTeam();
+            loadFilter();
+            Utilidades.Logger.logInfo("Deleted => " + player.toString() , 1);
+        }
+    }
+    
+    public void getImageMyTeam(){
+            FileChooser f = new FileChooser();
+            f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG FILES", "*.png"));
+            File file = f.showOpenDialog(null);
+            txtMyTeamImage.setText(file.getAbsolutePath());
+    }
+    
     public ObservableList<String> chargeTeams(String user) throws IOException{
         try(Connection conexion = Conexion.getConnection()){
             String sql = "SELECT DISTINCT name FROM teams WHERE user LIKE '" + user + "'";
@@ -419,6 +577,20 @@ public class ControladorTabPane  implements Initializable{
 
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // <editor-fold defaultstate="collapsed" desc="pantallas">
 
@@ -452,6 +624,19 @@ public class ControladorTabPane  implements Initializable{
     
     // </editor-fold>
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private void clearTeamFields() {
         txtTeamName.clear();
         txtTeamCity.clear();
@@ -460,6 +645,23 @@ public class ControladorTabPane  implements Initializable{
         txtTeamDivision.clear();
     }
 
+    private void clearMyTeamFields(){
+        txtMyTeamJersey.clear();
+        txtMyTeamName.clear();
+        txtMyTeamPosition.clear();
+        txtMyTeamWeight.clear();
+        txtMyTeamHeight.clear();
+        txtMyTeamAge.clear();
+        txtMyTeamCollege.clear();
+        txtMyTeamCountry.clear();
+        txtMyTeamImage.clear();
+        txtMyTeamPoints.clear();
+        txtMyTeamDraft.clear();
+        txtMyTeamRebbounds.clear();
+        txtMyTeamAssist.clear();
+        comboTeam.setValue(null);
+    }
+    
     private void setimg(Rectangle rec1, Image img1) {
         rec1.setArcWidth(60.0);   // Corner radius
         rec1.setArcHeight(60.0);
@@ -470,6 +672,19 @@ public class ControladorTabPane  implements Initializable{
         rec1.setEffect(new DropShadow(20, Color.BLACK));    
     }
 
+    private String dinary(String url) throws IOException{
+        Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+        "cloud_name", "daolhlyb6",
+        "api_key", "853471969531956",
+        "api_secret", "yQIl1DHYJbh0Gm3td56uD7d66ts",
+        "secure", true));
+        
+        File file = new File(url);
+        
+        Map uploadresult = cloudinary.uploader().upload(file, ObjectUtils.emptyMap());
+        String a = (String) uploadresult.get("url");
+        return a;
+    }
 
 
 }
