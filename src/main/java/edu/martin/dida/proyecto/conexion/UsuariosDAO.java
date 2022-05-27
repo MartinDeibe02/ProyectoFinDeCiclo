@@ -23,6 +23,7 @@ public class UsuariosDAO {
     
     public UsuariosDAO() throws IOException{
         crearTabla();
+        insertAdmin();
     }
 
     private void crearTabla() throws IOException {
@@ -49,6 +50,25 @@ public class UsuariosDAO {
         }
     }
 
+    public void insertAdmin() throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            
+                String sql = "SELECT * FROM usuarios WHERE user LIKE 'ADMIN'";
+                ResultSet rs = statement.executeQuery(sql);
+                if(!(rs.next())){
+                    Statement statement1 = conexion.createStatement();
+                    String sql2= "INSERT INTO usuarios(user,email, dateBirth,password, permisos) "
+                            + "VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','ADMIN', 'ADMIN')";
+                    statement1.executeUpdate(sql2);
+
+                }
+            
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+        }
+    }
+    
     public void insertLogin(Usuario user) throws IOException {
         try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();

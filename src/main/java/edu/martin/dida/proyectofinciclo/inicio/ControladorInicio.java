@@ -80,7 +80,7 @@ public class ControladorInicio implements Initializable{
         stage.show();
         
 
-    App.controller.comboTeam.setItems(contMan.chargeTeams(contLog.nombre));
+    App.controller.comboTeam.setItems(contMan.chargeTeamsCombo(contLog.nombre));
     }
     
     public void lebron(){

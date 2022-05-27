@@ -8,6 +8,7 @@ import POJO.Player;
 import POJO.Team;
 import Utilidades.Logger;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,6 +22,17 @@ import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  *
@@ -96,11 +108,11 @@ public class PlayersDAO {
         return players;
     }
     
-        public void saveEditTeam(Player player, String user) throws IOException{
+    public void saveEditTeam(Player player, String user) throws IOException{
         if(player.getPlayerId()==0){
             insertPlayer(player, user);
         }else{
-            //edit(player);
+            editMyTeam(player);
         }
     }
     
@@ -176,6 +188,7 @@ public class PlayersDAO {
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }    
+    
     public void insertarCSV(List<Player> players) throws IOException{
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
@@ -208,6 +221,7 @@ public class PlayersDAO {
 
         }catch(Exception e){
             Logger.logInfo(e.getMessage(), 2);
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -238,6 +252,32 @@ public class PlayersDAO {
         }
     }
     
+    public void editMyTeam(Player player) throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement stmt = conexion.createStatement();
+            String sql = "UPDATE players SET jersey ='" + player.getPlayerJersey()
+                        +"',name = '"+ player.getPlayerName()
+                        +"',position = '"+ player.getPlayerPosition()
+                        +"',height = '"+ player.getPlayerHeight()
+                        +"',weight = '"+ player.getPlayerWeight()
+                        +"',age = '"+ player.getPlayerAge()
+                        +"',team = '"+ player.getPlayerTeam()
+                        +"',college = '"+ player.getPlayerCollege()
+                        +"',draft = '"+ player.getPlayerDraft()
+                        +"',nationality = '"+ player.getPlayerNationality()
+                        +"',points = '"+ player.getPlayerPoints()
+                        +"',rebbounds = '"+ player.getPlayerRebbounds()
+                        +"',assist = '"+ player.getPlayerAssist()
+                        +"',image = '"+ player.getPlayerImage()
+                        +"'WHERE id =" + player.getPlayerId();
+            
+            stmt.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+        }
+    }
+    
     public void deleteMyTeam(Player player) throws IOException{
             try(Connection conexion = Conexion.getConnection()){
         Statement stmt = conexion.createStatement();
@@ -246,5 +286,133 @@ public class PlayersDAO {
     }   catch (SQLException ex) {
             java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void exportMyTeamCSV(String team) throws IOException{
+        Path path = Paths.get(System.getProperty("user.dir") + "/MyTeam.csv");
+
+        try(Connection conexion = Conexion.getConnection()){
+            Statement stmt = conexion.createStatement();
+            String sql = "SELECT * FROM players WHERE team LIKE '" + team + "'";
+            
+            BufferedWriter bw = Files.newBufferedWriter(path);
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                bw.write(rs.getInt("jersey")+ ",");
+                bw.write(rs.getString("name")+ ",");
+                bw.write(rs.getString("position")+ ",");
+                bw.write(rs.getString("height")+ ",");
+                bw.write(rs.getString("weight")+ ",");
+                bw.write(rs.getInt("age")+ ",");
+                bw.write(rs.getString("team")+ ",");
+                bw.write(rs.getString("college")+ ",");
+                bw.write(rs.getString("draft")+ ",");
+                bw.write(rs.getString("nationality")+ ",");
+                bw.write(rs.getDouble("points")+ ",");
+                bw.write(rs.getDouble("rebbounds")+ ",");
+                bw.write(rs.getDouble("assist")+ ",");
+                bw.write(rs.getString("image")+ ",");
+                bw.write(rs.getString("user")+ "\n");
+            }
+            bw.flush();
+            bw.close();
+                    
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+        }
+    }
+   
+    public void exportMyTeamXML(String team) throws IOException{
+        try {
+            List<Player> lista = searchPlayerByTeam(team);
+            
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.newDocument();
+            
+            Element players = doc.createElement("Players");
+            doc.appendChild(players);
+            
+            for(int i = 0; i<lista.size(); i++){
+                Element playersTeam = doc.createElement("Players");
+                players.appendChild(playersTeam);
+                    
+                Element jersey = doc.createElement("Jersey");
+                jersey.setTextContent(String.valueOf(lista.get(i).getPlayerJersey()));
+                playersTeam.appendChild(jersey);
+                
+                Element name = doc.createElement("Name");
+                name.setTextContent(lista.get(i).getPlayerName());
+                playersTeam.appendChild(name);  
+                
+                Element position = doc.createElement("Position");
+                position.setTextContent(lista.get(i).getPlayerPosition());
+                playersTeam.appendChild(position);
+                
+                Element height = doc.createElement("Height");
+                height.setTextContent(lista.get(i).getPlayerHeight());
+                playersTeam.appendChild(height);  
+                            
+                Element weight = doc.createElement("Weight");
+                weight.setTextContent(lista.get(i).getPlayerWeight());
+                playersTeam.appendChild(weight);
+                                
+                Element age = doc.createElement("Age");
+                age.setTextContent(String.valueOf(lista.get(i).getPlayerAge()));
+                playersTeam.appendChild(age);
+                
+                Element team1 = doc.createElement("Team");
+                team1.setTextContent(lista.get(i).getPlayerTeam());
+                playersTeam.appendChild(team1);
+                
+                Element college = doc.createElement("College");
+                college.setTextContent(lista.get(i).getPlayerCollege());
+                playersTeam.appendChild(college);
+            
+                Element draft = doc.createElement("Draft");
+                draft.setTextContent(lista.get(i).getPlayerDraft());
+                playersTeam.appendChild(draft);    
+                
+                Element nationality = doc.createElement("Nationality");
+                nationality.setTextContent(lista.get(i).getPlayerNationality());
+                playersTeam.appendChild(nationality);
+                                
+                Element points = doc.createElement("Points");
+                points.setTextContent(String.valueOf(lista.get(i).getPlayerPoints()));
+                playersTeam.appendChild(points);
+                                
+                Element rebbounds = doc.createElement("Rebbounds");
+                rebbounds.setTextContent(String.valueOf(lista.get(i).getPlayerRebbounds()));
+                playersTeam.appendChild(rebbounds);
+                                
+                Element assist = doc.createElement("Assist");
+                assist.setTextContent(String.valueOf(lista.get(i).getPlayerAssist()));
+                playersTeam.appendChild(assist);
+                                
+                Element image = doc.createElement("Image");
+                image.setTextContent(lista.get(i).getPlayerImage());
+                playersTeam.appendChild(image);
+                
+                TransformerFactory fac = TransformerFactory.newDefaultInstance();
+                Transformer trans = fac.newTransformer();
+                DOMSource som = new DOMSource(doc);
+            StreamResult stream = new StreamResult(new File(System.getProperty("user.dir") + "/players " + team + ".xml"));
+            trans.transform(som, stream);
+            }      
+                    
+        } catch (ParserConfigurationException ex) {
+            java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerConfigurationException ex) {
+            java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        
+        
     }
 }

@@ -236,7 +236,7 @@
                                                 </GridPane>
                                              </children>
                                           </Pane>
-                                          <Button layoutX="638.0" layoutY="7.0" mnemonicParsing="false" onAction="#refreshTeams" prefHeight="32.0" prefWidth="31.0">
+                                          <Button layoutX="504.0" mnemonicParsing="false" onAction="#refreshTeams" prefHeight="32.0" prefWidth="31.0">
                                              <graphic>
                                                 <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -244,6 +244,11 @@
                                                    </image>
                                                 </ImageView>
                                              </graphic>
+                                          </Button>
+                                          <Button layoutX="569.0" mnemonicParsing="false" onAction="#clearTeamFields" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Clean fields" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
                                           </Button>
                                        </children></AnchorPane>
                               </content>
@@ -448,8 +453,8 @@
                                              <children>
                                                 <MenuButton layoutX="867.0" layoutY="14.0" mnemonicParsing="false" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Data options" textFill="WHITE">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                    <MenuItem mnemonicParsing="false" text="Action 2" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamCSV" text="Export team to CSV" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamXML" text="Export Team to XML" />
                                                   </items>
                                                    <font>
                                                       <Font size="20.0" />
@@ -469,7 +474,7 @@
                                                 </TableColumn>
                                                   </columns>
                                                 </TableView>
-                                                <Button layoutX="649.0" layoutY="14.0" mnemonicParsing="false" onAction="#showMyTeam" prefHeight="44.0" prefWidth="158.0" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Show myTeam" textFill="WHITE">
+                                                <Button layoutX="690.0" layoutY="14.0" mnemonicParsing="false" onAction="#showMyTeam" prefHeight="44.0" prefWidth="158.0" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Show myTeam" textFill="WHITE">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
@@ -651,6 +656,14 @@
                                                    </font>
                                                 </Label>
                                                 <ComboBox fx:id="comboTeam" layoutX="69.0" layoutY="24.0" prefWidth="150.0" style="-fx-text-fill: white;" stylesheets="@../../../../../css/cssTable.css" />
+                                                <Button layoutX="520.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearMyTeamFields" prefHeight="44.0" prefWidth="158.0" styleClass="botton" stylesheets="@../../../../../css/cssTable.css" text="Clear fields" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
                                              </children>
                                           </Pane>
                                        </children></AnchorPane>

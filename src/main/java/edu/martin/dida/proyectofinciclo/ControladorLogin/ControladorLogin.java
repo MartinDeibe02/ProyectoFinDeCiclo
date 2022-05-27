@@ -23,6 +23,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,16 +33,10 @@ import javafx.stage.Stage;
 public class ControladorLogin implements Initializable{
 
     @FXML
-    private Button btnLogIn;
-
-    @FXML
     private TextField txtUsername;
     
     @FXML
     private Button btnMinimize;
-
-    @FXML
-    private Button btnSignUp;
 
     @FXML
     private PasswordField txtPassword;
@@ -93,7 +89,7 @@ public class ControladorLogin implements Initializable{
         }else if (validate==2){
             System.out.println("ADMIN");
         }else if(validate==3){
-            System.out.println("No existe");
+            JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

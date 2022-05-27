@@ -1,0 +1,17 @@
+New Log: 2022-05-27 20:15:04
+[ERROR]=> Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('8','Martin','7','21cm','12kg','60','null','e','e','ee','2.0','3.0','3.0','http://res.cloudinary.com/daolhlyb6/image/upload/v1653675302/vcddz1ihaybooqupycgt.jpg','ADMIN') [23506-200]
+===========================================
+New Log: 2022-05-27 20:15:04
+[INFO] => Inserted => Player{playerJersey=8, playerName=Martin, playerPosition=7, playerHeight=21cm, playerWeight=12kg, playerAge=60, playerTeam=null, playerCollege=e, playerDraft=e, playerNationality=ee, playerPoints=2.0, playerRebbounds=3.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653675302/vcddz1ihaybooqupycgt.jpg, playerUser=null}
+===========================================
+New Log: 2022-05-27 20:15:04
+[INFO] => Inserted => Player{playerJersey=32, playerName=ew, playerPosition=we, playerHeight=wecm, playerWeight=wekg, playerAge=9, playerTeam=Chicago Bulls, playerCollege=ew, playerDraft=ew, playerNationality=ew, playerPoints=1.0, playerRebbounds=1.0, playerAssist=1.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653675371/kassta3re2ndywvurvtv.png, playerUser=null}
+===========================================
+New Log: 2022-05-27 20:15:04
+[INFO] => Inserted => Player{playerJersey=32, playerName=ewhhhh, playerPosition=we, playerHeight=wecmcm, playerWeight=wekgkg, playerAge=9, playerTeam=Chicago Bulls, playerCollege=p, playerDraft=ew, playerNationality=ew, playerPoints=1.0, playerRebbounds=1.0, playerAssist=1.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653675371/kassta3re2ndywvurvtv.png, playerUser=null}
+===========================================
+New Log: 2022-05-27 20:18:27
+[INFO] => Inserted => Player{playerJersey=4, playerName=MARTIN, playerPosition=MARTIN, playerHeight=MARTINcm, playerWeight=MARTINkg, playerAge=53, playerTeam=Chicago Bulls, playerCollege=MARTIN, playerDraft=MARTIN, playerNationality=MARTIN, playerPoints=2.0, playerRebbounds=3.0, playerAssist=4.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653675504/qbkc4na0fysf0cfvxyks.png, playerUser=null}
+===========================================

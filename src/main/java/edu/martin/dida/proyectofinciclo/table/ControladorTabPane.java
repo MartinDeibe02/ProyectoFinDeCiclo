@@ -35,6 +35,8 @@ import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -46,6 +48,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -101,7 +104,7 @@ public class ControladorTabPane  implements Initializable{
     @FXML
     private TableView tablaTeams;
     
-    private int id;
+    private int idTeam;
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Player">
@@ -151,7 +154,7 @@ public class ControladorTabPane  implements Initializable{
     ObservableList<Player> players;
     // </editor-fold>
 
-        // <editor-fold defaultstate="collapsed" desc="MyTeam">
+    // <editor-fold defaultstate="collapsed" desc="MyTeam">
 
     @FXML
     private TextField txtMyTeamAge;
@@ -196,11 +199,15 @@ public class ControladorTabPane  implements Initializable{
     public ComboBox comboTeam;
             
     @FXML
+    private Slider sliderAge;
+    
+    @FXML
     private TableView tableMyTeam;
     
     // </editor-fold>
     
-            
+    private int idPlayer;
+    
     ObservableList<String> items = FXCollections.observableArrayList();
     ObservableList<Player> playerByTeam;
     
@@ -222,14 +229,40 @@ public class ControladorTabPane  implements Initializable{
             loadFilter();
             
             prueba.setFill(Color.TRANSPARENT);
+                   
+            sliderAge.valueProperty().addListener(new ChangeListener<Number>(){
+                @Override
+                public void changed(ObservableValue<? extends Number> observar, Number numeroAnterior, Number numeroNuevo) {
                     
+                    txtMyTeamAge.setText(String.valueOf((int)Math.round((double) numeroNuevo)));
+            }
+            });
+            
+            txtMyTeamAge.textProperty().addListener((observable, oldvalue, newvalue) -> {
+                try{
+                    sliderAge.setValue(Integer.parseInt(txtMyTeamAge.getText()));
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(new JFrame(), "You cant put letters", "Error", JOptionPane.ERROR_MESSAGE);
+                    txtMyTeamAge.clear();
+                }
+            });
+            
         } catch (IOException ex) {
             try {
                 Utilidades.Logger.logInfo(ex.toString(), 2);
             } catch (IOException ex1) {
                 Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex1);
             }
+        }catch(Exception e){
+            try {
+                Utilidades.Logger.logInfo(e.toString(), 2);
+            } catch (IOException ex) {
+                Logger.getLogger(ControladorTabPane.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="Mandar mensaje chat">
@@ -238,7 +271,7 @@ public class ControladorTabPane  implements Initializable{
     }
     
     public void send() throws IOException{
-        texto =dtf.format(now) + " " + controlLogin.nombre + " >> " + txtChatSend.getText();
+        texto =dtf.format(now) + " " + ControladorLogin.nombre + " >> " + txtChatSend.getText();
 
         try {
             DatagramPacket paquete = new DatagramPacket(texto.getBytes(), texto.length(), App.grupo, App.port);
@@ -252,7 +285,7 @@ public class ControladorTabPane  implements Initializable{
     // <editor-fold defaultstate="collapsed" desc="Funciones archivos equipos">
 
     
-    public void insertCSV() throws IOException {
+    public void insertCSV() throws IOException  {
         BufferedReader br = null;
         try {
             FileChooser f = new FileChooser();
@@ -270,17 +303,25 @@ public class ControladorTabPane  implements Initializable{
                 String[] lineaSep = insert.split(",");
                 listTeams.add(new Team(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], lineaSep[5]));
                         });
-            teamsDAO.insertarCSV(listTeams, controlLogin.nombre);
+            teamsDAO.insertarCSV(listTeams, ControladorLogin.nombre);
             cargarTeams();
+            
+            comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
+            
+           
+            
             br.close();
             JOptionPane.showMessageDialog(new JFrame(), "csv inserted successfully", "Info", JOptionPane.INFORMATION_MESSAGE);
 
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
 
+        } catch (IOException ex) {
             Utilidades.Logger.logInfo(ex.toString(), 2);
-            
+            JOptionPane.showMessageDialog(new JFrame(), "csv cannot not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+        }        
+        catch (Exception ex) {
+            Utilidades.Logger.logInfo(ex.toString(), 2);
+            JOptionPane.showMessageDialog(new JFrame(), "Invalid CSV format", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -305,16 +346,17 @@ public class ControladorTabPane  implements Initializable{
                 txtTeamConference.getText().isEmpty() || txtTeamDivision.getText().isEmpty()){
             JOptionPane.showMessageDialog(new JFrame(), "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
         }else {
-            team.setId(id);
+            team.setId(idTeam);
             team.setName(txtTeamName.getText());
             team.setCity(txtTeamCity.getText());
             team.setAbbreviation(txtTeamAbbreviation.getText());
             team.setConference(txtTeamConference.getText());
             team.setDivision(txtTeamDivision.getText());
             
-            teamsDAO.saveEditTeam(team, controlLogin.nombre);
+            teamsDAO.saveEditTeam(team, ControladorLogin.nombre);
             cargarTeams();
-            id=0;
+            comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
+            idTeam=0;
             clearTeamFields();
             Utilidades.Logger.logInfo("Equipo insertado " + team.toString(), 1);
         }
@@ -330,7 +372,7 @@ public class ControladorTabPane  implements Initializable{
             txtTeamConference.setText(team.getConference());
             txtTeamDivision.setText(team.getDivision());
             
-            id= team.getId();
+            idTeam= team.getId();
         }else{
             JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);        
         }
@@ -345,6 +387,7 @@ public class ControladorTabPane  implements Initializable{
             teamsDAO.deleteTeam(team);
             cargarTeams();
             clearTeamFields();
+            comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
         }
     }
@@ -436,7 +479,10 @@ public class ControladorTabPane  implements Initializable{
             }
         } catch (IOException ex) {
             Utilidades.Logger.logInfo(ex.getMessage(), 2);
+            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+
         }catch(Exception e){
+            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
             Utilidades.Logger.logInfo(e.toString(), 2);
         }
     }
@@ -465,8 +511,7 @@ public class ControladorTabPane  implements Initializable{
     public void exportarCSVPlayers() throws IOException{
         playerDAO.exportarCSV();
     }
-    
-    
+        
     public void showMyTeam() throws IOException{
         playerByTeam = FXCollections.observableArrayList();
         List<Player> player1 = playerDAO.searchPlayerByTeam((String) comboTeam.getSelectionModel().getSelectedItem());
@@ -483,32 +528,53 @@ public class ControladorTabPane  implements Initializable{
                 || txtMyTeamCountry.getText().isEmpty() || txtMyTeamPoints.getText().isEmpty() || txtMyTeamRebbounds.getText().isEmpty() || txtMyTeamImage.getText().isEmpty() || txtMyTeamAssist.getText().isEmpty()){
             JOptionPane.showMessageDialog(new JFrame(), "All fields are required", "Error", JOptionPane.ERROR_MESSAGE);
             
-        }else{
-            player.setPlayerJersey(Integer.parseInt(txtMyTeamJersey.getText()));
-            player.setPlayerName(txtMyTeamName.getText());
-            player.setPlayerPosition(txtMyTeamPosition.getText());
-            player.setPlayerWeight(txtMyTeamWeight.getText() +"kg");
-            player.setPlayerHeight(txtMyTeamHeight.getText() + "cm");
-            player.setPlayerTeam((String) comboTeam.getSelectionModel().getSelectedItem());
-            player.setPlayerAge(Integer.parseInt(txtMyTeamAge.getText()));
-            player.setPlayerDraft(txtMyTeamDraft.getText());
-            player.setPlayerCollege(txtMyTeamCollege.getText());
-            player.setPlayerNationality(txtMyTeamCountry.getText());
-            player.setPlayerPoints(Double.parseDouble(txtMyTeamPoints.getText()));
-            player.setPlayerRebbounds(Double.parseDouble(txtMyTeamRebbounds.getText()));
-            player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
-            player.setPlayerImage(dinary(txtMyTeamImage.getText()));
+          }  else{
             
-            playerDAO.saveEditTeam(player, controlLogin.nombre);
-                    
-            cargarPlayer();
-            loadFilter();
-            showMyTeam();
-            clearMyTeamFields();
-            Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
-            JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+                if(txtMyTeamImage.getText().indexOf("cloudinary") != -1 || txtMyTeamImage.getText().indexOf("cdn.nba") != -1){
+                    player.setPlayerJersey(Integer.parseInt(txtMyTeamJersey.getText()));
+                    player.setPlayerName(txtMyTeamName.getText());
+                    player.setPlayerPosition(txtMyTeamPosition.getText());
+                    player.setPlayerWeight(txtMyTeamWeight.getText() +"kg");
+                    player.setPlayerHeight(txtMyTeamHeight.getText() + "cm");
+                    player.setPlayerTeam((String) comboTeam.getSelectionModel().getSelectedItem());
+                    player.setPlayerAge(Integer.parseInt(txtMyTeamAge.getText()));
+                    player.setPlayerDraft(txtMyTeamDraft.getText());
+                    player.setPlayerCollege(txtMyTeamCollege.getText());
+                    player.setPlayerNationality(txtMyTeamCountry.getText());
+                    player.setPlayerPoints(Double.parseDouble(txtMyTeamPoints.getText()));
+                    player.setPlayerRebbounds(Double.parseDouble(txtMyTeamRebbounds.getText()));
+                    player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
+                    player.setPlayerImage(txtMyTeamImage.getText());  
+                    player.setPlayerId(idPlayer);
+                }else{
+                    player.setPlayerJersey(Integer.parseInt(txtMyTeamJersey.getText()));
+                    player.setPlayerName(txtMyTeamName.getText());
+                    player.setPlayerPosition(txtMyTeamPosition.getText());
+                    player.setPlayerWeight(txtMyTeamWeight.getText() +"kg");
+                    player.setPlayerHeight(txtMyTeamHeight.getText() + "cm");
+                    player.setPlayerTeam((String) comboTeam.getSelectionModel().getSelectedItem());
+                    player.setPlayerAge(Integer.parseInt(txtMyTeamAge.getText()));
+                    player.setPlayerDraft(txtMyTeamDraft.getText());
+                    player.setPlayerCollege(txtMyTeamCollege.getText());
+                    player.setPlayerNationality(txtMyTeamCountry.getText());
+                    player.setPlayerPoints(Double.parseDouble(txtMyTeamPoints.getText()));
+                    player.setPlayerRebbounds(Double.parseDouble(txtMyTeamRebbounds.getText()));
+                    player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
+                    player.setPlayerImage(dinary(txtMyTeamImage.getText()));    
+                    player.setPlayerId(idPlayer);                
+                }
 
-        }    
+        }
+        playerDAO.saveEditTeam(player, ControladorLogin.nombre);        
+        JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+        cargarPlayer();
+        loadFilter();
+        showMyTeam();
+        clearMyTeamFields();
+        idPlayer=0;
+        Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
+
+  
 
 
     }
@@ -534,7 +600,7 @@ public class ControladorTabPane  implements Initializable{
             txtMyTeamImage.setText(player.getPlayerImage());
 
             
-            id= player.getPlayerId();
+            idPlayer= player.getPlayerId();
         }else{
             JOptionPane.showMessageDialog(new JFrame(), "You must select a player", "Error", JOptionPane.ERROR_MESSAGE);        
         }
@@ -558,10 +624,12 @@ public class ControladorTabPane  implements Initializable{
             FileChooser f = new FileChooser();
             f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG FILES", "*.png"));
             File file = f.showOpenDialog(null);
-            txtMyTeamImage.setText(file.getAbsolutePath());
+            if(!(file == null)){
+                txtMyTeamImage.setText(file.getAbsolutePath());
+            }
     }
     
-    public ObservableList<String> chargeTeams(String user) throws IOException{
+    public ObservableList<String> chargeTeamsCombo(String user) throws IOException{
         try(Connection conexion = Conexion.getConnection()){
             String sql = "SELECT DISTINCT name FROM teams WHERE user LIKE '" + user + "'";
             PreparedStatement prepstmt = conexion.prepareStatement(sql);
@@ -572,16 +640,43 @@ public class ControladorTabPane  implements Initializable{
             }
             return items;
         }catch(SQLException e){
-            e.printStackTrace();
+            Utilidades.Logger.logInfo(e.getMessage() , 2);
             return null;
 
         }
     }
     
+    public boolean urlValid(String url){
+        try{
+            new URL(url).toURI();
+            return true;
+        }catch(Exception e){
+            return false;
+        }
+    }
     
+    public void exportMyTeamCSV() throws IOException{
+        if(!(comboTeam.getSelectionModel().getSelectedItem() == null)){
+            
+            playerDAO.exportMyTeamCSV((String) comboTeam.getSelectionModel().getSelectedItem());
+            JOptionPane.showMessageDialog(new JFrame(), "CSV exported succesfully", "Info", JOptionPane.INFORMATION_MESSAGE);
+            Utilidades.Logger.logInfo("CSV exported", 1);
+
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
-    
-    
+    public void exportMyTeamXML() throws IOException{
+        if(!(comboTeam.getSelectionModel().getSelectedItem() == null)){
+        playerDAO.exportMyTeamXML((String) comboTeam.getSelectionModel().getSelectedItem());
+            JOptionPane.showMessageDialog(new JFrame(), "XML exported succesfully", "Info", JOptionPane.INFORMATION_MESSAGE);
+            Utilidades.Logger.logInfo("XML exported", 1);        
+        
+        }else{
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }    
     
     
     
@@ -637,15 +732,16 @@ public class ControladorTabPane  implements Initializable{
     
     
     
-    private void clearTeamFields() {
+    public void clearTeamFields() {
         txtTeamName.clear();
         txtTeamCity.clear();
         txtTeamAbbreviation.clear();
         txtTeamConference.clear();
         txtTeamDivision.clear();
+        idTeam = 0;
     }
 
-    private void clearMyTeamFields(){
+    public void clearMyTeamFields(){
         txtMyTeamJersey.clear();
         txtMyTeamName.clear();
         txtMyTeamPosition.clear();
@@ -660,6 +756,7 @@ public class ControladorTabPane  implements Initializable{
         txtMyTeamRebbounds.clear();
         txtMyTeamAssist.clear();
         comboTeam.setValue(null);
+        idPlayer = 0;
     }
     
     private void setimg(Rectangle rec1, Image img1) {
@@ -685,6 +782,8 @@ public class ControladorTabPane  implements Initializable{
         String a = (String) uploadresult.get("url");
         return a;
     }
+    
+
 
 
 }

@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,6 +49,7 @@ public class TeamsDAO {
     private void crearTabla() throws IOException {
 try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
+
             String sql = "CREATE TABLE IF NOT EXISTS teams" +
                             "(id INTEGER auto_increment," +
                             "name VARCHAR(255)," +
@@ -57,10 +59,33 @@ try (Connection conexion = Conexion.getConnection()){
                             "division VARCHAR(255)," +
                             "user VARCHAR(255),"
                     + "FOREIGN KEY(user) REFERENCES usuarios(user))";
+            
+
             statement.executeUpdate(sql);
         }catch(SQLException e){
             e.printStackTrace();
         }    
+    }
+    
+    public void insertFreeAgent() throws IOException{
+                try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            
+                String sql = "SELECT * FROM teams WHERE name LIKE 'Agente Libre'";
+                ResultSet rs = statement.executeQuery(sql);
+                if(!(rs.next())){
+                    Statement statement1 = conexion.createStatement();
+                    String sql2= "INSERT INTO teams(name,abbreviation, city,conference, division, user) "
+                            + "VALUES ('Agente Libre', 'null','null','null','null', 'ADMIN')";
+                    statement1.executeUpdate(sql2);
+
+                }
+
+                statement.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+        }
     }
     
     public void saveEditTeam(Team team, String user) throws IOException{
@@ -233,9 +258,13 @@ try (Connection conexion = Conexion.getConnection()){
     }
     
     public void deleteTeam(Team team) throws IOException, SQLException{
+        insertFreeAgent();
     try(Connection conexion = Conexion.getConnection()){
+        Statement statement = conexion.createStatement();
         Statement stmt = conexion.createStatement();
         String sql = "DELETE FROM teams WHERE id=" + team.getId();
+        String sql1 = "UPDATE players SET team = 'Agente Libre' WHERE team LIKE '" + team.getName() +"'";
+        statement.executeUpdate(sql1);
         stmt.executeUpdate(sql);
     }
     }
