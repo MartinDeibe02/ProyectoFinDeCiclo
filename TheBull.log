@@ -15,3 +15,110 @@ New Log: 2022-05-27 20:15:04
 New Log: 2022-05-27 20:18:27
 [INFO] => Inserted => Player{playerJersey=4, playerName=MARTIN, playerPosition=MARTIN, playerHeight=MARTINcm, playerWeight=MARTINkg, playerAge=53, playerTeam=Chicago Bulls, playerCollege=MARTIN, playerDraft=MARTIN, playerNationality=MARTIN, playerPoints=2.0, playerRebbounds=3.0, playerAssist=4.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1653675504/qbkc4na0fysf0cfvxyks.png, playerUser=null}
 ===========================================
+New Log: 2022-05-29 16:27:49
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-29 16:27:49
+[ERROR] => java.lang.NullPointerException: Cannot invoke "java.sql.Connection.createStatement()" because "conexion" is null
+===========================================
+New Log: 2022-05-29 16:27:49
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-29 16:30:52
+[ERROR] => Columna "age" no encontrada
+Column "age" not found [42122-200]
+===========================================
+New Log: 2022-05-29 16:31:12
+[ERROR] => Columna "age" no encontrada
+Column "age" not found [42122-200]
+===========================================
+New Log: 2022-05-29 16:31:12
+[ERROR] => Columna "age" no encontrada
+Column "age" not found [42122-200]
+===========================================
+New Log: 2022-05-30 18:44:22
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.PieChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.PieChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:44:22
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.PieChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.PieChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:49:17
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:49:17
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:54:42
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:54:42
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:57:44
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 18:57:44
+[ERROR] => java.lang.ClassCastException: class javafx.scene.chart.XYChart$Data cannot be cast to class javafx.scene.chart.XYChart$Series (javafx.scene.chart.XYChart$Data and javafx.scene.chart.XYChart$Series are in module javafx.controls of loader 'app')
+===========================================
+New Log: 2022-05-30 20:17:29
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:17:29
+[INFO] => Deleted => Team{id=1, name=Atlanta Hawks, abbreviation=ATL, city=Atlanta, conference=East, division=Southeast}
+===========================================
+New Log: 2022-05-30 20:18:48
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:18:48
+[INFO] => Deleted => Team{id=2, name=Boston Celtics, abbreviation=BOS, city=Boston, conference=East, division=Atlantic}
+===========================================
+New Log: 2022-05-30 20:20:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:20:09
+[INFO] => Deleted => Team{id=5, name=Chicago Bulls, abbreviation=CHI, city=Chicago, conference=East, division=Central}
+===========================================
+New Log: 2022-05-30 20:20:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:20:09
+[INFO] => Deleted => Team{id=3, name=Brooklyn Nets, abbreviation=BKN, city=Brooklyn, conference=East, division=Atlantic}
+===========================================
+New Log: 2022-05-30 20:22:17
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:22:17
+[INFO] => Deleted => Team{id=14, name=Los Angeles Lakers, abbreviation=LAL, city=Los Angeles, conference=West, division=Pacific}
+===========================================
+New Log: 2022-05-30 20:24:38
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:24:38
+[INFO] => Deleted => Team{id=15, name=Memphis Grizzlies, abbreviation=MEM, city=Memphis, conference=West, division=Southwest}
+===========================================
+New Log: 2022-05-30 20:24:38
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-05-30 20:24:38
+[INFO] => Deleted => Team{id=24, name=Phoenix Suns, abbreviation=PHX, city=Phoenix, conference=West, division=Pacific}
+===========================================
+New Log: 2022-05-30 20:31:32
+[ERROR] => java.lang.NumberFormatException: For input string: "85kg"
+===========================================
+New Log: 2022-05-30 20:49:59
+[ERROR] => java.lang.NumberFormatException: For input string: "Southeast"
+===========================================

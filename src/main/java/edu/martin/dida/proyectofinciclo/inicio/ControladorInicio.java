@@ -81,6 +81,7 @@ public class ControladorInicio implements Initializable{
         
 
     App.controller.comboTeam.setItems(contMan.chargeTeamsCombo(contLog.nombre));
+    App.controller.combodash.setItems(contMan.chargeTeamsCombo(contLog.nombre));
     }
     
     public void lebron(){

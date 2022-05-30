@@ -146,10 +146,15 @@ try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             String sql = "SELECT * FROM teams";
             
-            BufferedWriter bw = Files.newBufferedWriter(path);
+            BufferedWriter bw;
             
             ResultSet rs = statement.executeQuery(sql);
-            while(rs.next()){
+            if(!(rs.next())){
+                JOptionPane.showMessageDialog(new JFrame(), "You cant export an empty CSV", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+            }else{
+                bw = Files.newBufferedWriter(path);
+             while(rs.next()){
                 bw.write(rs.getInt("id") + ",");
                 bw.write(rs.getString("name") + ",");
                 bw.write(rs.getString("abbreviation") + ",");
@@ -160,7 +165,9 @@ try (Connection conexion = Conexion.getConnection()){
             bw.flush();
             bw.close();
             JOptionPane.showMessageDialog(new JFrame(), "csv export succesfully", "Error", JOptionPane.INFORMATION_MESSAGE);
-
+   
+            }
+            
         }catch(SQLException e){
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
 
@@ -168,10 +175,14 @@ try (Connection conexion = Conexion.getConnection()){
     }
         
         
-    public void exportarXML() throws IOException{
+    public void exportarXML() throws IOException, TransformerException{
         try {
             List<Team> lista = buscarTeam();
             
+            if(lista.size()==0){
+            JOptionPane.showMessageDialog(new JFrame(), "You cant export an empty XML", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();
@@ -209,17 +220,16 @@ try (Connection conexion = Conexion.getConnection()){
             DOMSource dom = new DOMSource(doc);
             StreamResult stream = new StreamResult(new File(System.getProperty("user.dir") + "/teams.xml"));
             JOptionPane.showMessageDialog(new JFrame(), "xml exported sucesgully", "Error", JOptionPane.INFORMATION_MESSAGE);
-
-            try {
+        
+            
                 trans.transform(dom, stream);
-            } catch (TransformerException ex) {
-                Logger.logInfo(ex.toString(), 2);
             }
             } catch (TransformerConfigurationException ex) {
                 Logger.logInfo(ex.toString(), 2);
             } catch (ParserConfigurationException ex) {
                 Logger.logInfo(ex.toString(), 2);
         }
+            
             
     }
 

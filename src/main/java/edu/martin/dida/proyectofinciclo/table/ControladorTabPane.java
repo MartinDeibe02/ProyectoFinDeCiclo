@@ -35,6 +35,8 @@ import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+import javafx.animation.TranslateTransition;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -44,8 +46,12 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -54,11 +60,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.ParserConfigurationException;
@@ -206,6 +214,28 @@ public class ControladorTabPane  implements Initializable{
     
     // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="DashBoard">
+    @FXML
+    public ComboBox combodash;
+    
+    @FXML
+    private Label lblagemyteam;
+
+    @FXML
+    private Label lblagenba;
+
+    @FXML
+    private Label lblnumbermyteam;
+
+    @FXML
+    private Label lblnumbernba;
+    
+    @FXML
+    private PieChart pieDash;
+    // </editor-fold>
+    
+    
+    
     private int idPlayer;
     
     ObservableList<String> items = FXCollections.observableArrayList();
@@ -227,9 +257,14 @@ public class ControladorTabPane  implements Initializable{
             cargarTeams();
             cargarPlayer();
             loadFilter();
+            setLblNbaAge();
+            setLblNbaCount();
+            showPie();
             
             prueba.setFill(Color.TRANSPARENT);
-                   
+            prueba.setArcWidth(60.0);   // Corner radius
+            prueba.setArcHeight(60.0);       
+        
             sliderAge.valueProperty().addListener(new ChangeListener<Number>(){
                 @Override
                 public void changed(ObservableValue<? extends Number> observar, Number numeroAnterior, Number numeroNuevo) {
@@ -357,6 +392,8 @@ public class ControladorTabPane  implements Initializable{
             cargarTeams();
             comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             idTeam=0;
+            loadFilter();
+            cargarPlayer();
             clearTeamFields();
             Utilidades.Logger.logInfo("Equipo insertado " + team.toString(), 1);
         }
@@ -383,10 +420,18 @@ public class ControladorTabPane  implements Initializable{
         
         if(team == null){
             JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else if (team.getName().equals("Agente Libre")){
+            
+            JOptionPane.showMessageDialog(new JFrame(), "You cant delete this team", "Error", JOptionPane.ERROR_MESSAGE);        
+        
         }else{
             teamsDAO.deleteTeam(team);
             cargarTeams();
             clearTeamFields();
+            
+            cargarPlayer();
+            loadFilter();
+
             comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
         }
@@ -412,16 +457,15 @@ public class ControladorTabPane  implements Initializable{
         cargarPlayer();
     }
     
-    
-    
-    
     public void cargarPlayer() throws IOException{
         players = FXCollections.observableArrayList();
         List<Player> player = playerDAO.buscarPlayer();
         players.addAll(player);
         tablePlayers.setItems(players);        
     }
-        
+
+    // <editor-fold defaultstate="collapsed" desc="Myteam">
+
     public void photo(){
         
         Player player = (Player) tablePlayers.getSelectionModel().getSelectedItem();
@@ -678,8 +722,37 @@ public class ControladorTabPane  implements Initializable{
         }
     }    
     
+    // </editor-fold>
+    
+    public void setLblNbaAge() throws IOException{
+        lblagenba.setText(String.valueOf(playerDAO.ageNbaQuery()));
+    }    
+    
+    public void queryDash() throws IOException{
+        lblagemyteam.setText(String.valueOf(playerDAO.ageAgeMyTeam((String) combodash.getSelectionModel().getSelectedItem())));
+        lblnumbermyteam.setText(String.valueOf(playerDAO.countMyTeamPlayers((String) combodash.getSelectionModel().getSelectedItem())));
+    }
+    
+
+    public void setLblNbaCount() throws IOException{
+        lblnumbernba.setText(String.valueOf(playerDAO.countNbaPlayers()));
+    }       
     
     
+    public void showPie() throws IOException{
+        Map<String, Integer> jugadoresEquipo = playerDAO.piePlayers();
+        
+        ObservableList<PieChart.Data> datos = FXCollections.observableArrayList();
+        
+        jugadoresEquipo.forEach((nombrejugador,cantidad) ->{
+            PieChart.Data data = new PieChart.Data(nombrejugador,cantidad);
+            datos.add(data);
+        });
+        pieDash.setData(datos);
+        
+        pieDash.setStyle("-fx-text-fill: white;");
+
+    }
     
     
     

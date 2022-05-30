@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -673,12 +674,86 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="txtChatSend" layoutX="125.0" layoutY="658.0" prefHeight="50.0" prefWidth="738.0" />
-                                          <Button fx:id="txtChatBtn" layoutX="842.0" layoutY="658.0" mnemonicParsing="false" onAction="#send" prefHeight="41.0" prefWidth="130.0" text="Send" textFill="WHITE">
+                                          <TextField fx:id="txtChatSend" layoutX="634.0" layoutY="676.0" prefHeight="50.0" prefWidth="314.0" />
+                                          <Button fx:id="txtChatBtn" layoutX="950.0" layoutY="681.0" mnemonicParsing="false" onAction="#send" prefHeight="41.0" prefWidth="130.0" text="Send" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font></Button>
-                                          <TextArea fx:id="recibidos" layoutX="121.0" layoutY="20.0" prefHeight="582.0" prefWidth="868.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
+                                          <TextArea fx:id="recibidos" layoutX="631.0" layoutY="299.0" prefHeight="351.0" prefWidth="450.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
+                                          <Pane layoutX="47.0" layoutY="60.0" prefHeight="200.0" prefWidth="500.0" styleClass="borderFicha" AnchorPane.leftAnchor="50.0">
+                                             <children>
+                                                <Label layoutX="196.0" text="Average age" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="90.0" layoutY="40.0" text="NBA" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="380.0" layoutY="40.0" text="MyTeam" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblagenba" layoutX="91.0" layoutY="85.0" text="Label" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblagemyteam" layoutX="394.0" layoutY="87.0" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <Pane layoutX="568.0" layoutY="60.0" prefHeight="200.0" prefWidth="500.0" styleClass="borderFicha" AnchorPane.rightAnchor="50.0">
+                                             <children>
+                                                <Label layoutX="197.0" layoutY="-4.0" text="Numer of players" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="110.0" layoutY="47.0" text="NBA" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="386.0" layoutY="47.0" text="MyTeam" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblnumbernba" layoutX="108.0" layoutY="103.0" text="Label" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="lblnumbermyteam" layoutX="400.0" layoutY="105.0" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </Pane>
+                                          <ComboBox fx:id="combodash" layoutX="150.0" layoutY="15.0" prefWidth="150.0" />
+                                          <Label layoutX="60.0" layoutY="15.0" text="MyTeam" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="315.0" layoutY="10.0" mnemonicParsing="false" onAction="#queryDash" styleClass="botton" text="Show" textFill="WHITE">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                          <Pane layoutX="12.0" layoutY="302.0" prefHeight="438.0" prefWidth="598.0" styleClass="borderFicha">
+                                             <children>
+                                                <PieChart fx:id="pieDash" legendSide="LEFT" prefHeight="425.0" prefWidth="594.0" styleClass="chart-legend" />
+                                             </children>
+                                          </Pane>
                                        </children>
                                     </AnchorPane>
                                 </content>

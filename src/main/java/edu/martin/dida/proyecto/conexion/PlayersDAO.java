@@ -7,6 +7,7 @@ package edu.martin.dida.proyecto.conexion;
 import POJO.Player;
 import POJO.Team;
 import Utilidades.Logger;
+import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +15,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -159,9 +163,13 @@ public class PlayersDAO {
             Statement statement = conexion.createStatement();
             String sql = "SELECT * FROM players";
             
-            BufferedWriter bw = Files.newBufferedWriter(path);
+            BufferedWriter bw;
             
             ResultSet rs = statement.executeQuery(sql);
+            if(!(rs.next())){
+            JOptionPane.showMessageDialog(new JFrame(), "You cant export and empty csv", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                bw = Files.newBufferedWriter(path);
             while(rs.next()){
                 bw.write(rs.getInt("jersey") + ",");
                 bw.write(rs.getString("name") + ",");
@@ -182,7 +190,7 @@ public class PlayersDAO {
             bw.flush();
             bw.close();
             JOptionPane.showMessageDialog(new JFrame(), "csv successfully exported", "Info", JOptionPane.INFORMATION_MESSAGE);
-
+            }
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -295,28 +303,36 @@ public class PlayersDAO {
             Statement stmt = conexion.createStatement();
             String sql = "SELECT * FROM players WHERE team LIKE '" + team + "'";
             
-            BufferedWriter bw = Files.newBufferedWriter(path);
+            BufferedWriter bw;
             
             ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                bw.write(rs.getInt("jersey")+ ",");
-                bw.write(rs.getString("name")+ ",");
-                bw.write(rs.getString("position")+ ",");
-                bw.write(rs.getString("height")+ ",");
-                bw.write(rs.getString("weight")+ ",");
-                bw.write(rs.getInt("age")+ ",");
-                bw.write(rs.getString("team")+ ",");
-                bw.write(rs.getString("college")+ ",");
-                bw.write(rs.getString("draft")+ ",");
-                bw.write(rs.getString("nationality")+ ",");
-                bw.write(rs.getDouble("points")+ ",");
-                bw.write(rs.getDouble("rebbounds")+ ",");
-                bw.write(rs.getDouble("assist")+ ",");
-                bw.write(rs.getString("image")+ ",");
-                bw.write(rs.getString("user")+ "\n");
+            
+            if(!(rs.next())){            
+                JOptionPane.showMessageDialog(new JFrame(), "You cant export en empty CSV", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }else{
+                bw= Files.newBufferedWriter(path);
+                while(rs.next()){
+                    bw.write(rs.getInt("jersey")+ ",");
+                    bw.write(rs.getString("name")+ ",");
+                    bw.write(rs.getString("position")+ ",");
+                    bw.write(rs.getString("height")+ ",");
+                    bw.write(rs.getString("weight")+ ",");
+                    bw.write(rs.getInt("age")+ ",");
+                    bw.write(rs.getString("team")+ ",");
+                    bw.write(rs.getString("college")+ ",");
+                    bw.write(rs.getString("draft")+ ",");
+                    bw.write(rs.getString("nationality")+ ",");
+                    bw.write(rs.getDouble("points")+ ",");
+                    bw.write(rs.getDouble("rebbounds")+ ",");
+                    bw.write(rs.getDouble("assist")+ ",");
+                    bw.write(rs.getString("image")+ ",");
+                    bw.write(rs.getString("user")+ "\n");
+                }
+                bw.flush();
+                bw.close();
             }
-            bw.flush();
-            bw.close();
+
                     
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
@@ -326,6 +342,10 @@ public class PlayersDAO {
     public void exportMyTeamXML(String team) throws IOException{
         try {
             List<Player> lista = searchPlayerByTeam(team);
+            if(lista.size()==0){
+                JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+            }else{
+                
             
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newDefaultInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -400,7 +420,7 @@ public class PlayersDAO {
             StreamResult stream = new StreamResult(new File(System.getProperty("user.dir") + "/players " + team + ".xml"));
             trans.transform(som, stream);
             }      
-                    
+        }      
         } catch (ParserConfigurationException ex) {
             java.util.logging.Logger.getLogger(PlayersDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerConfigurationException ex) {
@@ -414,5 +434,107 @@ public class PlayersDAO {
         
         
         
+    }
+    
+    
+    
+
+    
+    public int ageNbaQuery() throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT AVG(age) FROM players";
+            ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    int age = rs.getInt(1);
+                    return age;
+                }
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            Logger.logInfo(ex.getMessage(), 2);
+        }
+        return 0;
+    }
+    
+    public int ageAgeMyTeam(String player) throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT AVG(age) FROM players WHERE team LIKE '" + player + "'";
+            
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                int age = rs.getInt(1);
+                return age;
+            }
+            
+        }catch(SQLException ex){
+            Logger.logInfo(ex.getMessage(), 2);
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int countNbaPlayers() throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT COUNT(*) FROM players";
+            ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
+                    int age = rs.getInt(1);
+                    return age;
+                }
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            Logger.logInfo(ex.getMessage(), 2);
+        }
+        return 0;    
+    }
+    
+    public int countMyTeamPlayers(String player) throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT COUNT(*) FROM players WHERE team LIKE '" + player + "'";
+            
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                int count = rs.getInt(1);
+                return count;
+            }
+            
+        }catch(SQLException ex){
+            Logger.logInfo(ex.getMessage(), 2);
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+    
+    
+    public Map<String, Integer> piePlayers() throws IOException{
+        List<Player> players = buscarPlayer();
+        Map<String, Integer> jugadoresEquipo = new HashMap<>();
+        
+        try(Connection conexion = Conexion.getConnection()){
+            Statement stmt = conexion.createStatement();
+            String sql = "SELECT team, COUNT(*) as cant FROM players GROUP BY team";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while(rs.next()){
+                String equipo = rs.getString("team");
+                int cantidadJug = rs.getInt("cant");
+                
+                for(Player player : players){
+                    if(equipo == player.getPlayerTeam()){
+                        jugadoresEquipo.put(player.getPlayerTeam(), cantidadJug);
+                    }
+                }
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        return jugadoresEquipo;
     }
 }

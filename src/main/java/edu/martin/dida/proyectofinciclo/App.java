@@ -61,10 +61,10 @@ public class App extends Application {
         Parent inicio = FXMLLoader.load(getClass().getResource("inicio/inicio.fxml"));
         Parent manager = FXMLLoader.load(getClass().getResource("table/EquipoTabla.fxml"));
 
-        pantallas.put("inicio", new Scene(inicio,1100,750));
+        pantallas.put("inicio", new Scene(inicio,1300,900));
         pantallas.put("login", new Scene(login,1050,850));
         pantallas.put("Register", new Scene(register,1050,850));
-        pantallas.put("manager", new Scene(manager,1100,750));
+        pantallas.put("manager", new Scene(manager,1300,900));
 
         Scene escena = pantallas.get("login");
         
