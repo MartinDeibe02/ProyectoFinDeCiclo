@@ -122,3 +122,12 @@ New Log: 2022-05-30 20:31:32
 New Log: 2022-05-30 20:49:59
 [ERROR] => java.lang.NumberFormatException: For input string: "Southeast"
 ===========================================
+New Log: 2022-05-31 20:39:48
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-05-31 20:39:48
+[ERROR] => java.lang.NullPointerException: Cannot invoke "java.sql.Connection.createStatement()" because "conexion" is null
+===========================================
+New Log: 2022-05-31 20:39:48
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================

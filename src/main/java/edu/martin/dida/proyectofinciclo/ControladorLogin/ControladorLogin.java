@@ -87,7 +87,17 @@ public class ControladorLogin implements Initializable{
 
             stage.show();
         }else if (validate==2){
-            System.out.println("ADMIN");
+            Scene scene = App.pantallas.get("admin");
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    scene.setFill(Color.TRANSPARENT);
+            moverEscena(scene, stage);
+
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.centerOnScreen();
+
+            stage.show();            
         }else if(validate==3){
             JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }
