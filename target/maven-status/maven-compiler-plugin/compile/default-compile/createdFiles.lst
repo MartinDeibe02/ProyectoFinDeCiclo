@@ -11,12 +11,15 @@ Utilidades\SendMessage$1.class
 edu\martin\dida\proyecto\conexion\PlayersDAO.class
 edu\martin\dida\proyecto\conexion\UsuariosDAO.class
 edu\martin\dida\proyectofinciclo\App.class
+edu\martin\dida\proyectofinciclo\admin\ControladorAdmin.class
 POJO\Usuario.class
 Utilidades\SendMessage.class
 edu\martin\dida\proyectofinciclo\ControladorLogin\ControladorLogin.class
 edu\martin\dida\proyectofinciclo\App$1.class
 edu\martin\dida\proyectofinciclo\ControladorLogin\ControladorRegistro.class
+.netbeans_automatic_build
 POJO\Team.class
+edu\martin\dida\proyectofinciclo\table\ControladorTabPane$1.class
 edu\martin\dida\proyectofinciclo\table\ControladorTabPane.class
 edu\martin\dida\proyectofinciclo\ControladorLogin\ControladorRegistro$2.class
 edu\martin\dida\proyecto\conexion\TeamsDAO.class

@@ -131,3 +131,151 @@ New Log: 2022-05-31 20:39:48
 New Log: 2022-05-31 20:39:48
 [ERROR] => No se ha podido establecer conexion con la base de datos
 ===========================================
+New Log: 2022-06-01 18:24:30
+[INFO] => CSV insertado
+===========================================
+New Log: 2022-06-01 18:32:10
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-01 18:32:10
+[ERROR] => java.lang.NullPointerException: Cannot invoke "java.sql.Connection.createStatement()" because "conexion" is null
+===========================================
+New Log: 2022-06-01 18:32:10
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-01 18:32:46
+[INFO] => CSV insertado
+===========================================
+New Log: 2022-06-01 19:36:38
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-01 19:36:38
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-06-01 19:44:37
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-01 19:44:37
+[INFO] => Correo mandado a martindeibe@gmail.com
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:15:32
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:21:06
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:21:06
+[ERROR] => Columna "user" no encontrada
+Column "user" not found [42122-200]
+===========================================
+New Log: 2022-06-01 21:25:00
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-01 21:25:00
+[INFO] => XML exported
+===========================================
+New Log: 2022-06-01 21:52:53
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-01 21:54:17
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-01 21:54:17
+[ERROR] => java.lang.NullPointerException: Cannot invoke "java.sql.Connection.createStatement()" because "conexion" is null
+===========================================
+New Log: 2022-06-01 21:54:17
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-01 21:55:15
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-01 21:57:34
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:05:47
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:05:47
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:05:47
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:08:37
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.NumberFormatException: For input string: "Archivo prueba"
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+===========================================
+New Log: 2022-06-01 22:10:40
+[ERROR] => java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6
+===========================================
+New Log: 2022-06-01 22:18:17
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 1"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 1"; SQL statement:
+INSERT INTO teams (id, name, abbreviation, city, conference, division, user)VALUES ('1','Atlanta Hawks','ATL','Atlanta','East','Southeast','rico') [23505-200]
+===========================================
+New Log: 2022-06-01 22:22:30
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-01 22:22:30
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-01 22:22:30
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================

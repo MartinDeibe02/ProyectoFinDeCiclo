@@ -158,7 +158,7 @@
                                           <MenuButton layoutX="887.0" mnemonicParsing="false" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Export to file" textFill="WHITE">
                                             <items>
                                               <MenuItem mnemonicParsing="false" onAction="#exportXML" text="Export to XML" />
-                                              <MenuItem mnemonicParsing="false" onAction="#exportCSV" text="Export CSV" />
+                                              <MenuItem mnemonicParsing="false" onAction="#exportCSV" text="Export to CSV" />
                                             </items>
                                              <font>
                                                 <Font size="20.0" />
@@ -427,7 +427,6 @@
                                           <TextField fx:id="txtfilter" layoutX="85.0" layoutY="20.0" prefHeight="28.0" prefWidth="141.0" />
                                           <MenuButton layoutX="263.0" layoutY="18.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Tools" textFill="WHITE">
                                             <items>
-                                              <MenuItem mnemonicParsing="false" onAction="#insertCSVPlayer" text="Import CSV" />
                                               <MenuItem mnemonicParsing="false" onAction="#exportarCSVPlayers" text="Export CSV" />
                                             </items>
                                              <font>
@@ -454,8 +453,9 @@
                                              <children>
                                                 <MenuButton layoutX="867.0" layoutY="14.0" mnemonicParsing="false" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Data options" textFill="WHITE">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamCSV" text="Export team to CSV" />
-                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamXML" text="Export Team to XML" />
+                                                    <MenuItem mnemonicParsing="false"  onAction="#insertCSVMyteam"  text="Import csv MyTeam" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamCSV" text="Export MyTeam to CSV" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#exportMyTeamXML" text="Export MyTeam to XML" />
                                                   </items>
                                                    <font>
                                                       <Font size="20.0" />

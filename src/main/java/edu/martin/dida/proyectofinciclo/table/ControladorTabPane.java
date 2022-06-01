@@ -30,6 +30,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
@@ -47,6 +48,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
@@ -72,6 +75,8 @@ import javax.xml.transform.TransformerException;
 public class ControladorTabPane  implements Initializable{
     static ArrayList<Team> listTeams = new ArrayList<>();
     static ArrayList<Player> listPlayer = new ArrayList<>();
+    static ArrayList<Player> listMyTeam = new ArrayList<>();
+
     // <editor-fold defaultstate="collapsed" desc="Chat">
 
     @FXML
@@ -239,6 +244,7 @@ public class ControladorTabPane  implements Initializable{
     ControladorLogin controlLogin = new ControladorLogin();
     TeamsDAO teamsDAO;
     PlayersDAO playerDAO;
+    String[] lineaSepTeam;
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
     static LocalDateTime now = LocalDateTime.now();  
     
@@ -314,43 +320,61 @@ public class ControladorTabPane  implements Initializable{
 
     
     public void insertCSV() throws IOException  {
-        BufferedReader br = null;
-        try {
-            FileChooser f = new FileChooser();
-            f.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV FILES", "*.csv"));
-            File file = f.showOpenDialog(null);
-            
-            if(file == null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("CSV information");
+        alert.setHeaderText("CSV format");
+        alert.setContentText("The csv must contain 6 fields");
+        
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            BufferedReader br = null;
+            try {
+                FileChooser f = new FileChooser();
+                f.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV FILES", "*.csv"));
+                File file = f.showOpenDialog(null);
+
+                if(file == null){
+
+                }else{
+
+                Path path = Paths.get(file.getAbsolutePath());
+                br = Files.newBufferedReader(path);
+                Stream<String> lineas = br.lines();
+                lineas.forEach(insert->{
+                    lineaSepTeam = insert.split(",");
+                        listTeams.add(new Team(Integer.parseInt(lineaSepTeam[0]),lineaSepTeam[1], lineaSepTeam[2], lineaSepTeam[3], lineaSepTeam[4], ControladorLogin.nombre));
+
+                            });
                 
-            }else{
+                    teamsDAO.insertarCSV(listTeams, ControladorLogin.nombre);
+                    cargarTeams();
+                    loadFilter();
+                    comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
 
-            Path path = Paths.get(file.getAbsolutePath());
-            br = Files.newBufferedReader(path);
-            Stream<String> lineas = br.lines();
-            lineas.forEach(insert->{
-                String[] lineaSep = insert.split(",");
-                listTeams.add(new Team(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], lineaSep[5]));
-                        });
-            teamsDAO.insertarCSV(listTeams, ControladorLogin.nombre);
-            cargarTeams();
-            
-            comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
-            
-           
-            
-            br.close();
-            JOptionPane.showMessageDialog(new JFrame(), "csv inserted successfully", "Info", JOptionPane.INFORMATION_MESSAGE);
 
+
+                    br.close();
+                    JOptionPane.showMessageDialog(new JFrame(), "csv inserted successfully", "Info", JOptionPane.INFORMATION_MESSAGE);
+                
+
+
+                }
+
+            } catch (IOException ex) {
+                Utilidades.Logger.logInfo(ex.toString(), 2);
+                JOptionPane.showMessageDialog(new JFrame(), "csv cannot not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }        
+            catch (Exception ex) {
+                Utilidades.Logger.logInfo(ex.toString(), 2);
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid CSV format", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
-
-        } catch (IOException ex) {
-            Utilidades.Logger.logInfo(ex.toString(), 2);
-            JOptionPane.showMessageDialog(new JFrame(), "csv cannot not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
-        }        
-        catch (Exception ex) {
-            Utilidades.Logger.logInfo(ex.toString(), 2);
-            JOptionPane.showMessageDialog(new JFrame(), "Invalid CSV format", "Error", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else if(result.isPresent() && result.get() == ButtonType.CANCEL){
+            
+            alert.close();
         }
+        
+
     }
     
     public void exportCSV() throws IOException{
@@ -485,8 +509,81 @@ public class ControladorTabPane  implements Initializable{
 
     }
     
+    
+    public void insertCSVMyteam(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("CSV information");
+        alert.setHeaderText("CSV format");
+        alert.setContentText("The csv must contain 15 fields");
+        
+        	Optional<ButtonType> result = alert.showAndWait();
+	if (result.isPresent() && result.get() == ButtonType.OK) {
+                   BufferedReader br = null;
+        try{
+            FileChooser f = new FileChooser();
+            f.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV FILES", "*.csv"));
+            File file = f.showOpenDialog(null);
+            
+            if(file == null){
+                
+            }else{
+                if(comboTeam.getSelectionModel().getSelectedItem() == null){
+                    JOptionPane.showMessageDialog(new JFrame(), "TIENES QUE ESCOGER EQUIPO", "Info", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    Path path = Paths.get(file.getAbsolutePath());
+                br = Files.newBufferedReader(path);
+                Stream<String> lineas = br.lines();
+                lineas.forEach(csv ->{
+                    String[] lineaSep = csv.split(",");
+                    listMyTeam.add(new Player(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], Integer.parseInt(lineaSep[5]),
+                lineaSep[6], lineaSep[7], lineaSep[8], lineaSep[9], Double.parseDouble(lineaSep[10]), 
+                Double.parseDouble(lineaSep[11]),Double.parseDouble(lineaSep[12]), lineaSep[13]));
+                });
+                boolean mt = true;
+                for(int i = 0; i < listMyTeam.size(); i++){
+                    if(!(listMyTeam.get(i).getPlayerTeam().contains((CharSequence) comboTeam.getSelectionModel().getSelectedItem()))){
+                        mt= false;
+                    }else{
+                        mt=true;
+                    }
+                }
+                
+                if(mt==false){
+                    JOptionPane.showMessageDialog(new JFrame(), "PROBLEMAS", "Info", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    playerDAO.insertarCSV(listMyTeam);
+                    showMyTeam();
+                    JOptionPane.showMessageDialog(new JFrame(), "CORRECTO", "Info", JOptionPane.INFORMATION_MESSAGE);
+                }
+                }
+                
+                    
+            }
+            
+        }catch(Exception ex){
+                    JOptionPane.showMessageDialog(new JFrame(), "PROBLEMAS DEL CSV", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+        }else if(result.isPresent() && result.get() == ButtonType.CANCEL){
+            
+            alert.close();
+        }
+        
+        
+ 
+    }
+    
+    
     public void insertCSVPlayer() throws IOException{
-         BufferedReader br = null;
+        
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("CSV information");
+        alert.setHeaderText("CSV format");
+        alert.setContentText("The csv must contain 15 fields");
+        
+	Optional<ButtonType> result = alert.showAndWait();
+	if (result.isPresent() && result.get() == ButtonType.OK) {
+                     BufferedReader br = null;
         try {
             FileChooser f = new FileChooser();
             f.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV FILES", "*.csv"));
@@ -503,7 +600,7 @@ public class ControladorTabPane  implements Initializable{
                 String[] lineaSep = insert.split(",");
                 listPlayer.add(new Player(Integer.parseInt(lineaSep[0]),lineaSep[1], lineaSep[2], lineaSep[3], lineaSep[4], Integer.parseInt(lineaSep[5]),
                 lineaSep[6], lineaSep[7], lineaSep[8], lineaSep[9], Double.parseDouble(lineaSep[10]), 
-                Double.parseDouble(lineaSep[11]),Double.parseDouble(lineaSep[12]), lineaSep[13], lineaSep[14]));
+                Double.parseDouble(lineaSep[11]),Double.parseDouble(lineaSep[12]), lineaSep[13]));
                         });
             playerDAO.insertarCSV(listPlayer);
             cargarPlayer();
@@ -522,6 +619,15 @@ public class ControladorTabPane  implements Initializable{
             JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
             Utilidades.Logger.logInfo(e.toString(), 2);
         }
+            
+            
+	}else if (result.isPresent() && result.get() == ButtonType.CANCEL) {
+            alert.close();
+        }
+        
+        
+        
+
     }
     
     public void loadFilter(){
@@ -602,7 +708,7 @@ public class ControladorTabPane  implements Initializable{
                 }
 
         }
-        playerDAO.saveEditTeam(player, ControladorLogin.nombre);        
+        playerDAO.saveEditTeam(player);        
         JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
         cargarPlayer();
         loadFilter();

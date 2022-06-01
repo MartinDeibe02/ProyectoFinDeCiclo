@@ -66,10 +66,8 @@ public class PlayersDAO {
                     "points DOUBLE(255)," +
                     "rebbounds DOUBLE(255)," +
                     "assist DOUBLE(255)," +
-                    "image VARCHAR(255)," +
-                    "user VARCHAR(255),"
-                    + "FOREIGN KEY(team) REFERENCES teams(name),"
-                    + "FOREIGN KEY(user) REFERENCES usuarios(user))" ;
+                    "image VARCHAR(255)," 
+                    + "FOREIGN KEY(team) REFERENCES teams(name))" ;
             statement.executeUpdate(sql);
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);
@@ -101,7 +99,6 @@ public class PlayersDAO {
                 player.setPlayerRebbounds(rs.getDouble("rebbounds"));
                 player.setPlayerAssist(rs.getDouble("assist"));
                 player.setPlayerImage(rs.getString("image"));
-                player.setPlayerUser(rs.getString("user"));
                 
                 players.add(player);
             }
@@ -112,9 +109,9 @@ public class PlayersDAO {
         return players;
     }
     
-    public void saveEditTeam(Player player, String user) throws IOException{
+    public void saveEditTeam(Player player) throws IOException{
         if(player.getPlayerId()==0){
-            insertPlayer(player, user);
+            insertPlayer(player);
         }else{
             editMyTeam(player);
         }
@@ -144,7 +141,6 @@ public class PlayersDAO {
                 player.setPlayerRebbounds(rs.getDouble("rebbounds"));
                 player.setPlayerAssist(rs.getDouble("assist"));
                 player.setPlayerImage(rs.getString("image"));
-                player.setPlayerUser(rs.getString("user"));
                 
                 playersTeam.add(player);
             }
@@ -184,8 +180,7 @@ public class PlayersDAO {
                 bw.write(rs.getString("points") + ",");
                 bw.write(rs.getString("rebbounds") + ",");
                 bw.write(rs.getString("assist") + ",");
-                bw.write(rs.getString("image") + ",");
-                bw.write(rs.getString("user") + "\n");
+                bw.write(rs.getString("image") + "\n");
             }
             bw.flush();
             bw.close();
@@ -201,8 +196,7 @@ public class PlayersDAO {
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             for(int i = 0; i<players.size(); i++){
-                System.out.println(players.get(i).getPlayerName());
-                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)"
+                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image)"
                         +"VALUES ('"+ players.get(i).getPlayerJersey()
                         +"','"+ players.get(i).getPlayerName()
                         +"','"+ players.get(i).getPlayerPosition()
@@ -216,11 +210,9 @@ public class PlayersDAO {
                         +"','"+ players.get(i).getPlayerPoints()
                         +"','"+ players.get(i).getPlayerRebbounds()
                         +"','"+ players.get(i).getPlayerAssist()
-                        +"','"+ players.get(i).getPlayerImage()
-                        +"','"+ players.get(i).getPlayerUser()+"')";
+                        +"','"+ players.get(i).getPlayerImage()+"')";
                 statement.executeUpdate(sql);
             }
-            JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
 
         
         }catch(SQLException ex){
@@ -233,11 +225,11 @@ public class PlayersDAO {
         }
     }
     
-    public void insertPlayer(Player player, String user) throws IOException {
+    public void insertPlayer(Player player) throws IOException {
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             
-                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)"
+                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image)"
                         +"VALUES ('"+ player.getPlayerJersey()
                         +"','"+ player.getPlayerName()
                         +"','"+ player.getPlayerPosition()
@@ -251,8 +243,7 @@ public class PlayersDAO {
                         +"','"+ player.getPlayerPoints()
                         +"','"+ player.getPlayerRebbounds()
                         +"','"+ player.getPlayerAssist()
-                        +"','"+ player.getPlayerImage()                        
-                        +"','"+ user+"')";
+                        +"','"+ player.getPlayerImage()+"')";
                 statement.executeUpdate(sql);
             
         }catch(SQLException e){
@@ -326,8 +317,7 @@ public class PlayersDAO {
                     bw.write(rs.getDouble("points")+ ",");
                     bw.write(rs.getDouble("rebbounds")+ ",");
                     bw.write(rs.getDouble("assist")+ ",");
-                    bw.write(rs.getString("image")+ ",");
-                    bw.write(rs.getString("user")+ "\n");
+                    bw.write(rs.getString("image")+ "\n");
                 }
                 bw.flush();
                 bw.close();

@@ -24,9 +24,8 @@ public class Player {
     private double playerRebbounds;
     private double playerAssist;
     private String playerImage;
-    private String playerUser;
 
-    public Player(int playerId, int playerJersey, String playerName, String playerPosition, String playerHeight, String playerWeight, int playerAge, String playerTeam, String playerCollege, String playerDraft, String playerNationality, double playerPoints, double playerRebbounds, double playerAssist, String playerImage, String playerUser) {
+    public Player(int playerId, int playerJersey, String playerName, String playerPosition, String playerHeight, String playerWeight, int playerAge, String playerTeam, String playerCollege, String playerDraft, String playerNationality, double playerPoints, double playerRebbounds, double playerAssist, String playerImage) {
         this.playerId = playerId;
         this.playerJersey = playerJersey;
         this.playerName = playerName;
@@ -42,13 +41,12 @@ public class Player {
         this.playerRebbounds = playerRebbounds;
         this.playerAssist = playerAssist;
         this.playerImage = playerImage;
-        this.playerUser = playerUser;
     }
 
     public Player() {
     }
 
-    public Player(int playerJersey, String playerName, String playerPosition, String playerHeight, String playerWeight, int playerAge, String playerTeam, String playerCollege, String playerDraft, String playerNationality, double playerPoints, double playerRebbounds, double playerAssist, String playerImage, String playerUser) {
+    public Player(int playerJersey, String playerName, String playerPosition, String playerHeight, String playerWeight, int playerAge, String playerTeam, String playerCollege, String playerDraft, String playerNationality, double playerPoints, double playerRebbounds, double playerAssist, String playerImage) {
         this.playerJersey = playerJersey;
         this.playerName = playerName;
         this.playerPosition = playerPosition;
@@ -63,7 +61,6 @@ public class Player {
         this.playerRebbounds = playerRebbounds;
         this.playerAssist = playerAssist;
         this.playerImage = playerImage;
-        this.playerUser = playerUser;
     }
     
     
@@ -188,17 +185,10 @@ public class Player {
         this.playerImage = playerImage;
     }
 
-    public String getPlayerUser() {
-        return playerUser;
-    }
-
-    public void setPlayerUser(String playerUser) {
-        this.playerUser = playerUser;
-    }
 
     @Override
     public String toString() {
-        return "Player{" + "playerJersey=" + playerJersey + ", playerName=" + playerName + ", playerPosition=" + playerPosition + ", playerHeight=" + playerHeight + ", playerWeight=" + playerWeight + ", playerAge=" + playerAge + ", playerTeam=" + playerTeam + ", playerCollege=" + playerCollege + ", playerDraft=" + playerDraft + ", playerNationality=" + playerNationality + ", playerPoints=" + playerPoints + ", playerRebbounds=" + playerRebbounds + ", playerAssist=" + playerAssist + ", playerImage=" + playerImage + ", playerUser=" + playerUser + '}';
+        return "Player{" + "playerJersey=" + playerJersey + ", playerName=" + playerName + ", playerPosition=" + playerPosition + ", playerHeight=" + playerHeight + ", playerWeight=" + playerWeight + ", playerAge=" + playerAge + ", playerTeam=" + playerTeam + ", playerCollege=" + playerCollege + ", playerDraft=" + playerDraft + ", playerNationality=" + playerNationality + ", playerPoints=" + playerPoints + ", playerRebbounds=" + playerRebbounds + ", playerAssist=" + playerAssist + ", playerImage=" + playerImage + '}';
     }
     
     

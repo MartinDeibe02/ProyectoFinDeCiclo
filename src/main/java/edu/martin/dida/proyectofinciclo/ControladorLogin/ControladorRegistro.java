@@ -114,14 +114,16 @@ public class ControladorRegistro implements Initializable{
                     
                     Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 1);
                     clearFields();
+                    JOptionPane.showMessageDialog(new JFrame(), "Register succesfully", "Error",JOptionPane.ERROR_MESSAGE);
+
                 }else{
-                              JOptionPane.showMessageDialog(new JFrame(), "Las contraseñas no coinciden", "Error",JOptionPane.ERROR_MESSAGE);
+                              JOptionPane.showMessageDialog(new JFrame(), "Password must match", "Error",JOptionPane.ERROR_MESSAGE);
                 }
             }else{
                 JOptionPane.showMessageDialog(new JFrame(), "The email is incorrect", "Error",JOptionPane.ERROR_MESSAGE);
             }
         }else{
-            JOptionPane.showMessageDialog(new JFrame(), "Todos los campos deben estar cubiertos", "Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "All fields must be covered", "Error",JOptionPane.ERROR_MESSAGE);
         }
         
 

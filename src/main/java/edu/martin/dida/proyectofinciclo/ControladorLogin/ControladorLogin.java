@@ -72,7 +72,15 @@ public class ControladorLogin implements Initializable{
     }
     
     public void acceder( ActionEvent event) throws IOException{
+        
+        if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
+            JOptionPane.showMessageDialog(new JFrame(), "The fields cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+        
         int validate = usersDAO.validateLogin(txtUsername.getText(), txtPassword.getText());
+        
+        
+        
         if(validate==1){
             nombre = txtUsername.getText();
                 Scene scene = App.pantallas.get("inicio");
@@ -100,6 +108,7 @@ public class ControladorLogin implements Initializable{
             stage.show();            
         }else if(validate==3){
             JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }
     
