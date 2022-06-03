@@ -4,12 +4,15 @@
  */
 package edu.martin.dida.proyectofinciclo.inicio;
 
+import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +59,7 @@ public class ControladorInicio implements Initializable{
 
     ControladorLogin contLog = new ControladorLogin();
     ControladorTabPane contMan = new ControladorTabPane();
+    public static TeamsDAO teamdao;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,6 +68,7 @@ public class ControladorInicio implements Initializable{
         setimg(rec3, img3);
         setimg(rec4, img4);
         setimg(news, noticia);
+
     }
 
     public void goManager(ActionEvent event) throws IOException{
@@ -79,9 +84,19 @@ public class ControladorInicio implements Initializable{
         
         stage.show();
         
+    teamdao = new TeamsDAO();
 
+
+    App.controller.setLblNbaAge();
+    App.controller.setLblNbaCount();
+    teamdao.insertFreeAgent();
+    App.controller.showPie();
+    App.controller.cargarPlayer();
+    App.controller.loadFilter(); 
+    App.controller.cargarTeams();
     App.controller.comboTeam.setItems(contMan.chargeTeamsCombo(contLog.nombre));
     App.controller.combodash.setItems(contMan.chargeTeamsCombo(contLog.nombre));
+
     }
     
     public void lebron(){

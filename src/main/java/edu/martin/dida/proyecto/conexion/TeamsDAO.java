@@ -58,7 +58,8 @@ try (Connection conexion = Conexion.getConnection()){
                             "conference VARCHAR(255)," +
                             "division VARCHAR(255)," +
                             "user VARCHAR(255),"
-                    + "FOREIGN KEY(user) REFERENCES usuarios(user))";
+                    + "FOREIGN KEY(user) REFERENCES usuarios(user)"
+                    + "ON UPDATE CASCADE)";
             
 
             statement.executeUpdate(sql);
@@ -121,6 +122,30 @@ try (Connection conexion = Conexion.getConnection()){
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             String sql = "SELECT * FROM teams";
+            
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                Team team = new Team();
+                team.setId(rs.getInt("id"));
+                team.setName(rs.getString("name"));
+                team.setAbbreviation(rs.getString("abbreviation"));
+                team.setCity(rs.getString("city"));
+                team.setConference(rs.getString("conference"));
+                team.setDivision(rs.getString("division"));
+                teams.add(team);
+            }
+        }catch(SQLException e){
+            //TODO
+        }
+        return  teams;
+    }
+    
+    
+        public List<Team> buscarTeamUser(String user) throws IOException{
+        List<Team> teams = new ArrayList<>();
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT * FROM teams WHERE user LIKE '" + user + "' OR user LIKE 'ADMIN'";
             
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
@@ -268,7 +293,6 @@ try (Connection conexion = Conexion.getConnection()){
     }
     
     public void deleteTeam(Team team) throws IOException, SQLException{
-        insertFreeAgent();
     try(Connection conexion = Conexion.getConnection()){
         Statement statement = conexion.createStatement();
         Statement stmt = conexion.createStatement();

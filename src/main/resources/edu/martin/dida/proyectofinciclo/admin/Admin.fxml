@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -61,7 +64,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <GridPane layoutX="536.0" layoutY="87.0" prefHeight="450.0" prefWidth="467.0" styleClass="grid">
+                              <GridPane layoutX="536.0" layoutY="87.0" prefHeight="450.0" prefWidth="490.0" styleClass="grid">
                                 <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,21 +73,38 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TableView prefHeight="609.0" prefWidth="265.0">
+                                    <TableView fx:id="tableadmin" prefHeight="448.0" prefWidth="254.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn text="User">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="User" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                        <TableColumn prefWidth="147.0" text="Email">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="email" />
+                                                    </cellValueFactory>
+                                                </TableColumn> 
                                       </columns>
                                     </TableView>
-                                    <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                    <TableView fx:id="tableuser" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                                
+                                        <TableColumn text="User">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="User" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                  
+                                                <TableColumn prefWidth="147.0" text="Email">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="email" />
+                                                    </cellValueFactory>
+                                                </TableColumn>  
                                       </columns>
                                     </TableView>
                                  </children>
                               </GridPane>
-                              <TextField layoutX="758.0" layoutY="29.0" prefHeight="26.0" prefWidth="245.0" />
+                              <TextField fx:id="txtFilterUser" layoutX="758.0" layoutY="29.0" prefHeight="26.0" prefWidth="245.0" />
                               <Text layoutX="701.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
@@ -102,7 +122,7 @@
                                           <Image url="@../../../../../recursos/user.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="232.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9">
+                                    <Text fx:id="lblCountUser" layoutX="232.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9">
                                        <font>
                                           <Font name="Corbel Light" size="50.0" />
                                        </font>
@@ -120,12 +140,16 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField GridPane.columnIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <DatePicker prefHeight="26.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtUser" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <DatePicker fx:id="txtDate" prefHeight="26.0" prefWidth="230.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtPassword" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets right="50.0" />
+                                       </GridPane.margin></TextField>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" GridPane.halignment="CENTER">
                                        <font>
                                           <Font size="20.0" />
@@ -146,12 +170,27 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Save" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                    <Button mnemonicParsing="false" onAction="#insertUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Save" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" onAction="#editUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" onAction="#desencriptar" styleClass="button1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                       <graphic>
+                                          <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../../../recursos/decrypt.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <CheckBox fx:id="checkAdmin" mnemonicParsing="false" prefHeight="30.0" prefWidth="37.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
-                              <Button layoutX="536.0" layoutY="29.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Export json" />
+                              <Button layoutX="536.0" layoutY="29.0" mnemonicParsing="false" onAction="#cargarUser" prefHeight="25.0" prefWidth="125.0" styleClass="button1" text="Export json" />
                            </children></AnchorPane>
                   </content>
                 </Tab>

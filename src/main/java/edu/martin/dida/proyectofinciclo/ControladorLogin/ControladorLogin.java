@@ -6,6 +6,8 @@ package edu.martin.dida.proyectofinciclo.ControladorLogin;
 
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
+import edu.martin.dida.proyectofinciclo.admin.ControladorAdmin;
+import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +32,7 @@ import javax.swing.JOptionPane;
  *
  * @author marti
  */
-public class ControladorLogin implements Initializable{
+public class ControladorLogin {
 
     @FXML
     private TextField txtUsername;
@@ -43,18 +45,10 @@ public class ControladorLogin implements Initializable{
 
     UsuariosDAO usersDAO;
     public static String nombre;
-    
     private double xOffset = 0;
     private double yOffset = 0;
     
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-            try {
-                usersDAO = new UsuariosDAO();
-            } catch (IOException ex) {
-                Logger.getLogger(ControladorLogin.class.getName()).log(Level.SEVERE, null, ex);
-            }
-    }
+
     
     public void signUp(ActionEvent event) throws IOException{
 
@@ -72,7 +66,7 @@ public class ControladorLogin implements Initializable{
     }
     
     public void acceder( ActionEvent event) throws IOException{
-        
+        usersDAO = new UsuariosDAO();
         if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
             JOptionPane.showMessageDialog(new JFrame(), "The fields cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
@@ -94,8 +88,10 @@ public class ControladorLogin implements Initializable{
             stage.centerOnScreen();
 
             stage.show();
+            
         }else if (validate==2){
-            Scene scene = App.pantallas.get("admin");
+            
+            Scene scene = App.scene2;
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene.setFill(Color.TRANSPARENT);
             moverEscena(scene, stage);
@@ -105,7 +101,11 @@ public class ControladorLogin implements Initializable{
 
             stage.centerOnScreen();
 
-            stage.show();            
+            stage.show();        
+            
+            App.controller1.cargarUser();
+            App.controller1.cargarAdmin();
+            App.controller1.numberUser();
         }else if(validate==3){
             JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }

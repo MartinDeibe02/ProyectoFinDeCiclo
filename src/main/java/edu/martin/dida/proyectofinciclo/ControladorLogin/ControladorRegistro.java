@@ -61,7 +61,7 @@ public class ControladorRegistro implements Initializable{
     @FXML
     private TextField txtUsername;
     
-    UsuariosDAO userDAO;
+    public static UsuariosDAO userDAO;
     SendMessage sendMessage;
     private int id;
     

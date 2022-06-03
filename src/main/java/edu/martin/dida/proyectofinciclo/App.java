@@ -1,6 +1,7 @@
 
 package edu.martin.dida.proyectofinciclo;
 
+import edu.martin.dida.proyectofinciclo.admin.ControladorAdmin;
 import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
 import edu.martin.dida.proyectofinciclo.table.ThreadRun;
 import javafx.application.Application;
@@ -24,6 +25,7 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     public static Scene scene1;
+    public static Scene scene2;
     public static HashMap<String, Scene> pantallas = new HashMap<String, Scene>();
     
     private double xOffset = 0;
@@ -36,6 +38,7 @@ public class App extends Application {
     
 
     public static ControladorTabPane controller;
+    public static ControladorAdmin controller1;
     @Override
     public void start(Stage primaryStage) throws IOException {
         
@@ -46,14 +49,21 @@ public class App extends Application {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("table/EquipoTabla.fxml"));
             Parent root = loader.load();
-            controller = (ControladorTabPane) loader.getController();  
-            
+            controller = (ControladorTabPane) loader.getController();
             scene1 = new Scene(root);
+            
+            
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("admin/Admin.fxml"));
+            Parent root1 = loader1.load();
+            controller1 = (ControladorAdmin) loader1.getController();
+            scene2 = new Scene(root1);
 
             ThreadRun a = new ThreadRun(controller);
             Thread t = new Thread(a, "hola");
-
             t.start();
+            
+            
+
             
         
         Parent login = FXMLLoader.load(getClass().getResource("login/LogIn.fxml"));

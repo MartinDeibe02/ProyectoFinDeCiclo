@@ -66,8 +66,11 @@ public class PlayersDAO {
                     "points DOUBLE(255)," +
                     "rebbounds DOUBLE(255)," +
                     "assist DOUBLE(255)," +
-                    "image VARCHAR(255)," 
-                    + "FOREIGN KEY(team) REFERENCES teams(name))" ;
+                    "image VARCHAR(255)," +
+                    "user VARCHAR(255),"+
+                    "FOREIGN KEY(team) REFERENCES teams(name)," 
+                    + "FOREIGN KEY (user) REFERENCES usuarios(user)"
+                    + "ON UPDATE CASCADE)" ;
             statement.executeUpdate(sql);
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);
@@ -109,9 +112,9 @@ public class PlayersDAO {
         return players;
     }
     
-    public void saveEditTeam(Player player) throws IOException{
+    public void saveEditTeam(Player player, String user) throws IOException{
         if(player.getPlayerId()==0){
-            insertPlayer(player);
+            insertPlayer(player ,user);
         }else{
             editMyTeam(player);
         }
@@ -192,11 +195,11 @@ public class PlayersDAO {
         }
     }    
     
-    public void insertarCSV(List<Player> players) throws IOException{
+    public void insertarCSV(List<Player> players, String user) throws IOException{
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             for(int i = 0; i<players.size(); i++){
-                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image)"
+                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image, user)"
                         +"VALUES ('"+ players.get(i).getPlayerJersey()
                         +"','"+ players.get(i).getPlayerName()
                         +"','"+ players.get(i).getPlayerPosition()
@@ -210,7 +213,8 @@ public class PlayersDAO {
                         +"','"+ players.get(i).getPlayerPoints()
                         +"','"+ players.get(i).getPlayerRebbounds()
                         +"','"+ players.get(i).getPlayerAssist()
-                        +"','"+ players.get(i).getPlayerImage()+"')";
+                        +"','"+ players.get(i).getPlayerImage()
+                        +"','"+ user+"')";
                 statement.executeUpdate(sql);
             }
 
@@ -225,11 +229,11 @@ public class PlayersDAO {
         }
     }
     
-    public void insertPlayer(Player player) throws IOException {
+    public void insertPlayer(Player player, String user) throws IOException {
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             
-                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image)"
+                String sql = "INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)"
                         +"VALUES ('"+ player.getPlayerJersey()
                         +"','"+ player.getPlayerName()
                         +"','"+ player.getPlayerPosition()
@@ -243,7 +247,8 @@ public class PlayersDAO {
                         +"','"+ player.getPlayerPoints()
                         +"','"+ player.getPlayerRebbounds()
                         +"','"+ player.getPlayerAssist()
-                        +"','"+ player.getPlayerImage()+"')";
+                        +"','"+ player.getPlayerImage()
+                        +"','"+ user+"')";
                 statement.executeUpdate(sql);
             
         }catch(SQLException e){
