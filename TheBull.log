@@ -195,3 +195,144 @@ New Log: 2022-06-03 20:08:02
 New Log: 2022-06-03 20:08:02
 [INFO] => Usuario modificado Satisfactoriamente
 ===========================================
+New Log: 2022-06-03 21:23:58
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-03 21:23:58
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"; SQL statement:
+INSERT INTO teams (id, name, abbreviation, city, conference, division, user)VALUES ('1','Atlanta Hawks','ATL','Atlanta','East','martina','martina') [23505-200]
+===========================================
+New Log: 2022-06-03 21:23:58
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"; SQL statement:
+INSERT INTO teams (id, name, abbreviation, city, conference, division, user)VALUES ('1','Atlanta Hawks','ATL','Atlanta','East','martina','martina') [23505-200]
+===========================================
+New Log: 2022-06-03 21:28:59
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-03 21:28:59
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-03 21:28:59
+[INFO] => Deleted => Team{id=1, name=Atlanta Hawks, abbreviation=ATL, city=Atlanta, conference=East, division=martina}
+===========================================
+New Log: 2022-06-03 21:34:39
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-03 21:34:39
+[INFO] => Deleted => Team{id=31, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-03 21:34:39
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-03 21:34:39
+[INFO] => Deleted => Team{id=1, name=Atlanta Hawks, abbreviation=ATL, city=Atlanta, conference=East, division=martina}
+===========================================
+New Log: 2022-06-03 22:00:08
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 13:32:38
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 13:36:40
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 13:45:28
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 13:45:28
+[INFO] => Correo mandado a martindm777@gmail.com
+===========================================
+New Log: 2022-06-04 13:49:01
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 13:49:01
+[INFO] => Correo mandado a martindm777@gmail.com
+===========================================
+New Log: 2022-06-04 14:49:03
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 14:50:40
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 14:53:20
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 16:28:58
+[INFO] => Email sent to prueba@gmail.com
+===========================================
+New Log: 2022-06-04 16:28:58
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 16:28:58
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('1','prueba','prueba','122cm','122kg','1','null','prueba','prueba','prueba','1.0','2.0','3.0','http://res.cloudinary.com/daolhlyb6/image/upload/v1654353427/tcmrtgcaxpvxtc0htsct.png','prueba') [23506-200]
+===========================================
+New Log: 2022-06-04 16:28:58
+[INFO] => Inserted => Player{playerJersey=1, playerName=prueba, playerPosition=prueba, playerHeight=122cm, playerWeight=122kg, playerAge=1, playerTeam=null, playerCollege=prueba, playerDraft=prueba, playerNationality=prueba, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654353427/tcmrtgcaxpvxtc0htsct.png}
+===========================================
+New Log: 2022-06-04 16:28:58
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('0','null','null','null','null','0','null','null','null','null','0.0','0.0','0.0','null','prueba') [23506-200]
+===========================================
+New Log: 2022-06-04 16:28:58
+[INFO] => Inserted => Player{playerJersey=0, playerName=null, playerPosition=null, playerHeight=null, playerWeight=null, playerAge=0, playerTeam=null, playerCollege=null, playerDraft=null, playerNationality=null, playerPoints=0.0, playerRebbounds=0.0, playerAssist=0.0, playerImage=null}
+===========================================
+New Log: 2022-06-04 16:28:58
+[INFO] => Inserted => Player{playerJersey=1, playerName=prueba, playerPosition=prueba, playerHeight=2cm, playerWeight=1kg, playerAge=2, playerTeam=Atlanta Hawks, playerCollege=prueba, playerDraft=prueba, playerNationality=prueba, playerPoints=2.0, playerRebbounds=2.0, playerAssist=2.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654353470/qhpd9kefs2chqbcd79uk.jpg}
+===========================================
+New Log: 2022-06-04 19:06:18
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 20:13:46
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 20:15:36
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 20:21:44
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 20:23:51
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 20:30:22
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 20:33:30
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 20:35:10
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 20:35:17
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 21:08:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================

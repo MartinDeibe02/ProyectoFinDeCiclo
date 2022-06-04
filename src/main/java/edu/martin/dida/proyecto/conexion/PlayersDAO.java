@@ -106,8 +106,9 @@ public class PlayersDAO {
                 players.add(player);
             }
             
-        }catch(SQLException ex){
-            Logger.logInfo(ex.getMessage(), 2);
+        }catch(Exception e){
+            e.printStackTrace();
+            Logger.logInfo(e.getMessage(), 1);
         }
         return players;
     }

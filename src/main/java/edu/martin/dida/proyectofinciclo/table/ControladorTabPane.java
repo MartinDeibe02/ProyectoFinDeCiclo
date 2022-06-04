@@ -11,6 +11,7 @@ import com.cloudinary.utils.ObjectUtils;
 import edu.martin.dida.proyecto.conexion.Conexion;
 import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
+import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import edu.martin.dida.proyectofinciclo.inicio.ControladorInicio;
@@ -407,7 +408,10 @@ public class ControladorTabPane  implements Initializable{
     public void editTeam(){
         Team team = (Team) tablaTeams.getSelectionModel().getSelectedItem();
         
-        if(!(team == null)){
+        if(team.getName().equals("Agente Libre")){
+            JOptionPane.showMessageDialog(new JFrame(), "You cant edit this team", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+           if(!(team == null)){
             txtTeamName.setText(team.getName());
             txtTeamAbbreviation.setText(team.getAbbreviation());
             txtTeamCity.setText(team.getCity());
@@ -417,11 +421,14 @@ public class ControladorTabPane  implements Initializable{
             idTeam= team.getId();
         }else{
             JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);        
+        } 
         }
+        
     }
     
     public void deleteTeam() throws IOException, SQLException{
         Team team = (Team) tablaTeams.getSelectionModel().getSelectedItem();
+        
         
         if(team == null){
             JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -887,7 +894,9 @@ public class ControladorTabPane  implements Initializable{
         stage.show();
     }
     
-    public void exit(){
+    public void exit() throws IOException{
+        UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
+
         System.exit(0);
     }
     

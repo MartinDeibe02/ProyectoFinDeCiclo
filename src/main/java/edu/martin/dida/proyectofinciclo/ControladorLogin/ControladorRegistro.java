@@ -112,9 +112,9 @@ public class ControladorRegistro implements Initializable{
                     
                     userDAO.insertLogin(user);
                     
-                    Logger.logear().logInfo("Correo mandado a " + txtEmail.getText(), 1);
+                    Logger.logear().logInfo("Email sent to " + txtEmail.getText(), 1);
                     clearFields();
-                    JOptionPane.showMessageDialog(new JFrame(), "Register succesfully", "Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "Register succesfully", "Error",JOptionPane.INFORMATION_MESSAGE);
 
                 }else{
                               JOptionPane.showMessageDialog(new JFrame(), "Password must match", "Error",JOptionPane.ERROR_MESSAGE);

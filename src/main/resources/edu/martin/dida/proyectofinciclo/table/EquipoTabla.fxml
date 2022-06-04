@@ -39,8 +39,6 @@
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.80003662109374" minWidth="10.0" prefWidth="249.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.80003662109374" minWidth="10.0" prefWidth="124.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.73330688476562" minWidth="10.0" prefWidth="140.0" />
-                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="320.8000854492187" minWidth="10.0" prefWidth="109.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.60003662109375" minWidth="10.0" prefWidth="162.26673583984382" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="393.60003662109375" minWidth="10.0" prefWidth="113.39997558593745" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="326.1333374023437" minWidth="10.0" prefWidth="281.4000244140625" />
@@ -54,24 +52,8 @@
                               <Image url="@../../../../../recursos/TheBullBallWhite1.png" />
                            </image>
                         </ImageView>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Roster" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Draft" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER">
-                           <font>
-                              <Font size="25.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                         <Separator prefWidth="200.0" stylesheets="@../../../../../css/inicio.css" GridPane.columnSpan="2147483647" GridPane.valignment="BOTTOM" />
-                        <Button mnemonicParsing="false" onAction="#goManager" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Manager" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#goManager" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="Manager" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -79,7 +61,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="5">
+                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="3">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -87,7 +69,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <MenuButton alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="6" GridPane.halignment="CENTER">
+                        <MenuButton alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Ajustes" />
                             <MenuItem mnemonicParsing="false" text="Opciones" />
@@ -453,7 +435,7 @@
                                              <children>
                                                 <MenuButton layoutX="867.0" layoutY="14.0" mnemonicParsing="false" styleClass="button" stylesheets="@../../../../../css/cssTable.css" text="Data options" textFill="WHITE">
                                                   <items>
-                                                    <MenuItem mnemonicParsing="false"  onAction="#insertCSVMyteam"  text="Import csv MyTeam" />
+                                                    <MenuItem mnemonicParsing="false" onAction="#insertCSVMyteam" text="Import csv MyTeam" />
                                                     <MenuItem mnemonicParsing="false" onAction="#exportMyTeamCSV" text="Export MyTeam to CSV" />
                                                     <MenuItem mnemonicParsing="false" onAction="#exportMyTeamXML" text="Export MyTeam to XML" />
                                                   </items>
@@ -670,7 +652,7 @@
                                        </children></AnchorPane>
                                 </content>
                               </Tab>
-                              <Tab text="Chat">
+                              <Tab text="Stats">
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
@@ -679,7 +661,7 @@
                                              <font>
                                                 <Font size="20.0" />
                                              </font></Button>
-                                          <TextArea fx:id="recibidos" layoutX="631.0" layoutY="299.0" prefHeight="351.0" prefWidth="450.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
+                                          <TextArea fx:id="recibidos" editable="false" layoutX="631.0" layoutY="299.0" prefHeight="351.0" prefWidth="450.0" styleClass="chatBack" stylesheets="@../../../../../css/cssChat.css" />
                                           <Pane layoutX="47.0" layoutY="60.0" prefHeight="200.0" prefWidth="500.0" styleClass="borderFicha" AnchorPane.leftAnchor="50.0">
                                              <children>
                                                 <Label layoutX="196.0" text="Average age" textFill="WHITE">

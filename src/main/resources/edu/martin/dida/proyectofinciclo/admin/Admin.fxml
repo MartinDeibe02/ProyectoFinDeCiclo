@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -122,7 +124,7 @@
                                           <Image url="@../../../../../recursos/user.png" />
                                        </image>
                                     </ImageView>
-                                    <Text fx:id="lblCountUser" layoutX="232.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="9">
+                                    <Text fx:id="lblCountUser" layoutX="232.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0">
                                        <font>
                                           <Font name="Corbel Light" size="50.0" />
                                        </font>
@@ -190,18 +192,271 @@
                                     <CheckBox fx:id="checkAdmin" mnemonicParsing="false" prefHeight="30.0" prefWidth="37.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
-                              <Button layoutX="536.0" layoutY="29.0" mnemonicParsing="false" onAction="#cargarUser" prefHeight="25.0" prefWidth="125.0" styleClass="button1" text="Export json" />
+                              <Button layoutX="536.0" layoutY="29.0" mnemonicParsing="false" onAction="#getJson" prefHeight="25.0" prefWidth="125.0" styleClass="button1" text="Export json" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Player">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="TablePlayerUser" layoutX="485.0" layoutY="25.0" prefHeight="550.0" prefWidth="550.0">
+                                <columns>
+                                                <TableColumn prefWidth="87.0" text="Jersey">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="playerJersey" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="87.0" text="Name">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="playerName" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                
+                                                <TableColumn prefWidth="87.0" text="Position">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="playerPosition" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                
+                                                
+                                                <TableColumn prefWidth="87.0" text="Team">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="playerTeam" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                
+                                                
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="playerNationality" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                </columns>
+                              </TableView>
+                              <GridPane layoutX="33.0" layoutY="44.0" prefHeight="500.0" prefWidth="417.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Jersey" GridPane.halignment="CENTER">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="txtJersey" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtPosition" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtWeight" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets right="120.0" />
+                                       </GridPane.margin></TextField>
+                                    <TextField fx:id="txtPoints" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets right="150.0" />
+                                       </GridPane.margin></TextField>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wheight/Height" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Position" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Draft Age" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="College" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nationality" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Average Stats" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="txtDraft" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="txtCollege" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="txtNationality" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Team" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox fx:id="comboTeam" prefHeight="25.0" prefWidth="246.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <Slider fx:id="slider" prefHeight="14.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets right="70.0" />
+                                       </GridPane.margin>
+                                    </Slider>
+                                    <TextField fx:id="txtAge" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets left="140.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#insertPlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Save" GridPane.rowIndex="11" />
+                                    <Button mnemonicParsing="false" onAction="#editPlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+                                    <Button mnemonicParsing="false" onAction="#deletePlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
+                                    <TextField fx:id="txtImage" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Button mnemonicParsing="false" onAction="#getImage" styleClass="button1" text="Choose image" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets left="110.0" />
+                                       </GridPane.margin>
+                                    </Button>
+                                    <TextField fx:id="txtHeight" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <GridPane.margin>
+                                          <Insets left="120.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="/" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <GridPane.margin>
+                                          <Insets left="100.0" />
+                                       </GridPane.margin>
+                                    </Text>
+                                    <TextField fx:id="txtAssist" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets left="80.0" right="80.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="txtRebbounds" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                       <GridPane.margin>
+                                          <Insets left="150.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Teams">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tab" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tab">
+                           <children>
+                              <TableView layoutX="485.0" layoutY="25.0" prefHeight="550.0" prefWidth="550.0">
+                                <columns>
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="name" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                  
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="abbreviation" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="city" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="conference" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="division" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                </columns>
+                              </TableView>
+                              <GridPane layoutX="62.0" layoutY="25.0" prefHeight="560.0" prefWidth="356.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Abbreviation" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Conference" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Division" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField GridPane.columnIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                 </children>
+                              </GridPane>
+                           </children></AnchorPane>
                     </content>
                   </Tab>
               </tabs>

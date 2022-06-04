@@ -88,9 +88,9 @@ public class ControladorLogin {
             stage.centerOnScreen();
 
             stage.show();
-            
+            UsuariosDAO.updateStatusOnline(nombre);
         }else if (validate==2){
-            
+            nombre = txtUsername.getText();
             Scene scene = App.scene2;
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     scene.setFill(Color.TRANSPARENT);
@@ -106,6 +106,9 @@ public class ControladorLogin {
             App.controller1.cargarUser();
             App.controller1.cargarAdmin();
             App.controller1.numberUser();
+            App.controller1.cargarPlayers();
+            App.controller1.comboTeam.setItems(App.controller1.chargeTeamsCombo());
+            UsuariosDAO.updateStatusOnline(nombre);
         }else if(validate==3){
             JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }
