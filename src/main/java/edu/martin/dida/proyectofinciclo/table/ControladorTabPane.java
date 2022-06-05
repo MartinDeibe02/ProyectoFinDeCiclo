@@ -54,6 +54,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -78,6 +80,9 @@ public class ControladorTabPane  implements Initializable{
     static ArrayList<Team> listTeams = new ArrayList<>();
     static ArrayList<Player> listPlayer = new ArrayList<>();
     static ArrayList<Player> listMyTeam = new ArrayList<>();
+    
+    @FXML
+    MenuButton salir;
 
     // <editor-fold defaultstate="collapsed" desc="Chat">
 
@@ -268,8 +273,7 @@ public class ControladorTabPane  implements Initializable{
                 try{
                     sliderAge.setValue(Integer.parseInt(txtMyTeamAge.getText()));
                 }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(new JFrame(), "You cant put letters", "Error", JOptionPane.ERROR_MESSAGE);
-                    txtMyTeamAge.clear();
+                    
                 }
             });
             
@@ -328,7 +332,7 @@ public class ControladorTabPane  implements Initializable{
                 Stream<String> lineas = br.lines();
                 lineas.forEach(insert->{
                     lineaSepTeam = insert.split(",");
-                        listTeams.add(new Team(Integer.parseInt(lineaSepTeam[0]),lineaSepTeam[1], lineaSepTeam[2], lineaSepTeam[3], lineaSepTeam[4], ControladorLogin.nombre));
+                        listTeams.add(new Team(Integer.parseInt(lineaSepTeam[0]),lineaSepTeam[1], lineaSepTeam[2], lineaSepTeam[3], lineaSepTeam[4], lineaSepTeam[5]));
 
                             });
                 
@@ -348,11 +352,11 @@ public class ControladorTabPane  implements Initializable{
 
             } catch (IOException ex) {
                 Utilidades.Logger.logInfo(ex.toString(), 2);
-                JOptionPane.showMessageDialog(new JFrame(), "csv cannot not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "csv cannot not be inserted", "Error", JOptionPane.ERROR_MESSAGE);
             }        
             catch (Exception ex) {
                 Utilidades.Logger.logInfo(ex.toString(), 2);
-                JOptionPane.showMessageDialog(new JFrame(), "Invalid CSV format", "Error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid CSV format", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         }else if(result.isPresent() && result.get() == ButtonType.CANCEL){
@@ -364,11 +368,11 @@ public class ControladorTabPane  implements Initializable{
     }
     
     public void exportCSV() throws IOException{
-        ControladorInicio.teamdao.exportarCSV();
+        ControladorInicio.teamdao.exportarCSV(ControladorLogin.nombre);
     }
     
     public void exportXML() throws IOException, ParserConfigurationException, TransformerException{
-        ControladorInicio.teamdao.exportarXML();
+        ControladorInicio.teamdao.exportarXML(ControladorLogin.nombre);
     }
     
         // </editor-fold>
@@ -402,6 +406,7 @@ public class ControladorTabPane  implements Initializable{
             clearTeamFields();
             showPie();
             Utilidades.Logger.logInfo("Equipo insertado " + team.toString(), 1);
+            JOptionPane.showMessageDialog(new JFrame(), "Team inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -447,12 +452,13 @@ public class ControladorTabPane  implements Initializable{
             combodash.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
+            JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
         }
     }
 
     public void cargarTeams() throws IOException {
         ObservableList<Team> teams = FXCollections.observableArrayList();
-        List<Team> teams2 = ControladorInicio.teamdao.buscarTeamUser(controlLogin.nombre);
+        List<Team> teams2 = ControladorInicio.teamdao.buscarTeamUser(ControladorLogin.nombre);
         teams.addAll(teams2);
         tablaTeams.setItems(teams);
     }
@@ -549,7 +555,7 @@ public class ControladorTabPane  implements Initializable{
                 }
                 
                 if(mt==false){
-                    JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.ERROR);
                 }else{
                     playerDAO.insertarCSV(listMyTeam, controlLogin.nombre);
                     showMyTeam();
@@ -614,10 +620,10 @@ public class ControladorTabPane  implements Initializable{
             }
         } catch (IOException ex) {
             Utilidades.Logger.logInfo(ex.getMessage(), 2);
-            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.ERROR);
 
         }catch(Exception e){
-            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.ERROR);
             Utilidades.Logger.logInfo(e.toString(), 2);
         }
             
@@ -668,6 +674,7 @@ public class ControladorTabPane  implements Initializable{
     }
     
     public void insertMyTeam() throws IOException{
+        try{
         Player player = new Player();
         playerDAO = new PlayersDAO();
         if(txtMyTeamJersey.getText().isEmpty() || txtMyTeamName.getText().isEmpty() || txtMyTeamPosition.getText().isEmpty() || txtMyTeamWeight.getText().isEmpty()
@@ -693,6 +700,20 @@ public class ControladorTabPane  implements Initializable{
                     player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
                     player.setPlayerImage(txtMyTeamImage.getText());  
                     player.setPlayerId(idPlayer);
+                    
+                    
+                    playerDAO.saveEditTeam(player, ControladorLogin.nombre);        
+                    JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    cargarPlayer();
+                    loadFilter();
+                    showMyTeam();
+                    showPie();
+                    setLblNbaCount();
+                    setLblNbaAge();
+                    clearMyTeamFields();
+                    idPlayer=0;
+                    Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
+                    
                 }else{
                     player.setPlayerJersey(Integer.parseInt(txtMyTeamJersey.getText()));
                     player.setPlayerName(txtMyTeamName.getText());
@@ -708,19 +729,27 @@ public class ControladorTabPane  implements Initializable{
                     player.setPlayerRebbounds(Double.parseDouble(txtMyTeamRebbounds.getText()));
                     player.setPlayerAssist(Double.parseDouble(txtMyTeamAssist.getText()));
                     player.setPlayerImage(dinary(txtMyTeamImage.getText()));    
-                    player.setPlayerId(idPlayer);                
+                    player.setPlayerId(idPlayer);      
+                    
+                    
+                    playerDAO.saveEditTeam(player, ControladorLogin.nombre);        
+                    JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    cargarPlayer();
+                    loadFilter();
+                    showMyTeam();
+                    showPie();
+                    setLblNbaCount();
+                    setLblNbaAge();
+                    clearMyTeamFields();
+                    idPlayer=0;
+                    Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
+                    
                 }
-
         }
-        playerDAO.saveEditTeam(player, ControladorLogin.nombre);        
-        JOptionPane.showMessageDialog(new JFrame(), "Player succesfully inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
-        cargarPlayer();
-        loadFilter();
-        showMyTeam();
-        showPie();
-        clearMyTeamFields();
-        idPlayer=0;
-        Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
+        }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(new JFrame(), "You cannot put letters in (Jersey, Age, Points/Assists/Rebbounds)", "Info", JOptionPane.ERROR_MESSAGE);
+        }
+        
 
   
 
@@ -764,7 +793,10 @@ public class ControladorTabPane  implements Initializable{
             cargarPlayer();
             showMyTeam();
             loadFilter();
+            setLblNbaCount();
+            setLblNbaAge();
             Utilidades.Logger.logInfo("Deleted => " + player.toString() , 1);
+            JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
         }
     }
     
@@ -828,6 +860,10 @@ public class ControladorTabPane  implements Initializable{
     
     // </editor-fold>
     
+    
+    
+    
+    
     public void setLblNbaAge() throws IOException{
         playerDAO = new PlayersDAO();
         lblagenba.setText(String.valueOf(playerDAO.ageNbaQuery()));
@@ -839,13 +875,11 @@ public class ControladorTabPane  implements Initializable{
         lblnumbermyteam.setText(String.valueOf(playerDAO.countMyTeamPlayers((String) combodash.getSelectionModel().getSelectedItem())));
     }
     
-
     public void setLblNbaCount() throws IOException{
         playerDAO = new PlayersDAO();
         lblnumbernba.setText(String.valueOf(playerDAO.countNbaPlayers()));
     }       
-    
-    
+      
     public void showPie() throws IOException{
         playerDAO = new PlayersDAO();
         Map<String, Integer> jugadoresEquipo = playerDAO.piePlayers();
@@ -894,10 +928,37 @@ public class ControladorTabPane  implements Initializable{
         stage.show();
     }
     
+    public void goNews(ActionEvent event){
+        Scene scene = App.pantallas.get("news");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene.setFill(Color.TRANSPARENT);        
+        stage.setScene(scene);
+        stage.centerOnScreen();
+
+        stage.centerOnScreen();
+
+        stage.show();
+    }
+    
     public void exit() throws IOException{
         UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
 
         System.exit(0);
+    }
+    
+        public void logOut(ActionEvent event) throws IOException{
+        UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
+        
+         Scene scene = App.pantallas.get("login");
+            Stage stage = (Stage) salir.getScene().getWindow();
+                    scene.setFill(Color.TRANSPARENT);
+
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.centerOnScreen();
+
+            stage.show();
     }
     
     // </editor-fold>

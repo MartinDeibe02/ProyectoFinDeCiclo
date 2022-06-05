@@ -63,6 +63,15 @@ public class UsuariosDAO {
             editPlayer(player);
         }
     }
+    
+    public void saveEditTeam(Team team) throws IOException{
+            if(team.getId() == 0){
+                insertTeam(team);
+            }else{
+                editTeam(team);
+            }
+    }
+    
 
     public void insertAdmin() throws IOException{
         try(Connection conexion = Conexion.getConnection()){
@@ -70,13 +79,13 @@ public class UsuariosDAO {
             
                 String sql = "SELECT * FROM usuarios WHERE user LIKE 'ADMIN'";
                 ResultSet rs = statement.executeQuery(sql);
-                if(!(rs.next())){
+                while(!(rs.next())){
                     Statement statement1 = conexion.createStatement();
                     String sql2= "INSERT INTO usuarios(user,email, dateBirth,password, permisos) "
                             + "VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin')";
                     statement1.executeUpdate(sql2);
-
                 }
+
             
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
@@ -174,7 +183,7 @@ public class UsuariosDAO {
     }
     
     
-        public static void updateStatusOnline(String user) throws IOException {
+    public static void updateStatusOnline(String user) throws IOException {
         try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             String sql = "UPDATE usuarios SET status = 'online' WHERE user LIKE '" + user + "'";
@@ -185,7 +194,7 @@ public class UsuariosDAO {
         }    
     }        
         
-        public static void updateStatusOffline(String user) throws IOException {
+    public static void updateStatusOffline(String user) throws IOException {
         try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             String sql = "UPDATE usuarios SET status = 'offline' WHERE user LIKE '" + user + "'";
@@ -196,7 +205,7 @@ public class UsuariosDAO {
         }    
     }
         
-        public static boolean getStatus(String user) throws IOException{
+    public static boolean getStatus(String user) throws IOException{
             try (Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             String sql = "SELECT * FROM usuarios WHERE user LIKE '"+ user + "' AND status LIKE 'online'";
@@ -225,7 +234,7 @@ public class UsuariosDAO {
                     +"','"+ user.getPermisos() +"');";
             
                     statement.executeUpdate(sql);
-                    Logger.logear().logInfo("Usuario modificado Satisfactoriamente", 1);
+                    Logger.logear().logInfo("Usuario insertado Satisfactoriamente", 1);
 
         }catch(SQLException e){
             e.printStackTrace();
@@ -245,6 +254,7 @@ public class UsuariosDAO {
             statementPlayer.executeUpdate(sqlPlayer);
             statementTeam.executeUpdate(sqlTeam);
             statementUser.executeUpdate(sqlUser);
+            Logger.logear().logInfo("Usuario borrado", 1);
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -438,7 +448,7 @@ public class UsuariosDAO {
         }
     }
     
-        public void deletePlayer(Player player) throws IOException{
+    public void deletePlayer(Player player) throws IOException{
             try(Connection conexion = Conexion.getConnection()){
         Statement stmt = conexion.createStatement();
         String sql = "DELETE FROM players WHERE id=" + player.getPlayerId();
@@ -449,6 +459,84 @@ public class UsuariosDAO {
     }
     
     
+    public List<Team> buscarTeam() throws IOException{
+        List<Team> teams = new ArrayList<>();
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT * FROM teams";
+            
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                Team team = new Team();
+                team.setId(rs.getInt("id"));
+                team.setName(rs.getString("name"));
+                team.setAbbreviation(rs.getString("abbreviation"));
+                team.setCity(rs.getString("city"));
+                team.setConference(rs.getString("conference"));
+                team.setDivision(rs.getString("division"));
+                team.setUser(rs.getString("user"));
+                teams.add(team);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return  teams;
+    }
+
+    
+    
+    private void insertTeam(Team team) throws IOException {
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            
+                String sql = "INSERT INTO teams (name, abbreviation, city, conference, division, user)"
+                        +"VALUES ('"+ team.getName()
+                        +"','"+ team.getAbbreviation()
+                        +"','"+ team.getCity()
+                        +"','"+ team.getConference()
+                        +"','"+ team.getDivision()
+                        +"','"+ team.getUser()+"');";
+                statement.executeUpdate(sql);
+            
+        }catch(SQLException e){
+            Logger.logInfo(e.getMessage(), 2);
+            e.printStackTrace();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    private void editTeam(Team team) throws IOException {
+    try(Connection conexion = Conexion.getConnection()){
+                Statement statement = conexion.createStatement();
+        String sql = "UPDATE teams SET name = '" + team.getName()
+                    + "',abbreviation = '" + team.getAbbreviation()
+                    + "',city = '" + team.getCity()
+                    + "',conference = '" + team.getConference()
+                    + "',division = '" + team.getDivision()
+                    + "',user = '" + team.getUser()
+                    + "' WHERE id= " + team.getId();
+                    statement.executeUpdate(sql);
+
+            }catch(SQLException e){
+                Logger.logInfo(e.getMessage(), 2);
+            }
+    }
+    
+    public void deleteTeam(Team team) throws IOException{
+        try (Connection conexion = Conexion.getConnection()){
+            Statement statementPlayer = conexion.createStatement();
+            Statement statementTeam = conexion.createStatement();
+            
+            String sqlPlayer = "UPDATE players SET team = 'Agente Libre' WHERE team LIKE '" + team.getName() +"'";
+            String sqlTeam = "DELETE FROM teams WHERE id=" + team.getId();
+            
+            statementPlayer.executeUpdate(sqlPlayer);
+            statementTeam.executeUpdate(sqlTeam);
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
     
     
     

@@ -163,22 +163,42 @@ try (Connection conexion = Conexion.getConnection()){
         }
         return  teams;
     }
+        
+    public List<Team> buscarTeamByUser(String user) throws IOException{
+        List<Team> teams = new ArrayList<>();
+        try(Connection conexion = Conexion.getConnection()){
+            Statement statement = conexion.createStatement();
+            String sql = "SELECT * FROM teams WHERE user LIKE '" + user + "'";
+            
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                Team team = new Team();
+                team.setId(rs.getInt("id"));
+                team.setName(rs.getString("name"));
+                team.setAbbreviation(rs.getString("abbreviation"));
+                team.setCity(rs.getString("city"));
+                team.setConference(rs.getString("conference"));
+                team.setDivision(rs.getString("division"));
+                teams.add(team);
+            }
+        }catch(SQLException e){
+            //TODO
+        }
+        return  teams;
+    }
     
-    public void exportarCSV() throws IOException{
+    public void exportarCSV(String user) throws IOException{
         Path path = Paths.get(System.getProperty("user.dir") + "/teams.csv");
 
         try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
-            String sql = "SELECT * FROM teams";
+            String sql = "SELECT * FROM teams WHERE user LIKE '" + user + "'";
             
-            BufferedWriter bw;
             
             ResultSet rs = statement.executeQuery(sql);
-            if(!(rs.next())){
-                JOptionPane.showMessageDialog(new JFrame(), "You cant export an empty CSV", "Error", JOptionPane.INFORMATION_MESSAGE);
-
-            }else{
-                bw = Files.newBufferedWriter(path);
+            
+            BufferedWriter bw = Files.newBufferedWriter(path);
+                
              while(rs.next()){
                 bw.write(rs.getInt("id") + ",");
                 bw.write(rs.getString("name") + ",");
@@ -191,18 +211,19 @@ try (Connection conexion = Conexion.getConnection()){
             bw.close();
             JOptionPane.showMessageDialog(new JFrame(), "csv export succesfully", "Error", JOptionPane.INFORMATION_MESSAGE);
    
-            }
+            
             
         }catch(SQLException e){
+            e.printStackTrace();
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
 
         }
     }
         
         
-    public void exportarXML() throws IOException, TransformerException{
+    public void exportarXML(String user) throws IOException, TransformerException{
         try {
-            List<Team> lista = buscarTeam();
+            List<Team> lista = buscarTeamByUser(user);
             
             if(lista.size()==0){
             JOptionPane.showMessageDialog(new JFrame(), "You cant export an empty XML", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -253,7 +274,7 @@ try (Connection conexion = Conexion.getConnection()){
                 Logger.logInfo(ex.toString(), 2);
             } catch (ParserConfigurationException ex) {
                 Logger.logInfo(ex.toString(), 2);
-        }
+            }
             
             
     }

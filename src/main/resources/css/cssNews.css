@@ -1,0 +1,66 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 03-may-2022, 9:49:01
+    Author     : martin-deibe
+*/
+
+.img{
+    -fx-background-image:url('../recursos/Bull.jpg');
+    -fx-background-size: cover;
+    -fx-border-radius: 50px;
+    
+}
+
+.logoImg{
+    -fx-background-image:url('../recursos/TheBullWhite2.png');
+    -fx-background-size: cover;
+    -fx-border-radius: 50px;
+    
+}
+
+#topImage{
+    -fx-background-color: rgba(0,0,0,0.5);
+    -fx-background-size: cover;
+}
+
+.separator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: white;
+}
+
+.button{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.buttonBar{
+    
+}
+.buttonBar:hover {-fx-background-color: #CDD0D7;
+       -fx-border-radius:50px;
+}
+.destacados{
+    -fx-background-radius: 50px 50px 50px 50px;
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-border-radius: 0 50px 50px 0;
+}
+
+.consulta{
+    -fx-background-radius: 50px 50px 50px 50px;
+    -fx-background-color: rgba(255,255,255,0.5);
+    -fx-border-radius: 0 50px 50px 0;
+}
+
+.botton{
+
+}
+
+.botton:hover{
+        -fx-border-width: 0 0 3 0;
+-fx-border-color: white;
+}
+
+

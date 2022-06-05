@@ -49,7 +49,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button mnemonicParsing="false" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="3">
+                        <Button mnemonicParsing="false" onAction="#goNews" styleClass="botton" stylesheets="@../../../../../css/inicio.css" text="News" textFill="WHITE" GridPane.columnIndex="3">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -57,18 +57,17 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <MenuButton alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+                        <MenuButton fx:id="salir" alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Ajustes" />
-                            <MenuItem mnemonicParsing="false" text="Opciones" />
-                            <MenuItem mnemonicParsing="false" text="Exit" />
+                            <MenuItem mnemonicParsing="false" text="Log Out" />
+                            <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
 
                           </items>
                            <font>
                               <Font size="25.0" />
                            </font>
                         </MenuButton>
-                        <Button mnemonicParsing="false" onAction="#goHome" text="Home" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#goHome" styleClass="botton" text="Home" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>

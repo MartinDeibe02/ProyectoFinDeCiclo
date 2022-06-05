@@ -5,6 +5,7 @@
 package edu.martin.dida.proyectofinciclo.inicio;
 
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
+import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
@@ -19,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -57,6 +59,10 @@ public class ControladorInicio implements Initializable{
         
     // </editor-fold>
 
+        
+     @FXML
+     MenuButton salir;
+        
     ControladorLogin contLog = new ControladorLogin();
     ControladorTabPane contMan = new ControladorTabPane();
     public static TeamsDAO teamdao;
@@ -72,7 +78,7 @@ public class ControladorInicio implements Initializable{
     }
 
     public void goManager(ActionEvent event) throws IOException{
-        Scene scene = App.scene1;
+        Scene scene = App.scene3;
 
         
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -103,8 +109,35 @@ public class ControladorInicio implements Initializable{
         System.out.println("hola");
     }
     
+    public void logOut(ActionEvent event) throws IOException{
+        UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
+        
+         Scene scene = App.pantallas.get("login");
+            Stage stage = (Stage) salir.getScene().getWindow();
+                    scene.setFill(Color.TRANSPARENT);
+
+            stage.setScene(scene);
+            stage.centerOnScreen();
+
+            stage.centerOnScreen();
+
+            stage.show();
+    }
+    
     public void goHome(ActionEvent event){
         Scene scene = App.pantallas.get("inicio");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene.setFill(Color.TRANSPARENT);        
+        stage.setScene(scene);
+        stage.centerOnScreen();
+
+        stage.centerOnScreen();
+
+        stage.show();
+    }
+    
+    public void goNews(ActionEvent event){
+        Scene scene = App.pantallas.get("news");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene.setFill(Color.TRANSPARENT);        
         stage.setScene(scene);
@@ -124,5 +157,11 @@ public class ControladorInicio implements Initializable{
 
         rec1.setFill(pattern);
         rec1.setEffect(new DropShadow(20, Color.BLACK));    
+    }
+    
+    public void exit() throws IOException{
+        UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
+
+        System.exit(0);
     }
 }

@@ -336,3 +336,404 @@ SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
 New Log: 2022-06-04 21:08:55
 [ERROR] => No se ha podido establecer conexion con la base de datos
 ===========================================
+New Log: 2022-06-04 23:08:20
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 23:08:20
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image, user)VALUES ('0','null','null','null','null','0','null','null','null','null','0.0','0.0','0.0','null','martin') [23506-200]
+===========================================
+New Log: 2022-06-04 23:08:20
+[INFO] => Inserted => Player{playerJersey=0, playerName=null, playerPosition=null, playerHeight=null, playerWeight=null, playerAge=0, playerTeam=null, playerCollege=null, playerDraft=null, playerNationality=null, playerPoints=0.0, playerRebbounds=0.0, playerAssist=0.0, playerImage=null}
+===========================================
+New Log: 2022-06-04 23:24:02
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 23:25:10
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 23:25:56
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-04 23:26:20
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 23:28:52
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-04 23:29:03
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-04 23:30:27
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 01:34:32
+[ERROR] => Error de Sintaxis en sentencia SQL "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab',[*]'ADMIN);"
+Syntax error in SQL statement "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab',[*]'ADMIN);"; SQL statement:
+INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab','ADMIN); [42000-200]
+===========================================
+New Log: 2022-06-05 01:34:32
+[ERROR] => Error de Sintaxis en sentencia SQL "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab',[*]'ADMIN);"
+Syntax error in SQL statement "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab',[*]'ADMIN);"; SQL statement:
+INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('preuab','preuab','preuab','preuab','preuab','ADMIN); [42000-200]
+===========================================
+New Log: 2022-06-05 01:35:42
+[ERROR] => Error de Sintaxis en sentencia SQL "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('PRUEBA','PRUEBA','PRUEBA','PRUEBA','PRUEBA',[*]'ADMIN);"
+Syntax error in SQL statement "INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('PRUEBA','PRUEBA','PRUEBA','PRUEBA','PRUEBA',[*]'ADMIN);"; SQL statement:
+INSERT INTO teams (name, abbreviation, city, conference, division, user)VALUES ('PRUEBA','PRUEBA','PRUEBA','PRUEBA','PRUEBA','ADMIN); [42000-200]
+===========================================
+New Log: 2022-06-05 13:00:00
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 13:00:14
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 13:00:32
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 15:58:02
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-05 15:58:02
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-05 16:48:34
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 16:48:34
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 16:48:34
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 16:55:32
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:53:50
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:53:50
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:53:50
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:54:56
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:55:28
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:55:28
+[INFO] => Equipo insertado Team{id=0, name=MARTIN, abbreviation=MARTIN, city=MARTIN, conference=MARTIN, division=MARTIN}
+===========================================
+New Log: 2022-06-05 17:57:58
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 17:59:53
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:04:31
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:04:31
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Email sent to martindeibe@gmail.com
+===========================================
+New Log: 2022-06-05 18:32:54
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Equipo insertado Team{id=0, name=prueba1, abbreviation=prueba1, city=prueba1, conference=prueba1, division=prueba1}
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Equipo insertado Team{id=15, name=Memphis Grizzlies, abbreviation=pop, city=Memphis, conference=West, division=Southwest}
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Deleted => Team{id=15, name=Memphis Grizzlies, abbreviation=pop, city=Memphis, conference=West, division=Southwest}
+===========================================
+New Log: 2022-06-05 18:32:54
+[ERROR] => java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => Inserted => Player{playerJersey=1, playerName=martin, playerPosition=martin, playerHeight=2cm, playerWeight=1kg, playerAge=3, playerTeam=prueba1, playerCollege=martin, playerDraft=martin, playerNationality=martin, playerPoints=12.0, playerRebbounds=3.0, playerAssist=4.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654447170/occggosopvox3qzikg4l.png}
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => XML exported
+===========================================
+New Log: 2022-06-05 18:32:54
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-05 18:46:24
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 18:46:42
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:46:42
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:49:37
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:52:08
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 18:52:27
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:55:51
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:58:54
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 18:59:53
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:02:38
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:04:49
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:06:07
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:07:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:10:14
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:12:48
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[INFO] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[INFO] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:16:55
+[INFO] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-05 19:16:55
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-05 19:23:02
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:23:51
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:23:51
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-05 19:27:44
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:27:44
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-05 19:27:44
+[INFO] => XML exported
+===========================================
+New Log: 2022-06-05 19:31:14
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:33:06
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:34:47
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:34:47
+[INFO] => Inserted => Player{playerJersey=1, playerName=a, playerPosition=a, playerHeight=acm, playerWeight=akg, playerAge=20, playerTeam=MARTIN, playerCollege=a, playerDraft=a, playerNationality=a, playerPoints=1.0, playerRebbounds=1.0, playerAssist=1.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654450515/q06htfvfmvnhkeatcsxd.png}
+===========================================
+New Log: 2022-06-05 19:34:47
+[INFO] => Deleted => Team{id=35, name=MARTIN, abbreviation=MARTIN, city=MARTIN, conference=MARTIN, division=MARTIN}
+===========================================
+New Log: 2022-06-05 19:34:47
+[INFO] => Deleted => Team{id=34, name=PRUEBA, abbreviation=PRUEBA, city=PRUEBA, conference=PRUEBA, division=PRUEBA}
+===========================================
+New Log: 2022-06-05 19:37:34
+[ERROR] => No hay datos disponibles.
+No data is available [2000-200]
+===========================================
+New Log: 2022-06-05 19:37:34
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:40:09
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-05 19:46:55
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"; SQL statement:
+INSERT INTO usuarios(user,email, dateBirth,password, permisos) VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin') [23505-200]
+===========================================
+New Log: 2022-06-05 19:46:55
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"; SQL statement:
+INSERT INTO usuarios(user,email, dateBirth,password, permisos) VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin') [23505-200]
+===========================================
+New Log: 2022-06-05 19:46:55
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"; SQL statement:
+INSERT INTO usuarios(user,email, dateBirth,password, permisos) VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin') [23505-200]
+===========================================

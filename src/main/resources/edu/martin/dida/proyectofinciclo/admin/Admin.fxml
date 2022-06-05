@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.Glow?>
@@ -192,7 +193,7 @@
                                     <CheckBox fx:id="checkAdmin" mnemonicParsing="false" prefHeight="30.0" prefWidth="37.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
-                              <Button layoutX="536.0" layoutY="29.0" mnemonicParsing="false" onAction="#getJson" prefHeight="25.0" prefWidth="125.0" styleClass="button1" text="Export json" />
+                              <Button layoutX="603.0" layoutY="28.0" mnemonicParsing="false" onAction="#getJson" prefHeight="27.0" prefWidth="91.0" styleClass="button1" text="Export json" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -200,7 +201,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView fx:id="TablePlayerUser" layoutX="485.0" layoutY="25.0" prefHeight="550.0" prefWidth="550.0">
+                              <TableView fx:id="TablePlayerUser" layoutX="485.0" layoutY="48.0" prefHeight="527.0" prefWidth="550.0">
                                 <columns>
                                                 <TableColumn prefWidth="87.0" text="Jersey">
                                                     <cellValueFactory>
@@ -372,6 +373,15 @@
                                     </TextField>
                                  </children>
                               </GridPane>
+                              <Button layoutX="485.0" layoutY="14.0" mnemonicParsing="false" onAction="#cargarPlayers" prefHeight="25.0" prefWidth="25.0" styleClass="button1">
+                                 <graphic>
+                                    <ImageView fitHeight="47.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../recursos/refreshBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -379,33 +389,40 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tab">
                            <children>
-                              <TableView layoutX="485.0" layoutY="25.0" prefHeight="550.0" prefWidth="550.0">
+                              <TableView fx:id="tableTeamsUser" layoutX="485.0" layoutY="48.0" prefHeight="527.0" prefWidth="550.0">
                                 <columns>
-                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                <TableColumn prefWidth="87.0" text="Name">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="name" />
                                                     </cellValueFactory>
                                                 </TableColumn>                                  
-                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                <TableColumn prefWidth="87.0" text="Abbreviation">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="abbreviation" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                <TableColumn prefWidth="87.0" text="City">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="city" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                <TableColumn prefWidth="87.0" text="Conference">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="conference" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn prefWidth="87.0" text="Nationality">
+                                                <TableColumn prefWidth="87.0" text="Division">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="division" />
                                                     </cellValueFactory>
-                                                </TableColumn>                                </columns>
+                                                </TableColumn> 
+                                                <TableColumn prefWidth="87.0" text="User">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="user" />
+                                                    </cellValueFactory>
+                                                </TableColumn>    
+
+                                </columns>
                               </TableView>
                               <GridPane layoutX="62.0" layoutY="25.0" prefHeight="560.0" prefWidth="356.0">
                                 <columnConstraints>
@@ -416,6 +433,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -446,16 +464,40 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <TextField GridPane.columnIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.rowIndex="5" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Button" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                                    <TextField fx:id="txtNameTeam" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtTeamAbbreviation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <TextField fx:id="txtTeamCity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="txtConference" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <TextField fx:id="txtDivision" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Button mnemonicParsing="false" onAction="#insertTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Save" GridPane.rowIndex="6" />
+                                    <Button mnemonicParsing="false" onAction="#editTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                                    <Button mnemonicParsing="false" onAction="#deleteTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox fx:id="comboUser" prefHeight="26.0" prefWidth="262.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                  </children>
                               </GridPane>
+                              <Button layoutX="485.0" layoutY="14.0" mnemonicParsing="false" onAction="#cargarTeam" styleClass="button1">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../recursos/refreshBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Log">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="txtlog" layoutX="42.0" layoutY="76.0" prefHeight="469.0" prefWidth="948.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="76.0" />
+                              <Button layoutX="59.0" layoutY="17.0" mnemonicParsing="false" onAction="#getLog" prefHeight="41.0" prefWidth="154.0" styleClass="button1" text="Refresh" />
                            </children></AnchorPane>
                     </content>
                   </Tab>

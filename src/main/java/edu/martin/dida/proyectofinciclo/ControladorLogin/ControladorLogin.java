@@ -109,6 +109,10 @@ public class ControladorLogin {
             App.controller1.cargarPlayers();
             App.controller1.comboTeam.setItems(App.controller1.chargeTeamsCombo());
             UsuariosDAO.updateStatusOnline(nombre);
+            App.controller1.comboUser.setItems(App.controller1.chargeTeamsComboUser());
+            App.controller1.cargarTeam();
+            App.controller1.getLog();
+            App.controller1.loadFilterUser();
         }else if(validate==3){
             JOptionPane.showMessageDialog(new JFrame(), "This user does not exist", "Error", JOptionPane.ERROR_MESSAGE);
         }

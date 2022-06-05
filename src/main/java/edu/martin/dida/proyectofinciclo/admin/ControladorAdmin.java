@@ -15,9 +15,10 @@ import com.google.gson.GsonBuilder;
 import edu.martin.dida.proyecto.conexion.Conexion;
 import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
+import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorRegistro;
-import edu.martin.dida.proyectofinciclo.inicio.ControladorInicio;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -36,14 +37,21 @@ import java.util.Base64.Encoder;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -52,6 +60,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -80,6 +89,9 @@ public class ControladorAdmin {
     @FXML
     private DatePicker txtDate;
 
+    @FXML
+    private TextField txtFilterUser;
+    
     @FXML
     private TextField txtEmail;
 
@@ -152,12 +164,44 @@ public class ControladorAdmin {
     public ComboBox comboTeam;
                 // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Team">
+
+    @FXML
+    TextField txtNameTeam;
+    
+    @FXML
+    TextField txtTeamAbbreviation;
+            
+    @FXML
+    TextField txtTeamCity;
+                
+    @FXML
+    TextField txtConference;
+    
+    @FXML
+    TextField txtDivision;
+    
+    @FXML
+    TableView tableTeamsUser;
+    
+    @FXML
+    public ComboBox comboUser;
+    
+    // </editor-fold>
+
+    @FXML
+    TextArea txtlog;
+    
+    
     int id;
     int idplayer;
+    int idTeam;
     PlayersDAO playerDao;
+    UsuariosDAO teamDao;
     ObservableList<String> items = FXCollections.observableArrayList();
-
-    
+    ObservableList<String> itemsUser = FXCollections.observableArrayList();
+    ObservableList<Usuario> users;
+    ObservableList<Usuario> admin;    
     public void close() throws IOException{
         UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
         System.exit(0);
@@ -173,17 +217,17 @@ public class ControladorAdmin {
 
     
     public void cargarUser() throws IOException {
-        ObservableList<Usuario> users = FXCollections.observableArrayList();
+        users = FXCollections.observableArrayList();
         List<Usuario> user = ControladorRegistro.userDAO.buscarUser();
         users.addAll(user);
         tableuser.setItems(users);
     }
         
     public void cargarAdmin() throws IOException {
-        ObservableList<Usuario> users = FXCollections.observableArrayList();
+        admin = FXCollections.observableArrayList();
         List<Usuario> user = ControladorRegistro.userDAO.buscarAdmin();
-        users.addAll(user);
-        tableadmin.setItems(users);
+        admin.addAll(user);
+        tableadmin.setItems(admin);
     }
     
     public void editUser() throws IOException{
@@ -265,7 +309,11 @@ public class ControladorAdmin {
                 numberUser();
                 cargarAdmin();
                 cargarUser();
+                cargarUser();
+                cargarTeam();
                 clearFieldsUser();
+                comboUser.setItems(chargeTeamsComboUser());
+
                 id=0;
             }else{
                 JOptionPane.showMessageDialog(new JFrame(), "Email not valid", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -288,6 +336,9 @@ public class ControladorAdmin {
                 cargarUser();
                 cargarPlayers();
                 numberUser();
+                cargarUser();
+                cargarTeam();
+                comboUser.setItems(chargeTeamsComboUser());
             }else{
             JOptionPane.showMessageDialog(new JFrame(), "This user is online", "Error", JOptionPane.ERROR_MESSAGE);        
             }
@@ -297,6 +348,9 @@ public class ControladorAdmin {
                 cargarAdmin();
                 cargarPlayers();
                 numberUser();
+                cargarUser();
+                cargarTeam();
+                comboUser.setItems(chargeTeamsComboUser());
             }else{
                 
                 JOptionPane.showMessageDialog(new JFrame(), "This user is online", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -341,7 +395,9 @@ public class ControladorAdmin {
             JOptionPane.showMessageDialog(new JFrame(), "Email with users sent to " + email, "Info", JOptionPane.INFORMATION_MESSAGE);        
     }
     
-                // </editor-fold>
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Player">
 
     public void cargarPlayers() throws IOException {
         playerDao = new PlayersDAO();
@@ -394,7 +450,6 @@ public class ControladorAdmin {
         }
     }
     
-    
     public void insertPlayer() throws IOException{
          Player player = new Player();
         playerDao = new PlayersDAO();
@@ -423,8 +478,9 @@ public class ControladorAdmin {
                     
                     ControladorRegistro.userDAO.saveEditPlayer(player, user);
                         cargarPlayers();
+                        clearPlayer();
                         idplayer = 0;
-                        JOptionPane.showMessageDialog(new JFrame(), "Inserted", "Error", JOptionPane.ERROR_MESSAGE);        
+                        JOptionPane.showMessageDialog(new JFrame(), "Inserted", "Error", JOptionPane.INFORMATION_MESSAGE);        
                 }else{
                     try {
                         player.setPlayerJersey(Integer.parseInt(txtJersey.getText()));
@@ -443,11 +499,12 @@ public class ControladorAdmin {
                         player.setPlayerImage(dinary(txtImage.getText()));
                         player.setPlayerId(idplayer);
                         user = ControladorRegistro.userDAO.searchUserPlayer(player.getPlayerTeam());
-                        
+                                                
+                        clearPlayer();
                         ControladorRegistro.userDAO.saveEditPlayer(player, user);
                         cargarPlayers();
                         idplayer = 0;
-                        JOptionPane.showMessageDialog(new JFrame(), "Inserted", "Info", JOptionPane.ERROR_MESSAGE);        
+                        JOptionPane.showMessageDialog(new JFrame(), "Inserted", "Info", JOptionPane.INFORMATION_MESSAGE);        
                     } catch (SQLException ex) {
                         Logger.getLogger(ControladorAdmin.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -471,7 +528,7 @@ public class ControladorAdmin {
         }
     }
     
-        public void getImage(){
+    public void getImage(){
             FileChooser f = new FileChooser();
             f.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG FILES", "*.png"));
             File file = f.showOpenDialog(null);
@@ -479,8 +536,117 @@ public class ControladorAdmin {
                 txtImage.setText(file.getAbsolutePath());
             }
     }
+                // </editor-fold>
     
+    // <editor-fold defaultstate="collapsed" desc="Team">
+        
+    public void cargarTeam() throws IOException {
+        teamDao = new UsuariosDAO();
+        ObservableList teams = FXCollections.observableArrayList();
+        List<Team> team = teamDao.buscarTeam();
+        teams.addAll(team);
+        tableTeamsUser.setItems(teams);
+    }
     
+    public void insertTeam() throws IOException{
+        Team team = new Team();
+        
+        if(txtNameTeam.getText().isEmpty() || txtTeamAbbreviation.getText().isEmpty() || txtTeamCity.getText().isEmpty() || txtConference.getText().isEmpty() ||
+                txtDivision.getText().isEmpty() || comboUser.getValue() == null){
+            JOptionPane.showMessageDialog(new JFrame(), "All fields must be covered", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+            team.setName(txtNameTeam.getText());
+            team.setAbbreviation(txtTeamAbbreviation.getText());
+            team.setCity(txtTeamCity.getText());
+            team.setConference(txtConference.getText());
+            team.setDivision(txtDivision.getText());
+            team.setUser((String) comboUser.getSelectionModel().getSelectedItem());
+            team.setId(idTeam);
+            
+            ControladorRegistro.userDAO.saveEditTeam(team);
+            App.controller1.comboTeam.setItems(App.controller1.chargeTeamsCombo());
+            cargarTeam();
+            
+            clearTeam();
+            idTeam = 0;
+        }
+    }
+    
+    public void editTeam(){
+        Team team = (Team) tableTeamsUser.getSelectionModel().getSelectedItem();
+        
+        if(team == null){
+            JOptionPane.showMessageDialog(new JFrame(), "You must select a Team", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+            if(team.getName().equals("Agente Libre")){
+                JOptionPane.showMessageDialog(new JFrame(), "You cant edit this team", "Error", JOptionPane.ERROR_MESSAGE);        
+            }else{
+                txtNameTeam.setText(team.getName());
+                txtTeamAbbreviation.setText(team.getAbbreviation());
+                txtTeamCity.setText(team.getCity());
+                txtConference.setText(team.getConference());
+                txtDivision.setText(team.getDivision());
+                comboUser.setValue(team.getUser());
+                idTeam = team.getId();
+           }
+        }
+    }    
+    
+    public void deleteTeam() throws IOException{
+        Team team = (Team) tableTeamsUser.getSelectionModel().getSelectedItem();
+        
+        if(team.getName().equals("Agente Libre")){
+                JOptionPane.showMessageDialog(new JFrame(), "You cant delete this team", "Error", JOptionPane.ERROR_MESSAGE);        
+        }else{
+            ControladorRegistro.userDAO.deleteTeam(team);
+            cargarTeam();
+            cargarPlayers();
+            App.controller1.comboTeam.setItems(App.controller1.chargeTeamsCombo());
+            JOptionPane.showMessageDialog(new JFrame(), "Team deleted succesfully", "Info", JOptionPane.INFORMATION_MESSAGE); 
+            idTeam = 0;
+        }
+    }
+    
+    public ObservableList<String> chargeTeamsComboUser() throws IOException{
+        try(Connection conexion = Conexion.getConnection()){
+            String sql = "SELECT DISTINCT user FROM usuarios";
+            PreparedStatement prepstmt = conexion.prepareStatement(sql);
+            itemsUser.removeAll(itemsUser);
+            ResultSet rs = prepstmt.executeQuery();
+            while(rs.next()){
+                itemsUser.add(rs.getString("user"));
+            }
+            return itemsUser;
+        }catch(SQLException e){
+            Utilidades.Logger.logInfo(e.getMessage() , 2);
+            return null;
+
+        }
+    }
+
+    // </editor-fold>
+
+    
+    // <editor-fold defaultstate="collapsed" desc="Log">
+    
+        public void getLog() throws IOException{
+            Path path = Paths.get(System.getProperty("user.dir") + "/TheBull.log");
+            File file = new File(path.toString());
+            
+            if(file.exists()){
+                txtlog.clear();
+                BufferedReader br = Files.newBufferedReader(path);
+                String line = "";
+            while ((line = br.readLine()) != null) {
+                txtlog.appendText(line + "\n");
+            }
+            br.close();
+            
+            }
+
+        }
+        
+    // </editor-fold>
     
     public void desencriptar(){
         if(decryptBool){
@@ -520,11 +686,61 @@ public class ControladorAdmin {
         
     }
     
+    
+    public void loadFilterUser(){
+            FilteredList<Usuario> filterPlayer = new FilteredList<>(users, e -> true);
+        txtFilterUser.setOnKeyReleased(e -> {
+            txtFilterUser.textProperty().addListener((value, oldvalue, newvalue) -> {
+                filterPlayer.setPredicate((Predicate<? super Usuario>) user ->{
+                    if(newvalue == null || newvalue.isEmpty()){
+                        return true;
+                    }else if(user.getUser().toLowerCase().contains(newvalue.toLowerCase())){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Usuario> sortedList = new SortedList<>(filterPlayer);
+            sortedList.comparatorProperty().bind(tableuser.comparatorProperty());
+            tableuser.setItems(sortedList);
+        });     
+    }
+    
+    
     private void clearFieldsUser(){
         txtUser.clear();
         txtEmail.clear();
         txtDate.setValue(null);
         txtPassword.clear();
+        id=0;
+    }
+    
+    private void clearTeam(){
+        txtNameTeam.clear();
+        txtTeamAbbreviation.clear();
+        txtTeamCity.clear();
+        txtConference.clear();
+        txtDivision.clear();
+        comboUser.setValue(null);
+        idTeam=0;
+    }
+    
+    private void clearPlayer(){
+            txtJersey.clear();
+            txtName.clear();
+            txtPosition.clear();
+            txtWeight.clear();
+            txtHeight.clear();
+            txtAge.clear();
+            txtDraft.clear();
+            txtCollege.clear();
+            txtNationality.clear();
+            txtPoints.clear();
+            txtRebbounds.clear();
+            txtAssist.clear();
+            txtImage.clear();    
+            comboTeam.setValue(null);
+            idplayer=0;
     }
     
         private String dinary(String url) throws IOException{
@@ -540,4 +756,10 @@ public class ControladorAdmin {
         String a = (String) uploadresult.get("url");
         return a;
     }
+
+
+
+
+
+
 }

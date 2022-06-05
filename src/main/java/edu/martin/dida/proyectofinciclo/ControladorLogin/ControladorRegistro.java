@@ -117,7 +117,7 @@ public class ControladorRegistro implements Initializable{
                     JOptionPane.showMessageDialog(new JFrame(), "Register succesfully", "Error",JOptionPane.INFORMATION_MESSAGE);
 
                 }else{
-                              JOptionPane.showMessageDialog(new JFrame(), "Password must match", "Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "Password must match", "Error",JOptionPane.ERROR_MESSAGE);
                 }
             }else{
                 JOptionPane.showMessageDialog(new JFrame(), "The email is incorrect", "Error",JOptionPane.ERROR_MESSAGE);

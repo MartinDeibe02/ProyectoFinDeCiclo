@@ -151,7 +151,8 @@ public class PlayersDAO {
             
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);
-            ex.printStackTrace();
+        }catch(Exception e){
+            Logger.logInfo(e.getMessage(), 2);
         }
         return playersTeam;
     }
@@ -166,9 +167,7 @@ public class PlayersDAO {
             BufferedWriter bw;
             
             ResultSet rs = statement.executeQuery(sql);
-            if(!(rs.next())){
-            JOptionPane.showMessageDialog(new JFrame(), "You cant export and empty csv", "Error", JOptionPane.INFORMATION_MESSAGE);
-            }else{
+
                 bw = Files.newBufferedWriter(path);
             while(rs.next()){
                 bw.write(rs.getInt("jersey") + ",");
@@ -189,10 +188,10 @@ public class PlayersDAO {
             bw.flush();
             bw.close();
             JOptionPane.showMessageDialog(new JFrame(), "csv successfully exported", "Info", JOptionPane.INFORMATION_MESSAGE);
-            }
+            
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
-            JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "csv could not be exported", "Error", JOptionPane.ERROR);
         }
     }    
     
@@ -304,10 +303,7 @@ public class PlayersDAO {
             
             ResultSet rs = stmt.executeQuery(sql);
             
-            if(!(rs.next())){            
-                JOptionPane.showMessageDialog(new JFrame(), "You cant export en empty CSV", "Error", JOptionPane.ERROR_MESSAGE);
 
-            }else{
                 bw= Files.newBufferedWriter(path);
                 while(rs.next()){
                     bw.write(rs.getInt("jersey")+ ",");
@@ -327,7 +323,7 @@ public class PlayersDAO {
                 }
                 bw.flush();
                 bw.close();
-            }
+            
 
                     
         }catch(SQLException e){
@@ -476,6 +472,7 @@ public class PlayersDAO {
             Statement statement = conexion.createStatement();
             String sql = "SELECT COUNT(*) FROM players";
             ResultSet rs = statement.executeQuery(sql);
+            
                 while (rs.next()) {
                     int age = rs.getInt(1);
                     return age;

@@ -1,6 +1,7 @@
 
 package edu.martin.dida.proyectofinciclo;
 
+import edu.martin.dida.proyectofinciclo.ControladorNews.OpenNew;
 import edu.martin.dida.proyectofinciclo.admin.ControladorAdmin;
 import edu.martin.dida.proyectofinciclo.table.ControladorTabPane;
 import edu.martin.dida.proyectofinciclo.table.ThreadRun;
@@ -26,6 +27,7 @@ public class App extends Application {
 
     public static Scene scene1;
     public static Scene scene2;
+    public static Scene scene3;
     public static HashMap<String, Scene> pantallas = new HashMap<String, Scene>();
     
     private double xOffset = 0;
@@ -39,6 +41,7 @@ public class App extends Application {
 
     public static ControladorTabPane controller;
     public static ControladorAdmin controller1;
+    public static OpenNew controllerNew;
     @Override
     public void start(Stage primaryStage) throws IOException {
         
@@ -50,7 +53,12 @@ public class App extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("table/EquipoTabla.fxml"));
             Parent root = loader.load();
             controller = (ControladorTabPane) loader.getController();
-            scene1 = new Scene(root);
+            scene3 = new Scene(root);            
+            
+            FXMLLoader loaderNew = new FXMLLoader(getClass().getResource("news/OpenNew.fxml"));
+            Parent rootNew = loaderNew.load();
+            controllerNew = (OpenNew) loaderNew.getController();
+            scene1 = new Scene(rootNew);
             
             
             FXMLLoader loader1 = new FXMLLoader(getClass().getResource("admin/Admin.fxml"));
@@ -62,6 +70,9 @@ public class App extends Application {
             Thread t = new Thread(a, "hola");
             t.start();
             
+
+            
+            
             
 
             
@@ -71,12 +82,16 @@ public class App extends Application {
         Parent inicio = FXMLLoader.load(getClass().getResource("inicio/inicio.fxml"));
         Parent manager = FXMLLoader.load(getClass().getResource("table/EquipoTabla.fxml"));
         Parent admin = FXMLLoader.load(getClass().getResource("admin/Admin.fxml"));
+        Parent news = FXMLLoader.load(getClass().getResource("news/news.fxml"));
+        Parent openNew = FXMLLoader.load(getClass().getResource("news/OpenNew.fxml"));
         
         pantallas.put("inicio", new Scene(inicio,1300,900));
         pantallas.put("login", new Scene(login,1050,850));
         pantallas.put("Register", new Scene(register,1050,850));
         pantallas.put("manager", new Scene(manager,1300,900));
         pantallas.put("admin", new Scene(admin,1050,850));
+        pantallas.put("news", new Scene(news,1300,900));
+        pantallas.put("OpenNew", new Scene(openNew,1300,900));
 
         
         Scene escena = pantallas.get("login");

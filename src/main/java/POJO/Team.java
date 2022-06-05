@@ -15,6 +15,7 @@ public class Team {
     private String city;
     private String conference;
     private String division;
+    private String user;
 
     public Team(int id, String name, String abbreviation, String city, String conference, String division) {
         this.id = id;
@@ -24,6 +25,18 @@ public class Team {
         this.conference = conference;
         this.division = division;
     }
+
+    public Team(int id, String name, String abbreviation, String city, String conference, String division, String user) {
+        this.id = id;
+        this.name = name;
+        this.abbreviation = abbreviation;
+        this.city = city;
+        this.conference = conference;
+        this.division = division;
+        this.user = user;
+    }
+    
+    
 
     public Team() {
     }
@@ -77,6 +90,16 @@ public class Team {
     public void setDivision(String division) {
         this.division = division;
     }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+    
+    
 
     @Override
     public String toString() {
