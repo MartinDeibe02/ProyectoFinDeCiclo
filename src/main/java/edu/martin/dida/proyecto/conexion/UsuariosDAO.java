@@ -79,7 +79,7 @@ public class UsuariosDAO {
             
                 String sql = "SELECT * FROM usuarios WHERE user LIKE 'ADMIN'";
                 ResultSet rs = statement.executeQuery(sql);
-                while(!(rs.next())){
+                if(!(rs.next())){
                     Statement statement1 = conexion.createStatement();
                     String sql2= "INSERT INTO usuarios(user,email, dateBirth,password, permisos) "
                             + "VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin')";
@@ -243,21 +243,39 @@ public class UsuariosDAO {
     
     public void deleteUser(Usuario user) throws IOException{
         try (Connection conexion = Conexion.getConnection()){
-            Statement statementPlayer = conexion.createStatement();
             Statement statementUser = conexion.createStatement();
             Statement statementTeam = conexion.createStatement();
             
-            String sqlPlayer = "UPDATE players SET team = 'Agente Libre', user='ADMIN' WHERE user LIKE '" + user.getUser()+"'";
+            
+            
             String sqlTeam = "DELETE FROM teams WHERE user LIKE '" + user.getUser() + "'";
             String sqlUser = "DELETE FROM usuarios WHERE id=" + user.getId();
             
-            statementPlayer.executeUpdate(sqlPlayer);
             statementTeam.executeUpdate(sqlTeam);
             statementUser.executeUpdate(sqlUser);
             Logger.logear().logInfo("Usuario borrado", 1);
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+    
+    
+    public boolean getUserTeams(String user) throws IOException{
+        try (Connection conexion = Conexion.getConnection()){
+            Statement stmt = conexion.createStatement();
+            String sql = "SELECT * FROM TEAMS WHERE user='"+ user +"'";
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            if(rs.next()){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
     }
     
     public int validateLogin(String nombre, String contraseña) throws IOException{

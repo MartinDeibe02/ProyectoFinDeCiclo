@@ -4,6 +4,9 @@
  */
 package edu.martin.dida.proyectofinciclo.ControladorLogin;
 
+import POJO.Player;
+import edu.martin.dida.proyecto.conexion.PlayersDAO;
+import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.admin.ControladorAdmin;
@@ -89,6 +92,7 @@ public class ControladorLogin {
 
             stage.show();
             UsuariosDAO.updateStatusOnline(nombre);
+            TeamsDAO teamdao = new TeamsDAO();
         }else if (validate==2){
             nombre = txtUsername.getText();
             Scene scene = App.scene2;

@@ -4,6 +4,7 @@
  */
 package edu.martin.dida.proyectofinciclo.inicio;
 
+import edu.martin.dida.proyecto.conexion.PlayersDAO;
 import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
@@ -91,6 +92,7 @@ public class ControladorInicio implements Initializable{
         stage.show();
         
     teamdao = new TeamsDAO();
+        PlayersDAO dao = new PlayersDAO();
 
 
     App.controller.setLblNbaAge();

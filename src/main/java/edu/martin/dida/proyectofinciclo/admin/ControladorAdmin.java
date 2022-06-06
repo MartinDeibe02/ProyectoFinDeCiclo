@@ -37,17 +37,15 @@ import java.util.Base64.Encoder;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -72,7 +70,7 @@ import javax.swing.JOptionPane;
  *
  * @author Markyuu
  */
-public class ControladorAdmin {
+public class ControladorAdmin implements Initializable{
     
     
     
@@ -110,6 +108,8 @@ public class ControladorAdmin {
     @FXML
     private TableView tableadmin;    
     boolean decryptBool = true;
+    @FXML
+    Button btnDecrypt;
     
                 // </editor-fold>
     
@@ -249,6 +249,8 @@ public class ControladorAdmin {
                 if(user.getPermisos().equals("user")){
                     checkAdmin.setSelected(false);
                 }
+                btnDecrypt.setDisable(false);
+
                 id = user.getId();
             }else{
             JOptionPane.showMessageDialog(new JFrame(), "This user is online", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -331,19 +333,31 @@ public class ControladorAdmin {
         Usuario admin = (Usuario) tableadmin.getSelectionModel().getSelectedItem();
 
         if(!(user == null)){
+            
             if(!(UsuariosDAO.getStatus(user.getUser()) == true)){
-                ControladorRegistro.userDAO.deleteUser(user);
-                cargarUser();
-                cargarPlayers();
-                numberUser();
-                cargarUser();
-                cargarTeam();
-                comboUser.setItems(chargeTeamsComboUser());
+                
+                if(ControladorRegistro.userDAO.getUserTeams(user.getUser())==true){
+                    JOptionPane.showMessageDialog(new JFrame(), "You should delete the user teams, Try again", "Error", JOptionPane.ERROR_MESSAGE);        
+                }else{
+                    ControladorRegistro.userDAO.deleteUser(user);
+                    cargarUser();
+                    cargarPlayers();
+                    numberUser();
+                    cargarUser();
+                    cargarTeam();
+                    comboUser.setItems(chargeTeamsComboUser());
+                }
+                
             }else{
             JOptionPane.showMessageDialog(new JFrame(), "This user is online", "Error", JOptionPane.ERROR_MESSAGE);        
             }
         }else if(user==null && admin!=null){
             if(!(UsuariosDAO.getStatus(admin.getUser()) == true)){
+                
+                if(ControladorRegistro.userDAO.getUserTeams(admin.getUser())==true){
+                    JOptionPane.showMessageDialog(new JFrame(), "You should delete the user teams, Try again", "Error", JOptionPane.ERROR_MESSAGE);        
+                }else{
+                
                 ControladorRegistro.userDAO.deleteUser(admin);
                 cargarAdmin();
                 cargarPlayers();
@@ -351,6 +365,7 @@ public class ControladorAdmin {
                 cargarUser();
                 cargarTeam();
                 comboUser.setItems(chargeTeamsComboUser());
+                }
             }else{
                 
                 JOptionPane.showMessageDialog(new JFrame(), "This user is online", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -648,11 +663,13 @@ public class ControladorAdmin {
         
     // </editor-fold>
     
+        
     public void desencriptar(){
         if(decryptBool){
                 if(!txtPassword.getText().isEmpty()){
                     txtPassword.setText(decrypt(txtPassword.getText()));
                 }
+                btnDecrypt.setDisable(true);
                 decryptBool=false;
         }else{
             if(!txtPassword.getText().isEmpty()){
@@ -685,7 +702,6 @@ public class ControladorAdmin {
         return match;
         
     }
-    
     
     public void loadFilterUser(){
             FilteredList<Usuario> filterPlayer = new FilteredList<>(users, e -> true);
@@ -743,7 +759,7 @@ public class ControladorAdmin {
             idplayer=0;
     }
     
-        private String dinary(String url) throws IOException{
+    private String dinary(String url) throws IOException{
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
         "cloud_name", "daolhlyb6",
         "api_key", "853471969531956",
@@ -756,6 +772,24 @@ public class ControladorAdmin {
         String a = (String) uploadresult.get("url");
         return a;
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+            slider.valueProperty().addListener(new ChangeListener<Number>(){
+                @Override
+                public void changed(ObservableValue<? extends Number> observar, Number numeroAnterior, Number numeroNuevo) {
+                    
+                    txtAge.setText(String.valueOf((int)Math.round((double) numeroNuevo)));
+            }
+            });
+            
+            txtAge.textProperty().addListener((observable, oldvalue, newvalue) -> {
+                try{
+                    slider.setValue(Integer.parseInt(txtAge.getText()));
+                }catch(NumberFormatException e){
+                    
+                }
+            });    }
 
 
 

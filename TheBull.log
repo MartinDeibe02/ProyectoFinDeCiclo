@@ -737,3 +737,256 @@ New Log: 2022-06-05 19:46:55
 Unique index or primary key violation: "PUBLIC.CONSTRAINT_4_INDEX_E ON PUBLIC.USUARIOS(USER) VALUES 1"; SQL statement:
 INSERT INTO usuarios(user,email, dateBirth,password, permisos) VALUES ('ADMIN', 'thebullap01@gmail.com','ADMIN','ADMIN','admin') [23505-200]
 ===========================================
+New Log: 2022-06-06 17:51:32
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 17:53:24
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 17:54:23
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-06 17:54:23
+[INFO] => Email sent to martindeibe@gmail.com
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT AVG(age) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT COUNT(*) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 17:54:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 17:57:15
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT AVG(age) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT COUNT(*) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 17:58:13
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT AVG(age) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT COUNT(*) FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 18:01:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams WHERE user LIKE 'martin' [42102-200]
+===========================================
+New Log: 2022-06-06 18:03:11
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:04:57
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 18:05:55
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),user VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-06 18:10:17
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 18:20:35
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-06 18:20:35
+[INFO] => Email sent to martindeibe@gmail.com
+===========================================
+New Log: 2022-06-06 18:20:35
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-06 18:23:25
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Inserted => Player{playerJersey=1, playerName=prueba, playerPosition=prueba, playerHeight=pruebacm, playerWeight=pruebakg, playerAge=1, playerTeam=prueba, playerCollege=prueba, playerDraft=prueba, playerNationality=prueba, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654532645/rhf0m2crmlfdumnx5ywm.png}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Equipo insertado Team{id=0, name=prueba2, abbreviation=prueba2, city=prueba2, conference=prueba2, division=prueba2}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Inserted => Player{playerJersey=12, playerName=prueba2, playerPosition=prueba2, playerHeight=prueba2cm, playerWeight=prueba2kg, playerAge=34, playerTeam=prueba2, playerCollege=prueba2, playerDraft=prueba2, playerNationality=prueba2, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654532703/rqmgywkvlqzscygb1htt.png}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Deleted => Team{id=3, name=prueba2, abbreviation=prueba2, city=prueba2, conference=prueba2, division=prueba2}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Email sent to pepepepepe@gmail.com
+===========================================
+New Log: 2022-06-06 18:23:25
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Equipo insertado Team{id=0, name=pepep, abbreviation=pepep, city=pepep, conference=pepep, division=pepep}
+===========================================
+New Log: 2022-06-06 18:23:25
+[INFO] => Inserted => Player{playerJersey=2, playerName=pepep, playerPosition=pepep, playerHeight=pepepcm, playerWeight=pepepkg, playerAge=34, playerTeam=pepep, playerCollege=pepep, playerDraft=pepep, playerNationality=pepep, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654532924/menzxeqnwjupwlrivs0r.png}
+===========================================
+New Log: 2022-06-06 18:51:09
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 19:07:54
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-06 20:14:55
+[INFO] => Usuario borrado
+===========================================

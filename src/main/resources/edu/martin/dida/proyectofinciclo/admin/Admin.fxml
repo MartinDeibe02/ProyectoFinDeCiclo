@@ -176,7 +176,7 @@
                                     <Button mnemonicParsing="false" onAction="#insertUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Save" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
                                     <Button mnemonicParsing="false" onAction="#editUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                                     <Button mnemonicParsing="false" onAction="#deleteUser" prefHeight="50.0" prefWidth="120.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-                                    <Button mnemonicParsing="false" onAction="#desencriptar" styleClass="button1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                                    <Button fx:id="btnDecrypt" mnemonicParsing="false" onAction="#desencriptar" styleClass="button1" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                                        <graphic>
                                           <ImageView fitHeight="20.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
