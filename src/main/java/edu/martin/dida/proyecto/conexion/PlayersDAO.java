@@ -104,7 +104,6 @@ public class PlayersDAO {
             }
             
         }catch(Exception e){
-            e.printStackTrace();
             Logger.logInfo(e.getMessage(), 1);
         }
         return players;

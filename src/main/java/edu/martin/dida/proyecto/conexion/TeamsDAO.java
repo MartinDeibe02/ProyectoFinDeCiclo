@@ -69,7 +69,7 @@ try (Connection conexion = Conexion.getConnection()){
     }
     
     public void insertFreeAgent() throws IOException{
-                try(Connection conexion = Conexion.getConnection()){
+        try(Connection conexion = Conexion.getConnection()){
             Statement statement = conexion.createStatement();
             
                 String sql = "SELECT * FROM teams WHERE name LIKE 'Agente Libre'";
@@ -85,7 +85,6 @@ try (Connection conexion = Conexion.getConnection()){
                 statement.executeUpdate(sql);
             
         }catch(SQLException e){
-            Logger.logInfo(e.getMessage(), 2);
         }
     }
     

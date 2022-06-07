@@ -1092,16 +1092,6 @@ The object is already closed [90007-200]
 New Log: 2022-06-07 14:11:44
 [ERROR] => No se ha podido establecer conexion con la base de datos
 ===========================================
-New Log: 2022-06-07 14:12:10
-[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
-Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
-SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
-===========================================
-New Log: 2022-06-07 14:13:33
-[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
-Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
-SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
-===========================================
 New Log: 2022-06-07 14:13:33
 [ERROR] => csv could not be inserted
 ===========================================
@@ -1109,17 +1099,7 @@ New Log: 2022-06-07 14:13:33
 [INFO] => Deleted => Player{playerJersey=50, playerName=Aaron Gordon, playerPosition=F, playerHeight=203cm, playerWeight=107kg, playerAge=26, playerTeam=Basquet Coruña, playerCollege=Arizona, playerDraft=2014 Rnd 1 Pick 4, playerNationality=United States, playerPoints=15.0, playerRebbounds=5.9, playerAssist=2.5, playerImage=https://cdn.nba.com/headshots/nba/latest/260x190/203932.png}
 ===========================================
 New Log: 2022-06-07 14:33:51
-[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
-Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
-SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
-===========================================
-New Log: 2022-06-07 14:33:51
 [INFO] => Deleted => Team{id=5, name=Basquet Coruña, abbreviation=BQC, city=Coruña, conference=Este, division=Este}
-===========================================
-New Log: 2022-06-07 14:40:10
-[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
-Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
-SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
 ===========================================
 New Log: 2022-06-07 14:40:10
 [INFO] => Usuario modificado Satisfactoriamente
@@ -1129,4 +1109,69 @@ New Log: 2022-06-07 14:40:10
 ===========================================
 New Log: 2022-06-07 14:55:29
 [INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 19:53:10
+[INFO] => Usuario borrado
+===========================================
+New Log: 2022-06-07 19:53:10
+[INFO] => Usuario borrado
+===========================================
+New Log: 2022-06-07 19:53:10
+[INFO] => Usuario borrado
+===========================================
+New Log: 2022-06-07 19:53:10
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 19:59:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+CREATE TABLE IF NOT EXISTS players(id INTEGER auto_increment,jersey INTEGER(5),name VARCHAR(255),position VARCHAR(255),height VARCHAR(255),weight VARCHAR(255),age INTEGER(100),team VARCHAR(255),college VARCHAR(255),draft VARCHAR(255),nationality VARCHAR(255),points DOUBLE(255),rebbounds DOUBLE(255),assist DOUBLE(255),image VARCHAR(255),FOREIGN KEY(team) REFERENCES teams(name)); [42102-200]
+===========================================
+New Log: 2022-06-07 19:59:23
+[INFO] => Tabla "PLAYERS" no encontrada
+Table "PLAYERS" not found; SQL statement:
+SELECT * FROM players [42102-200]
+===========================================
+New Log: 2022-06-07 19:59:23
+[ERROR] => Tabla "TEAMS" no encontrada
+Table "TEAMS" not found; SQL statement:
+SELECT DISTINCT name FROM teams [42102-200]
+===========================================
+New Log: 2022-06-07 20:03:59
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 20:04:48
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 20:06:00
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Inserted => Player{playerJersey=1, playerName=prueba, playerPosition=prueba, playerHeight=2cm, playerWeight=1kg, playerAge=73, playerTeam=prueba, playerCollege=prueba, playerDraft=prueba, playerNationality=prueba, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625314/lgtxcshvjoswefpshoce.png}
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Equipo insertado Team{id=0, name=prueba2, abbreviation=prueba2, city=prueba2, conference=prueba2, division=prueba2}
+===========================================
+New Log: 2022-06-07 20:08:16
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('null')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist,image)VALUES ('3','prueba2','prueba2','3cm','2kg','29','null','prueba2','prueba2','prueba2','1.0','2.0','3.0','http://res.cloudinary.com/daolhlyb6/image/upload/v1654625379/m1lywcsmojs5zeuuzr6r.png') [23506-200]
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Inserted => Player{playerJersey=3, playerName=prueba2, playerPosition=prueba2, playerHeight=3cm, playerWeight=2kg, playerAge=29, playerTeam=null, playerCollege=prueba2, playerDraft=prueba2, playerNationality=prueba2, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625379/m1lywcsmojs5zeuuzr6r.png}
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Inserted => Player{playerJersey=3, playerName=prueba2, playerPosition=prueba2, playerHeight=2cm, playerWeight=1kg, playerAge=66, playerTeam=prueba2, playerCollege=prueba2, playerDraft=prueba2, playerNationality=prueba2, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625409/vit3z7vwqoxpn0qxcag4.png}
+===========================================
+New Log: 2022-06-07 20:08:16
+[INFO] => Deleted => Player{playerJersey=3, playerName=prueba2, playerPosition=prueba2, playerHeight=2cm, playerWeight=1kg, playerAge=66, playerTeam=prueba2, playerCollege=prueba2, playerDraft=prueba2, playerNationality=prueba2, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625409/vit3z7vwqoxpn0qxcag4.png}
+===========================================
+New Log: 2022-06-07 20:15:34
+[INFO] => Deleted => Player{playerJersey=1, playerName=prueba, playerPosition=prueba, playerHeight=2cm, playerWeight=1kg, playerAge=73, playerTeam=prueba, playerCollege=prueba, playerDraft=prueba, playerNationality=prueba, playerPoints=1.0, playerRebbounds=2.0, playerAssist=3.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625314/lgtxcshvjoswefpshoce.png}
+===========================================
+New Log: 2022-06-07 20:15:34
+[INFO] => Inserted => Player{playerJersey=2, playerName=Prueba, playerPosition=Prueba, playerHeight=2cm, playerWeight=1kg, playerAge=69, playerTeam=prueba, playerCollege=Prueba, playerDraft=Prueba, playerNationality=Prueba, playerPoints=1.0, playerRebbounds=3.0, playerAssist=4.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625814/fdi5uaxhccnmo5weog6j.jpg}
 ===========================================

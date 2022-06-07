@@ -106,7 +106,7 @@ public class ControladorLogin {
             stage.centerOnScreen();
 
             stage.show();        
-            
+            TeamsDAO teamdao = new TeamsDAO();
             App.controller1.cargarUser();
             App.controller1.cargarAdmin();
             App.controller1.numberUser();

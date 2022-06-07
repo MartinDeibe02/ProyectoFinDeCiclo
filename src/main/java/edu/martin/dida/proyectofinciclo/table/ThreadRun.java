@@ -34,8 +34,8 @@ public class ThreadRun implements Runnable{
                     DatagramPacket p = new DatagramPacket(buf, buf.length);
                   App.ms.receive(p);
                   String text = new String(p.getData(), p.getOffset(), p.getLength());
-                  System.out.println(text);
                       controller.recibidos.setStyle("-fx-text-fill: white;");
+                      
                           controller.append(text);
                                
                 

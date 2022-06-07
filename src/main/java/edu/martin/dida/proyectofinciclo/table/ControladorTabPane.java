@@ -10,7 +10,6 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import edu.martin.dida.proyecto.conexion.Conexion;
 import edu.martin.dida.proyecto.conexion.PlayersDAO;
-import edu.martin.dida.proyecto.conexion.TeamsDAO;
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
@@ -55,7 +54,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -239,6 +237,7 @@ public class ControladorTabPane  implements Initializable{
     private PieChart pieDash;
     // </editor-fold>
     
+    Image img = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Invisible_Pink_Unicorn_High_Resolution.png/1200px-Invisible_Pink_Unicorn_High_Resolution.png");
     
     
     private int idPlayer;
@@ -300,6 +299,7 @@ public class ControladorTabPane  implements Initializable{
         try {
             DatagramPacket paquete = new DatagramPacket(texto.getBytes(), texto.length(), App.grupo, App.port);
             App.ms.send(paquete);
+            txtChatSend.clear();
         } catch (Exception ex) {
             Utilidades.Logger.logInfo(ex.toString(), 2);
         }
@@ -1028,6 +1028,8 @@ public class ControladorTabPane  implements Initializable{
         lblAssists.setText("");
         lblCollege.setText("");
         lblCountry.setText("");
+        setimg(prueba, img);
+
     }
     
     private void setimg(Rectangle rec1, Image img1) {

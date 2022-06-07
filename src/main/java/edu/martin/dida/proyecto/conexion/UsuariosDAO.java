@@ -158,7 +158,6 @@ public class UsuariosDAO {
             
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);
-            ex.printStackTrace();
         }
         return playersTeam;
     }
