@@ -194,6 +194,15 @@
                                  </children>
                               </GridPane>
                               <Button layoutX="603.0" layoutY="28.0" mnemonicParsing="false" onAction="#getJson" prefHeight="27.0" prefWidth="91.0" styleClass="button1" text="Export json" />
+                              <Button layoutX="536.0" layoutY="19.0" mnemonicParsing="false" onAction="#deselect" prefHeight="0.0" prefWidth="15.0" styleClass="button1">
+                                 <graphic>
+                                    <ImageView fitHeight="39.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../recursos/refreshBlack.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -267,10 +276,24 @@
                                        <GridPane.margin>
                                           <Insets right="120.0" />
                                        </GridPane.margin></TextField>
+                                    <TextField fx:id="txtAge" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                       <GridPane.margin>
+                                          <Insets left="140.0" right="10.0" />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <TextField fx:id="txtDraft" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <TextField fx:id="txtCollege" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <TextField fx:id="txtNationality" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                     <TextField fx:id="txtPoints" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                        <GridPane.margin>
                                           <Insets right="150.0" />
                                        </GridPane.margin></TextField>
+                                    <ComboBox fx:id="comboTeam" prefHeight="25.0" prefWidth="246.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <TextField fx:id="txtImage" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                       <GridPane.margin>
+                                          <Insets right="100.0" />
+                                       </GridPane.margin>
+                                    </TextField>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wheight/Height" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="20.0" />
@@ -316,33 +339,19 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="txtDraft" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField fx:id="txtCollege" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TextField fx:id="txtNationality" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Team" GridPane.halignment="CENTER" GridPane.rowIndex="9">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox fx:id="comboTeam" prefHeight="25.0" prefWidth="246.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                                     <Slider fx:id="slider" prefHeight="14.0" prefWidth="115.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                        <GridPane.margin>
                                           <Insets right="70.0" />
                                        </GridPane.margin>
                                     </Slider>
-                                    <TextField fx:id="txtAge" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <GridPane.margin>
-                                          <Insets left="140.0" right="10.0" />
-                                       </GridPane.margin>
-                                    </TextField>
                                     <Button mnemonicParsing="false" onAction="#insertPlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Save" GridPane.rowIndex="11" />
                                     <Button mnemonicParsing="false" onAction="#editPlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
                                     <Button mnemonicParsing="false" onAction="#deletePlayer" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="11" />
-                                    <TextField fx:id="txtImage" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                       <GridPane.margin>
-                                          <Insets right="100.0" />
-                                       </GridPane.margin>
-                                    </TextField>
                                     <Button mnemonicParsing="false" onAction="#getImage" styleClass="button1" text="Choose image" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                        <GridPane.margin>
                                           <Insets left="110.0" />
@@ -375,7 +384,7 @@
                               </GridPane>
                               <Button layoutX="485.0" layoutY="14.0" mnemonicParsing="false" onAction="#cargarPlayers" prefHeight="25.0" prefWidth="25.0" styleClass="button1">
                                  <graphic>
-                                    <ImageView fitHeight="47.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="36.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../../../../recursos/refreshBlack.png" />
                                        </image>
@@ -469,6 +478,7 @@
                                     <TextField fx:id="txtTeamCity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <TextField fx:id="txtConference" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     <TextField fx:id="txtDivision" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <ComboBox fx:id="comboUser" prefHeight="26.0" prefWidth="262.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                     <Button mnemonicParsing="false" onAction="#insertTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Save" GridPane.rowIndex="6" />
                                     <Button mnemonicParsing="false" onAction="#editTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Edit" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                                     <Button mnemonicParsing="false" onAction="#deleteTeam" prefHeight="50.0" prefWidth="100.0" styleClass="button1" text="Delete" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
@@ -477,7 +487,6 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox fx:id="comboUser" prefHeight="26.0" prefWidth="262.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                  </children>
                               </GridPane>
                               <Button layoutX="485.0" layoutY="14.0" mnemonicParsing="false" onAction="#cargarTeam" styleClass="button1">

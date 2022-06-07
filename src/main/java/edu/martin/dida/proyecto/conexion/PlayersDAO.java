@@ -216,11 +216,11 @@ public class PlayersDAO {
 
         
         }catch(SQLException ex){
-            Logger.logInfo(ex.getMessage(), 2);
+            Logger.logInfo("csv could not be inserted", 2);
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
 
         }catch(Exception e){
-            Logger.logInfo(e.getMessage(), 2);
+            Logger.logInfo("csv could not be inserted", 2);
             JOptionPane.showMessageDialog(new JFrame(), "csv could not be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }

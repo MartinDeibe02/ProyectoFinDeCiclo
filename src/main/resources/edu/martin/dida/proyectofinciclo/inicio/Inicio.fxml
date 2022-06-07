@@ -59,7 +59,7 @@
                         </Button>
                         <MenuButton fx:id="salir" alignment="CENTER" graphicTextGap="5.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="156.0" styleClass="button" stylesheets="@../../../../../css/inicio.css" text="Options" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Log Out" />
+                            <MenuItem mnemonicParsing="false" text="Log Out" onAction="#logOut" />
                             <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
 
                           </items>

@@ -990,3 +990,143 @@ New Log: 2022-06-06 19:07:54
 New Log: 2022-06-06 20:14:55
 [INFO] => Usuario borrado
 ===========================================
+New Log: 2022-06-07 13:22:57
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 13:22:57
+[INFO] => Email sent to martindeibe@gmail.com
+===========================================
+New Log: 2022-06-07 13:24:31
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 13:24:31
+[INFO] => Email sent to martindm777@gmail.com
+===========================================
+New Log: 2022-06-07 13:24:31
+[INFO] => Registrado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 13:24:31
+[INFO] => Email sent to momoisyourgod@gmail.com
+===========================================
+New Log: 2022-06-07 13:34:25
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 13:36:07
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 13:44:41
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 13:46:29
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 13:46:29
+[INFO] => Equipo insertado Team{id=0, name=Basquet Coruña, abbreviation=BQC, city=Coruña, conference=Este, division=Este}
+===========================================
+New Log: 2022-06-07 13:46:29
+[ERROR] => java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+===========================================
+New Log: 2022-06-07 13:51:48
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 13:51:48
+[ERROR] => Violación de una restricción de Integridad Referencial: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('Brooklyn Nets')"
+Referential integrity constraint violation: "CONSTRAINT_D: PUBLIC.PLAYERS FOREIGN KEY(TEAM) REFERENCES PUBLIC.TEAMS(NAME) ('Brooklyn Nets')"; SQL statement:
+INSERT INTO players (jersey, name, position, height, weight, age, team, college, draft, nationality, points, rebbounds, assist, image)VALUES ('50','Aaron Gordon','F','203cm','107kg','26','Brooklyn Nets','Arizona','2014 Rnd 1 Pick 4','United States','15.0','5.9','2.5','https://cdn.nba.com/headshots/nba/latest/260x190/203932.png') [23506-200]
+===========================================
+New Log: 2022-06-07 13:57:23
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 13:59:20
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 13:59:20
+[INFO] => Deleted => Player{playerJersey=50, playerName=Aaron Gordon, playerPosition=F, playerHeight=203cm, playerWeight=107kg, playerAge=26, playerTeam=Basquet Coruña, playerCollege=Arizona, playerDraft=2014 Rnd 1 Pick 4, playerNationality=United States, playerPoints=15.0, playerRebbounds=5.9, playerAssist=2.5, playerImage=https://cdn.nba.com/headshots/nba/latest/260x190/203932.png}
+===========================================
+New Log: 2022-06-07 14:02:19
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:02:19
+[INFO] => CSV exported
+===========================================
+New Log: 2022-06-07 14:08:34
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => El objeto ya está cerrado
+The object is already closed [90007-200]
+===========================================
+New Log: 2022-06-07 14:11:44
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-07 14:12:10
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:13:33
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:13:33
+[ERROR] => csv could not be inserted
+===========================================
+New Log: 2022-06-07 14:13:33
+[INFO] => Deleted => Player{playerJersey=50, playerName=Aaron Gordon, playerPosition=F, playerHeight=203cm, playerWeight=107kg, playerAge=26, playerTeam=Basquet Coruña, playerCollege=Arizona, playerDraft=2014 Rnd 1 Pick 4, playerNationality=United States, playerPoints=15.0, playerRebbounds=5.9, playerAssist=2.5, playerImage=https://cdn.nba.com/headshots/nba/latest/260x190/203932.png}
+===========================================
+New Log: 2022-06-07 14:33:51
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:33:51
+[INFO] => Deleted => Team{id=5, name=Basquet Coruña, abbreviation=BQC, city=Coruña, conference=Este, division=Este}
+===========================================
+New Log: 2022-06-07 14:40:10
+[ERROR] => Metodo no permitido en un query. Use execute ó executeQuery en lugar de executeUpdate
+Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT * FROM teams WHERE name LIKE 'Agente Libre' [90001-200]
+===========================================
+New Log: 2022-06-07 14:40:10
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 14:40:10
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-07 14:55:29
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================

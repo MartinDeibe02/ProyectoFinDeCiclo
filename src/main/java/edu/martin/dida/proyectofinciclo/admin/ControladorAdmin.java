@@ -237,6 +237,7 @@ public class ControladorAdmin implements Initializable{
 
         if(!(user == null)){
             if(!(UsuariosDAO.getStatus(user.getUser()) == true)){
+                btnDecrypt.setDisable(false);
                 txtUser.setText(user.getUser());
                 txtEmail.setText(user.getEmail());
                 txtPassword.setText(encrypt(user.getPassword()));
@@ -249,7 +250,8 @@ public class ControladorAdmin implements Initializable{
                 if(user.getPermisos().equals("user")){
                     checkAdmin.setSelected(false);
                 }
-                btnDecrypt.setDisable(false);
+                
+                
 
                 id = user.getId();
             }else{
@@ -258,11 +260,22 @@ public class ControladorAdmin implements Initializable{
 
         
          }else if(user==null && admin!=null){
+             if(admin.getUser().equals("ADMIN")){
+                    JOptionPane.showMessageDialog(new JFrame(), "You cant edit this user", "Error", JOptionPane.ERROR_MESSAGE);        
+             }else{
+                 
+             
+                btnDecrypt.setDisable(false);
+
                 if(!(UsuariosDAO.getStatus(admin.getUser()) == true)){
                     txtUser.setText(admin.getUser());
                 txtEmail.setText(admin.getEmail());
                 txtPassword.setText(encrypt(admin.getPassword()));
 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                String date = admin.getDateBirth();
+                LocalDate localDate = LocalDate.parse(date, formatter);
+                txtDate.setValue(localDate);
 
 
                 if(admin.getPermisos().equals("admin")){
@@ -276,12 +289,12 @@ public class ControladorAdmin implements Initializable{
 
             
             
-            
+             }    
             
         }else if (admin == null && user == null){
             JOptionPane.showMessageDialog(new JFrame(), "You must select a user", "Error", JOptionPane.ERROR_MESSAGE);        
         }
-            
+         
         decryptBool = true;
       }
     
@@ -315,7 +328,7 @@ public class ControladorAdmin implements Initializable{
                 cargarTeam();
                 clearFieldsUser();
                 comboUser.setItems(chargeTeamsComboUser());
-
+                btnDecrypt.setDisable(false);
                 id=0;
             }else{
                 JOptionPane.showMessageDialog(new JFrame(), "Email not valid", "Error", JOptionPane.ERROR_MESSAGE);        
@@ -354,6 +367,11 @@ public class ControladorAdmin implements Initializable{
         }else if(user==null && admin!=null){
             if(!(UsuariosDAO.getStatus(admin.getUser()) == true)){
                 
+                if(admin.getUser().equals("ADMIN")){
+                    JOptionPane.showMessageDialog(new JFrame(), "You cant delete this user", "Error", JOptionPane.ERROR_MESSAGE);        
+                }else{
+                    
+                
                 if(ControladorRegistro.userDAO.getUserTeams(admin.getUser())==true){
                     JOptionPane.showMessageDialog(new JFrame(), "You should delete the user teams, Try again", "Error", JOptionPane.ERROR_MESSAGE);        
                 }else{
@@ -365,6 +383,7 @@ public class ControladorAdmin implements Initializable{
                 cargarUser();
                 cargarTeam();
                 comboUser.setItems(chargeTeamsComboUser());
+                }
                 }
             }else{
                 
@@ -665,19 +684,11 @@ public class ControladorAdmin implements Initializable{
     
         
     public void desencriptar(){
-        if(decryptBool){
                 if(!txtPassword.getText().isEmpty()){
                     txtPassword.setText(decrypt(txtPassword.getText()));
                 }
                 btnDecrypt.setDisable(true);
-                decryptBool=false;
-        }else{
-            if(!txtPassword.getText().isEmpty()){
-                    txtPassword.setText(encrypt(txtPassword.getText()));
-                }
-            decryptBool = true;
-        }
-
+        
     }
     
     private static String decrypt(String pass){
@@ -792,7 +803,10 @@ public class ControladorAdmin implements Initializable{
             });    }
 
 
-
+public void deselect() throws IOException{
+    cargarAdmin();
+    cargarUser();
+}
 
 
 

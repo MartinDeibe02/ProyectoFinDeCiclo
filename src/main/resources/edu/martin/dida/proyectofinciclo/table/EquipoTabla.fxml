@@ -28,7 +28,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="img" stylesheets="@../../../../../css/cssTable.css" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
+<Pane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1300.0" styleClass="img" stylesheets="@../../../../../css/cssTable.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.martin.dida.proyectofinciclo.table.ControladorTabPane">
      <children>
       <Pane id="topImage" layoutX="-4.0" layoutY="-11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="915.0" prefWidth="1307.0" stylesheets="@../../../../../css/inicio.css">
          <children>
@@ -191,6 +191,7 @@
                                                             <Font size="20.0" />
                                                          </font>
                                                       </Label>
+                                                      <TextField fx:id="txtTeamName" styleClass="text-field" stylesheets="@../../../../../css/cssTable.css" GridPane.columnIndex="1" />
                                                       <TextField fx:id="txtTeamAbbreviation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                       <TextField fx:id="txtTeamCity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                       <TextField fx:id="txtTeamConference" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -213,7 +214,6 @@
                                                             <Font size="15.0" />
                                                          </font>
                                                       </Button>
-                                                      <TextField fx:id="txtTeamName" styleClass="text-field" stylesheets="@../../../../../css/cssTable.css" GridPane.columnIndex="1" />
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -510,6 +510,7 @@
                                                             </TextField>
                                                             <TextField fx:id="txtMyTeamDraft" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                                             <TextField fx:id="txtMyTeamCollege" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                            <TextField fx:id="txtMyTeamCountry" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                             <TextField fx:id="txtMyTeamPoints" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                                                <GridPane.margin>
                                                                   <Insets right="180.0" />
@@ -523,6 +524,11 @@
                                                             <TextField fx:id="txtMyTeamAssist" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                                                <GridPane.margin>
                                                                   <Insets left="180.0" />
+                                                               </GridPane.margin>
+                                                            </TextField>
+                                                            <TextField fx:id="txtMyTeamImage" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                               <GridPane.margin>
+                                                                  <Insets right="100.0" />
                                                                </GridPane.margin>
                                                             </TextField>
                                                             <Label text="/" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
@@ -609,17 +615,11 @@
                                                                   <Font size="20.0" />
                                                                </font>
                                                             </Label>
-                                                            <TextField fx:id="txtMyTeamCountry" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                             <Label text="Image" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="9">
                                                                <font>
                                                                   <Font size="20.0" />
                                                                </font>
                                                             </Label>
-                                                            <TextField fx:id="txtMyTeamImage" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                                                               <GridPane.margin>
-                                                                  <Insets right="100.0" />
-                                                               </GridPane.margin>
-                                                            </TextField>
                                                             <Button mnemonicParsing="false" onAction="#getImageMyTeam" stylesheets="@../../../../../css/cssTable.css" text="Button" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                                                <GridPane.margin>
                                                                   <Insets left="150.0" />

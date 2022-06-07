@@ -445,12 +445,13 @@ public class ControladorTabPane  implements Initializable{
             ControladorInicio.teamdao.deleteTeam(team);
             cargarTeams();
             clearTeamFields();
-            
+            showPie();
             cargarPlayer();
             loadFilter();
-
             combodash.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
+            showMyTeam();
+            cleanShowPlayer();
             Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
             JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
         }
@@ -520,7 +521,7 @@ public class ControladorTabPane  implements Initializable{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("CSV information");
         alert.setHeaderText("CSV format");
-        alert.setContentText("The csv must contain 15 fields");
+        alert.setContentText("The csv must contain 13 fields");
         
         	Optional<ButtonType> result = alert.showAndWait();
 	if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -534,7 +535,7 @@ public class ControladorTabPane  implements Initializable{
                 
             }else{
                 if(comboTeam.getSelectionModel().getSelectedItem() == null){
-                    JOptionPane.showMessageDialog(new JFrame(), "TIENES QUE ESCOGER EQUIPO", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "You must select a team", "Info", JOptionPane.ERROR_MESSAGE);
                 }else{
                     Path path = Paths.get(file.getAbsolutePath());
                 br = Files.newBufferedReader(path);
@@ -555,10 +556,13 @@ public class ControladorTabPane  implements Initializable{
                 }
                 
                 if(mt==false){
-                    JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.ERROR);
+                    
+                    JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted, teams must match", "Error", JOptionPane.ERROR_MESSAGE);
                 }else{
                     playerDAO.insertarCSV(listMyTeam, controlLogin.nombre);
                     showMyTeam();
+                    showPie();
+                    cargarPlayer();
                     JOptionPane.showMessageDialog(new JFrame(), "csv inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
                 }
                 }
@@ -567,6 +571,7 @@ public class ControladorTabPane  implements Initializable{
             }
             
         }catch(Exception ex){
+            
                     JOptionPane.showMessageDialog(new JFrame(), "csv cannot be inserted", "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -612,6 +617,7 @@ public class ControladorTabPane  implements Initializable{
             playerDAO.insertarCSV(listPlayer, ControladorLogin.nombre);
             cargarPlayer();
             br.close();
+            showPie();
             Utilidades.Logger.logInfo("CSV insertado", 1);
 
             JOptionPane.showMessageDialog(new JFrame(), "csv successfully inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
@@ -712,6 +718,8 @@ public class ControladorTabPane  implements Initializable{
                     setLblNbaAge();
                     clearMyTeamFields();
                     idPlayer=0;
+                    cleanShowPlayer();
+
                     Utilidades.Logger.logInfo("Inserted => " + player.toString() , 1);
                     
                 }else{
@@ -739,6 +747,8 @@ public class ControladorTabPane  implements Initializable{
                     showMyTeam();
                     showPie();
                     setLblNbaCount();
+                    cleanShowPlayer();
+
                     setLblNbaAge();
                     clearMyTeamFields();
                     idPlayer=0;
@@ -794,9 +804,11 @@ public class ControladorTabPane  implements Initializable{
             showMyTeam();
             loadFilter();
             setLblNbaCount();
+            showPie();
             setLblNbaAge();
+            cleanShowPlayer();
             Utilidades.Logger.logInfo("Deleted => " + player.toString() , 1);
-            JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
+            JOptionPane.showMessageDialog(new JFrame(), "Player deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
         }
     }
     
@@ -1001,6 +1013,21 @@ public class ControladorTabPane  implements Initializable{
         txtMyTeamAssist.clear();
         comboTeam.setValue(null);
         idPlayer = 0;
+    }
+    
+    public void cleanShowPlayer(){
+        lblName.setText("");
+        lblPosition.setText("");
+        lblHeight.setText("");
+        lblWeight.setText("");
+        lblTeam.setText("");
+        lblAge.setText("");
+        lblDraft.setText("");
+        lblPoints.setText("");
+        lblRebounds.setText("");
+        lblAssists.setText("");
+        lblCollege.setText("");
+        lblCountry.setText("");
     }
     
     private void setimg(Rectangle rec1, Image img1) {

@@ -1,7 +1,6 @@
 edu\martin\dida\proyectofinciclo\inicio\ControladorInicio.class
 edu\martin\dida\proyectofinciclo\ControladorLogin\ControladorLogin$1.class
 Utilidades\Html.class
-edu\martin\dida\proyectofinciclo\chat\ControladorChat.class
 edu\martin\dida\proyecto\conexion\Conexion.class
 Utilidades\Logger.class
 POJO\Player.class
