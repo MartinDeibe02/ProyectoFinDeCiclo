@@ -95,39 +95,31 @@
                         </Label>
                         <Pane layoutX="75.0" layoutY="482.0" prefHeight="230.0" prefWidth="1150.0" styleClass="destacados" stylesheets="@../../../../../css/inicio.css">
                            <children>
-                              <Button layoutX="67.0" layoutY="11.0" mnemonicParsing="false" onAction="#lebron" prefHeight="208.0" prefWidth="200.0">
+                              <Button layoutX="67.0" layoutY="11.0" mnemonicParsing="false" prefHeight="208.0" prefWidth="200.0">
                                  <graphic>
                                     <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" styleClass="buttonBar" width="200.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
+                                       
                                     </Rectangle>
                                  </graphic>
                               </Button>
-                              <Button layoutX="337.0" layoutY="11.0" mnemonicParsing="false" onAction="#lebron" prefHeight="208.0" prefWidth="200.0">
+                              <Button layoutX="337.0" layoutY="11.0" mnemonicParsing="false" prefHeight="208.0" prefWidth="200.0">
                                  <graphic>
                                     <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="#539eff" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
+                                       
                                     </Rectangle>
                                  </graphic>
                               </Button>
-                              <Button layoutX="597.0" layoutY="11.0" mnemonicParsing="false" onAction="#lebron" prefHeight="208.0" prefWidth="200.0">
+                              <Button layoutX="597.0" layoutY="11.0" mnemonicParsing="false" prefHeight="208.0" prefWidth="200.0">
                                  <graphic>
                                     <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
+                                       
                                     </Rectangle>
                                  </graphic>
                               </Button>
-                              <Button layoutX="867.0" layoutY="11.0" mnemonicParsing="false" onAction="#lebron" prefHeight="208.0" prefWidth="200.0" stylesheets="@../../../../../css/inicio.css">
+                              <Button layoutX="867.0" layoutY="11.0" mnemonicParsing="false" prefHeight="208.0" prefWidth="200.0" stylesheets="@../../../../../css/inicio.css">
                                  <graphic>
                                     <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" stroke="BLACK" strokeType="INSIDE" width="200.0">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor>
+                                       
                                     </Rectangle>
                                  </graphic>
                               </Button>

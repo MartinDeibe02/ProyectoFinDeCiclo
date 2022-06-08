@@ -107,9 +107,6 @@ public class ControladorInicio implements Initializable{
 
     }
     
-    public void lebron(){
-        System.out.println("hola");
-    }
     
     public void logOut(ActionEvent event) throws IOException{
         UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
