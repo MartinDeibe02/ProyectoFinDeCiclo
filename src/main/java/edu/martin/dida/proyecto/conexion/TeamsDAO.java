@@ -290,7 +290,8 @@ try (Connection conexion = Conexion.getConnection()){
                         +"','"+ team.getDivision()
                         +"','"+ user+"')";
                 statement.executeUpdate(sql);
-            
+            Utilidades.Logger.logInfo("Equipo insertado " + team.toString(), 1);
+            JOptionPane.showMessageDialog(new JFrame(), "Team inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
         }catch(SQLException e){
             Logger.logInfo(e.getMessage(), 2);
         }
@@ -320,6 +321,12 @@ try (Connection conexion = Conexion.getConnection()){
         String sql1 = "UPDATE players SET team = 'Agente Libre' WHERE team LIKE '" + team.getName() +"'";
         statement.executeUpdate(sql1);
         stmt.executeUpdate(sql);
+        Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
+
+        JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
+
+    }catch(Exception e){
+        Logger.logInfo(e.getMessage(), 2);
     }
     }
 }

@@ -1175,3 +1175,88 @@ New Log: 2022-06-07 20:15:34
 New Log: 2022-06-07 20:15:34
 [INFO] => Inserted => Player{playerJersey=2, playerName=Prueba, playerPosition=Prueba, playerHeight=2cm, playerWeight=1kg, playerAge=69, playerTeam=prueba, playerCollege=Prueba, playerDraft=Prueba, playerNationality=Prueba, playerPoints=1.0, playerRebbounds=3.0, playerAssist=4.0, playerImage=http://res.cloudinary.com/daolhlyb6/image/upload/v1654625814/fdi5uaxhccnmo5weog6j.jpg}
 ===========================================
+New Log: 2022-06-08 00:55:49
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 00:55:49
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 00:56:41
+[INFO] => Equipo insertado Team{id=0, name=Prueba, abbreviation=Prueba, city=Prueba, conference=Prueba, division=Prueba}
+===========================================
+New Log: 2022-06-08 00:57:26
+[INFO] => Equipo insertado Team{id=0, name=prueba2, abbreviation=prueba2, city=prueba2, conference=prueba2, division=prueba2}
+===========================================
+New Log: 2022-06-08 00:57:26
+[ERROR] => java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+===========================================
+New Log: 2022-06-08 00:57:26
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"; SQL statement:
+UPDATE teams SET name = 'Basquet Coruña',abbreviation = 'Prueba',city = 'Prueba',conference = 'Prueba',division = 'Prueba' WHERE id= 2 [23505-200]
+===========================================
+New Log: 2022-06-08 00:57:26
+[INFO] => Equipo insertado Team{id=2, name=Basquet Coruña, abbreviation=Prueba, city=Prueba, conference=Prueba, division=Prueba}
+===========================================
+New Log: 2022-06-08 00:57:26
+[ERROR] => Violación de indice de Unicidad ó Clave primaria: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"
+Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_4C ON PUBLIC.TEAMS(NAME) VALUES 2"; SQL statement:
+UPDATE teams SET name = 'Basquet Coruña',abbreviation = 'Prueba',city = 'Prueba',conference = 'Prueba',division = 'Prueba' WHERE id= 2 [23505-200]
+===========================================
+New Log: 2022-06-08 00:57:26
+[INFO] => Equipo insertado Team{id=2, name=Basquet Coruña, abbreviation=Prueba, city=Prueba, conference=Prueba, division=Prueba}
+===========================================
+New Log: 2022-06-08 01:01:02
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-08 01:01:37
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:01:37
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:02:20
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-08 01:04:22
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-08 01:04:51
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:04:51
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:05:35
+[INFO] => Equipo insertado Team{id=0, name=prueba, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-08 01:13:57
+[INFO] => Deleted => Team{id=2, name=Basquet Coruña, abbreviation=prueba, city=prueba, conference=prueba, division=prueba}
+===========================================
+New Log: 2022-06-08 01:34:36
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:34:36
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 01:34:36
+[INFO] => Usuario modificado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 13:51:48
+[ERROR] => No se ha podido establecer conexion con la base de datos
+===========================================
+New Log: 2022-06-08 13:52:31
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 13:52:31
+[INFO] => Usuario insertado Satisfactoriamente
+===========================================
+New Log: 2022-06-08 13:55:53
+[INFO] => Equipo insertado Team{id=0, name=MartinTeam, abbreviation=MRT, city=Minnesota, conference=West, division=Northwest}
+===========================================
+New Log: 2022-06-08 14:09:40
+[INFO] => Equipo insertado Team{id=0, name=PedroTeam, abbreviation=POT, city=Ohio, conference=East, division=Southeast}
+===========================================
+New Log: 2022-06-08 14:13:18
+[INFO] => CSV exported
+===========================================

@@ -67,7 +67,7 @@ public class PlayersDAO {
                     "rebbounds DOUBLE(255)," +
                     "assist DOUBLE(255)," +
                     "image VARCHAR(255)," +
-                    "FOREIGN KEY(team) REFERENCES teams(name));" ;
+                    "FOREIGN KEY(team) REFERENCES teams(name) ON UPDATE CASCADE);" ;
             statement.executeUpdate(sql);
         }catch(SQLException ex){
             Logger.logInfo(ex.getMessage(), 2);

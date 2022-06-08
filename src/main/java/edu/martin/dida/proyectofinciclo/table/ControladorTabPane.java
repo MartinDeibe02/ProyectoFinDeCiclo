@@ -405,8 +405,6 @@ public class ControladorTabPane  implements Initializable{
             cargarPlayer();
             clearTeamFields();
             showPie();
-            Utilidades.Logger.logInfo("Equipo insertado " + team.toString(), 1);
-            JOptionPane.showMessageDialog(new JFrame(), "Team inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -452,8 +450,6 @@ public class ControladorTabPane  implements Initializable{
             comboTeam.setItems(chargeTeamsCombo(ControladorLogin.nombre));
             showMyTeam();
             cleanShowPlayer();
-            Utilidades.Logger.logInfo("Deleted => " + team.toString() , 1);
-            JOptionPane.showMessageDialog(new JFrame(), "Team deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
         }
     }
 
@@ -563,6 +559,9 @@ public class ControladorTabPane  implements Initializable{
                     showMyTeam();
                     showPie();
                     cargarPlayer();
+                    setLblNbaAge();
+                    setLblNbaCount();
+                    loadFilter();
                     JOptionPane.showMessageDialog(new JFrame(), "csv inserted", "Info", JOptionPane.INFORMATION_MESSAGE);
                 }
                 }
@@ -616,6 +615,9 @@ public class ControladorTabPane  implements Initializable{
                         });
             playerDAO.insertarCSV(listPlayer, ControladorLogin.nombre);
             cargarPlayer();
+            setLblNbaAge();
+            setLblNbaCount();
+            loadFilter();
             br.close();
             showPie();
             Utilidades.Logger.logInfo("CSV insertado", 1);
@@ -677,6 +679,10 @@ public class ControladorTabPane  implements Initializable{
         playerByTeam.addAll(player1);
         tableMyTeam.setItems(playerByTeam);
         
+    }
+    
+    public void clearMyTeamTable(){
+        tableMyTeam.getItems().clear();
     }
     
     public void insertMyTeam() throws IOException{
@@ -808,7 +814,8 @@ public class ControladorTabPane  implements Initializable{
             setLblNbaAge();
             cleanShowPlayer();
             Utilidades.Logger.logInfo("Deleted => " + player.toString() , 1);
-            JOptionPane.showMessageDialog(new JFrame(), "Player deleted", "Info", JOptionPane.INFORMATION_MESSAGE);        
+            JOptionPane.showMessageDialog(new JFrame(), "Player deleted", "Info", JOptionPane.INFORMATION_MESSAGE); 
+            
         }
     }
     
@@ -960,7 +967,7 @@ public class ControladorTabPane  implements Initializable{
     
         public void logOut(ActionEvent event) throws IOException{
         UsuariosDAO.updateStatusOffline(ControladorLogin.nombre);
-        
+        clearMyTeamTable();
          Scene scene = App.pantallas.get("login");
             Stage stage = (Stage) salir.getScene().getWindow();
                     scene.setFill(Color.TRANSPARENT);
@@ -971,6 +978,7 @@ public class ControladorTabPane  implements Initializable{
             stage.centerOnScreen();
 
             stage.show();
+            
     }
     
     // </editor-fold>
