@@ -49,4 +49,8 @@ Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENS
 
 
 
+<<<<<<< HEAD
 ---
+=======
+---
+>>>>>>> 3f1494792ee2ecc2977e177889ab4d75068866b7
