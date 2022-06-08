@@ -7,6 +7,7 @@ package edu.martin.dida.proyectofinciclo.ControladorNews;
 import edu.martin.dida.proyecto.conexion.UsuariosDAO;
 import edu.martin.dida.proyectofinciclo.App;
 import edu.martin.dida.proyectofinciclo.ControladorLogin.ControladorLogin;
+import static edu.martin.dida.proyectofinciclo.inicio.ControladorInicio.teamdao;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,8 +50,8 @@ public class OpenNew {
         stage.show();
     }
      
-    public void goManager(ActionEvent event){
-        Scene scene = App.pantallas.get("manager");
+    public void goManager(ActionEvent event) throws IOException{
+        Scene scene = App.scene3;
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene.setFill(Color.TRANSPARENT);        
         stage.setScene(scene);
@@ -59,6 +60,15 @@ public class OpenNew {
         stage.centerOnScreen();
 
         stage.show();
+        
+                    App.controller.setLblNbaAge();
+    App.controller.setLblNbaCount();
+    App.controller.showPie();
+    App.controller.cargarPlayer();
+    App.controller.loadFilter(); 
+    App.controller.cargarTeams();
+    App.controller.comboTeam.setItems(App.controller.chargeTeamsCombo(ControladorLogin.nombre));
+    App.controller.combodash.setItems(App.controller.chargeTeamsCombo(ControladorLogin.nombre));
     }
         
         

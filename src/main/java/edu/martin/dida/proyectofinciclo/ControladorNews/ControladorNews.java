@@ -68,8 +68,8 @@ public class ControladorNews implements Initializable{
         setimg(rec3, img3);
     }
     
-    public void goManager(ActionEvent event){
-        Scene scene = App.pantallas.get("manager");
+    public void goManager(ActionEvent event) throws IOException{
+        Scene scene = App.scene3;
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene.setFill(Color.TRANSPARENT);        
         stage.setScene(scene);
@@ -78,6 +78,15 @@ public class ControladorNews implements Initializable{
         stage.centerOnScreen();
 
         stage.show();
+        
+            App.controller.setLblNbaAge();
+    App.controller.setLblNbaCount();
+    App.controller.showPie();
+    App.controller.cargarPlayer();
+    App.controller.loadFilter(); 
+    App.controller.cargarTeams();
+    App.controller.comboTeam.setItems(App.controller.chargeTeamsCombo(ControladorLogin.nombre));
+    App.controller.combodash.setItems(App.controller.chargeTeamsCombo(ControladorLogin.nombre));
     }
     
     public void goNews(ActionEvent event){
